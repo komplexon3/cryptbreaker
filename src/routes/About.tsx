@@ -41,6 +41,51 @@ const boxes = [
     title: 'Lorem ipsum dolor sit amet',
     text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
   },
+  {
+    id: 10,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 11,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 12,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 13,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 14,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 15,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 16,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 17,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
+  {
+    id: 18,
+    title: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+  },
 ];
 
 const About = () => {

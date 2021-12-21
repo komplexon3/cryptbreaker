@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import UnlockIcon, { Icon } from '@chakra-ui/icon';
+import UnlockIcon from '@chakra-ui/icon';
 
 interface MenuCardProps {
   title: string;
@@ -17,7 +17,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ title, description, link }) => {
       overflow='hidden'
       _hover={{ bg: 'gray.100' }}
     >
-      <Icon />
+      <UnlockIcon />
 
       <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight' isTruncated>
         {title}
