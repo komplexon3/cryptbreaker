@@ -1,5 +1,7 @@
+import { CipherTextBox } from '../features/solve';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import MenuCard from '../components/MenuCard';
+import FrequencyAnalysis from '../features/solve/components/AnalysisTools/FrequencyAnalysis';
 
 const Home: React.FC = () => {
   return (
@@ -59,6 +61,8 @@ const Home: React.FC = () => {
             link='http://google.com'
           />
         </SimpleGrid>
+        <CipherTextBox text='hello, my name is marc widmer and I am testing the funtionality of this component.' />
+        <FrequencyAnalysis text='hello, my name is marc widmer and I am testing the funtionality of this component.' />
       </Stack>
     </Container>
   );
