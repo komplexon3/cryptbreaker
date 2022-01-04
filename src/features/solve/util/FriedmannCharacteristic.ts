@@ -4,12 +4,10 @@ export const ComputeFriedmannCharacteristic = (text: string, stride: number): nu
   if (stride < 1) {
     throw new Error('stride too small - must be >= 1');
   }
-  if (text.length == 0) {
+  if (text.length === 0) {
     return 0;
   }
-  if (stride == 0) {
-    return 0;
-  }
+
   return (
     splitIntoStrides(text, stride)
       .map(friedmannCharacteristic)

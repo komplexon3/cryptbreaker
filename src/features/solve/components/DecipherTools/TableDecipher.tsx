@@ -2,7 +2,7 @@ import { HStack, VStack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { IntegerInput } from '..';
 import { BasicBox } from '../../../../components/BasicBox';
-import { CeasarDecrypt, tableDecrypt } from '../../util';
+import { tableDecrypt } from '../../util';
 import { DecipherProps } from './Decipher.ds';
 
 export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText }) => {

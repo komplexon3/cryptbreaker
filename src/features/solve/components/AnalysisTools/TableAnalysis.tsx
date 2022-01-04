@@ -20,6 +20,7 @@ const buildTable = (text: string, rows: number, columns: number) => {
           if (i < rows) {
             return buildTableRow(r);
           }
+          return <></>;
         })}
       </Tbody>
     </Table>
