@@ -1,22 +1,13 @@
 import { BasicBox } from '../../../../components/BasicBox';
-import {
-  Table,
-  Tbody,
-  Tr,
-  Td,
-  useNumberInput,
-  VStack,
-  HStack,
-  Text,
-  Button,
-  Input,
-} from '@chakra-ui/react';
+import { Table, Tbody, Tr, Td, VStack, HStack, Text } from '@chakra-ui/react';
+import { useState } from 'react';
+import { IntegerInput } from '..';
 
 interface TableAnalysisProps {
   text: string;
 }
 
-const buildTable = (text: string, columns: number) => {
+const buildTable = (text: string, rows: number, columns: number) => {
   if (columns < 1) {
     throw new Error('must have at least one column');
   }
@@ -24,7 +15,13 @@ const buildTable = (text: string, columns: number) => {
 
   return (
     <Table variant={'unstyled'} size={'sm'}>
-      <Tbody>{textRows?.map((r) => buildTableRow(r))}</Tbody>
+      <Tbody>
+        {textRows?.map((r, i) => {
+          if (i < rows) {
+            return buildTableRow(r);
+          }
+        })}
+      </Tbody>
     </Table>
   );
 };
@@ -40,32 +37,33 @@ const buildTableRow = (textRow: string) => {
 };
 
 export const TableAnalysis: React.FC<TableAnalysisProps> = ({ text }) => {
-  // Setup columns selection
-  const { valueAsNumber, getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
-    useNumberInput({
-      step: 1,
-      defaultValue: 5,
-      min: 1,
-      max: 15,
-      precision: 0,
-      inputMode: 'numeric',
-      pattern: '[0-9]*',
-    });
+  const maxValue = text.length / 2;
 
-  const incColumns = getIncrementButtonProps();
-  const decColumns = getDecrementButtonProps();
-  const inputColumns = getInputProps({ readOnly: true });
+  const [rows, setRows] = useState(5);
+  const [columns, setColumns] = useState(5);
 
   return (
     <BasicBox>
       <VStack>
         <HStack>
-          <Text>Columns</Text>
-          <Input {...inputColumns} />
-          <Button {...decColumns}>-</Button>
-          <Button {...incColumns}>+</Button>
+          <Text>Rows</Text>
+          <IntegerInput
+            minValue={1}
+            maxValue={maxValue}
+            defaultValue={5}
+            onValueChange={(v) => setRows(v)}
+          />
         </HStack>
-        {buildTable(text, valueAsNumber)}
+        <HStack>
+          <Text>Columns</Text>
+          <IntegerInput
+            minValue={1}
+            maxValue={maxValue}
+            defaultValue={5}
+            onValueChange={(v) => setColumns(v)}
+          />
+        </HStack>
+        {buildTable(text, rows, columns)}
       </VStack>
     </BasicBox>
   );
