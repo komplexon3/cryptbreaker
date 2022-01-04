@@ -1,9 +1,18 @@
-import { CipherTextBox } from '../features/solve';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
+import { useState } from 'react';
 import MenuCard from '../components/MenuCard';
-import FrequencyAnalysis from '../features/solve/components/AnalysisTools/FrequencyAnalysis';
+import {
+  CipherTextBox,
+  FriedmannAnalysis,
+  TableAnalysis,
+  FrequencyAnalysis,
+} from '../features/solve';
+import { CeasarDecipher, TableDecipher } from '../features/solve';
 
 const Home: React.FC = () => {
+  const text = 'hello, my name is marc widmer and I am testing the funtionality of this component.';
+  const [decipheredText, setDecipheredText] = useState('');
+
   return (
     <Container maxW={'3xl'} minH='90vh'>
       <Stack spacing={6}>
@@ -61,8 +70,13 @@ const Home: React.FC = () => {
             link='http://google.com'
           />
         </SimpleGrid>
-        <CipherTextBox text='hello, my name is marc widmer and I am testing the funtionality of this component.' />
-        <FrequencyAnalysis text='hello, my name is marc widmer and I am testing the funtionality of this component.' />
+        <CipherTextBox text={text} />
+        <FrequencyAnalysis text={text} />
+        <FriedmannAnalysis text={text} />
+        <TableAnalysis text={text} />
+        <CeasarDecipher text={text} setDecipheredText={setDecipheredText} />
+        <TableDecipher text={text} setDecipheredText={setDecipheredText} />
+        <CipherTextBox text={decipheredText} />
       </Stack>
     </Container>
   );
