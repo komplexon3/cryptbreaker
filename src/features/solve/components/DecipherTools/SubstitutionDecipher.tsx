@@ -27,11 +27,11 @@ export const SubstitutionDecipher: React.FC<DecipherProps> = ({ text, setDeciphe
     if (valid) {
       setDecipheredText(substitutionDecrypt(text, substitutionKeyString));
     }
-  }, [substitutionKey, text, substitutionKey]);
+  }, [substitutionKey, text, setDecipheredText]);
 
   const handleChange = (value: string, index: number) => {
     const match = value.match('[a-zA-Z]');
-    isFieldInvalid[index] = !match || match.length != 1;
+    isFieldInvalid[index] = !match || match.length !== 1;
     setIsFieldInvalid(() => {
       // verify that the entered value is exactly one character from the alphabet
       return [...isFieldInvalid];
