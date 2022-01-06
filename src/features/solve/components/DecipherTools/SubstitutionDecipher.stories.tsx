@@ -2,21 +2,20 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ChakraProvider } from '@chakra-ui/react';
-import CeasarDecipher from './CeasarDecipher';
-import { CipherTextBox } from '../CipherTextBox';
+import SubstitutionDecipher from './SubstitutionDecipher';
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'CeasarDecipher',
-  component: CeasarDecipher,
-} as ComponentMeta<typeof CeasarDecipher>;
+  title: 'SubstitutionDecipher',
+  component: SubstitutionDecipher,
+} as ComponentMeta<typeof SubstitutionDecipher>;
 
-export const Basic: ComponentStory<typeof CeasarDecipher> = () => (
+export const Basic: ComponentStory<typeof SubstitutionDecipher> = () => (
   <ChakraProvider>
-    <CeasarDecipher
+    <SubstitutionDecipher
       text='Lorem ipsum dolor sit amet, consectetur adipiscing elit,
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
