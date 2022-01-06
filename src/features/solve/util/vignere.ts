@@ -2,9 +2,7 @@ import { computeCeasarShift, isLetter } from '.';
 
 export const vignereEncrypt = (plainText: string, vignereKey: string): string => {
   if (!verifyVignereKey(vignereKey)) {
-    throw Error(
-      'vignere key invalid - must be a permutation of the english alphabet in lower case'
-    );
+    throw Error('vignere key invalid - must be a string of letters');
   }
   const vignereKeyOffsets = offsetsFromCharString(vignereKey.toLocaleLowerCase());
   return applyOffsets(plainText, vignereKeyOffsets);
@@ -12,9 +10,7 @@ export const vignereEncrypt = (plainText: string, vignereKey: string): string =>
 
 export const vignereDecrypt = (cipherText: string, vignereKey: string): string => {
   if (!verifyVignereKey(vignereKey)) {
-    throw Error(
-      'vignere key invalid - must be a permutation of the english alphabet in lower case'
-    );
+    throw Error('vignere key invalid - must be a string of letters');
   }
   const invertedVignereKeyOffsets = offsetsFromCharString(vignereKey.toLocaleLowerCase()).map(
     (v) => -v
