@@ -1,7 +1,11 @@
 import { isLetter } from '.';
 
 export const substitutionEncrypt = (plainText: string, substitutionKey: string): string => {
-  verifySubstitutionKey(substitutionKey);
+  if (!verifySubstitutionKey(substitutionKey)) {
+    throw Error(
+      'substitution key invalid - must be a permutation of the english alphabet in lower case'
+    );
+  }
   substitutionKey = substitutionKey.toLocaleLowerCase();
   return plainText
     .split('')
@@ -35,11 +39,9 @@ const substituteCharacter = (character: string, substitutionKey: string): string
 
 export const verifySubstitutionKey = (key: string) => {
   if (key.length !== 26) {
-    throw Error('substitution key too short - some values must be missing');
+    return false;
   }
-  'abcdefghijklmnopqrstivwxyz'.split('').forEach((v) => {
-    if (key.indexOf(v) < 0) {
-      throw Error('character missing in substitution key - missing character: ' + v);
-    }
-  });
+  return !'abcdefghijklmnopqrstivwxyz'
+    .split('')
+    .reduce((acc, val) => acc || key.indexOf(val) < 0, false);
 };

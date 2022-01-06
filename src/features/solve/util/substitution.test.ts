@@ -18,39 +18,35 @@ const getPermutation = (s: string): string => {
 
 describe('verifySubstitutionKey', () => {
   test('basic - plain alphabet', () => {
-    expect(() => verifySubstitutionKey('abcdefghijklmnopqrstuvwxyz')).not.toThrowError();
+    expect(verifySubstitutionKey('abcdefghijklmnopqrstuvwxyz')).toBeTruthy();
   });
   test('basic - empty key', () => {
-    expect(() => verifySubstitutionKey('')).toThrowError('too short');
+    expect(verifySubstitutionKey('')).toBeFalsy();
   });
   test('basic - correct length, just a', () => {
-    expect(() => verifySubstitutionKey('aaaaaaaaaaaaaaaaaaaaaaaaaa')).toThrowError(
-      'missing character'
-    );
+    expect(verifySubstitutionKey('aaaaaaaaaaaaaaaaaaaaaaaaaa')).toBeFalsy();
   });
   test('arbitrary permutation', () => {
-    expect(() =>
-      verifySubstitutionKey(getPermutation('abcdefghijklmnopqrstuvwxyz'))
-    ).not.toThrowError();
+    expect(verifySubstitutionKey(getPermutation('abcdefghijklmnopqrstuvwxyz'))).toBeTruthy();
   });
   test('arbitrary permutation of a messed up alphabet', () => {
-    let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    const numberOfMistakes = Math.floor(Math.random() * 10); // max 10 mistakes
-    for (let k = 0; k < numberOfMistakes; k++) {
-      // select character to duplicate
-      const i = Math.floor(Math.random() * 26);
-      let j = 0;
-      // select character to be removed for dublication
-      while (i === j) {
-        j = Math.floor(Math.random() * 26);
+    for (let reps = 0; reps < 100; reps++) {
+      let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+      const numberOfMistakes = 1 + Math.floor(Math.random() * 10); // max 10 mistakes
+      for (let k = 0; k < numberOfMistakes; k++) {
+        // select character to duplicate
+        const i = Math.floor(Math.random() * 26);
+        let j = 0;
+        // select character to be removed for dublication
+        while (i === j) {
+          j = Math.floor(Math.random() * 26);
+        }
+        // duplicate
+        alphabet[j] = alphabet[i];
       }
-      // duplicate
-      alphabet[j] = alphabet[i];
+      const substitutionKey = alphabet.join('');
+      expect(verifySubstitutionKey(getPermutation(substitutionKey))).toBeFalsy();
     }
-
-    const substitutionKey = alphabet.join('');
-
-    expect(() => verifySubstitutionKey(getPermutation(substitutionKey))).toThrowError();
   });
 });
 
@@ -88,17 +84,29 @@ describe('CeasarEncrypt, CeasarDecrypt', () => {
   test('encrypt - invalid substitution key', () => {
     const plainText =
       'hello, my name is marc widmer and I am testing the funtionality of this component.';
-    expect(() => substitutionEncrypt(plainText, '')).toThrowError();
-    expect(() => substitutionEncrypt(plainText, 'hhhhhhhhhhhhhhhhhhhhhhhhhh')).toThrowError();
-    expect(() => substitutionEncrypt(plainText, 'bcdefghmjklmnopqrstuvwxyza')).toThrowError();
-    expect(() => substitutionEncrypt(plainText, 'bablscdefghmjklmnopqrstuvwxyza')).toThrowError();
+    expect(() => substitutionEncrypt(plainText, '')).toThrowError('substitution key invalid');
+    expect(() => substitutionEncrypt(plainText, 'hhhhhhhhhhhhhhhhhhhhhhhhhh')).toThrowError(
+      'substitution key invalid'
+    );
+    expect(() => substitutionEncrypt(plainText, 'bcdefghmjklmnopqrstuvwxyza')).toThrowError(
+      'substitution key invalid'
+    );
+    expect(() => substitutionEncrypt(plainText, 'bablscdefghmjklmnopqrstuvwxyza')).toThrowError(
+      'substitution key invalid'
+    );
   });
   test('decrypt - invalid substitution key', () => {
     const text =
       'hello, my name is marc widmer and I am testing the funtionality of this component.';
     expect(() => substitutionDecrypt(text, '')).toThrowError();
-    expect(() => substitutionDecrypt(text, 'hhhhhhhhhhhhhhhhhhhhhhhhhh')).toThrowError();
-    expect(() => substitutionDecrypt(text, 'bcdefghmjklmnopqrstuvwxyza')).toThrowError();
-    expect(() => substitutionDecrypt(text, 'bablscdefghmjklmnopqrstuvwxyza')).toThrowError();
+    expect(() => substitutionDecrypt(text, 'hhhhhhhhhhhhhhhhhhhhhhhhhh')).toThrowError(
+      'substitution key invalid'
+    );
+    expect(() => substitutionDecrypt(text, 'bcdefghmjklmnopqrstuvwxyza')).toThrowError(
+      'substitution key invalid'
+    );
+    expect(() => substitutionDecrypt(text, 'bablscdefghmjklmnopqrstuvwxyza')).toThrowError(
+      'substitution key invalid'
+    );
   });
 });
