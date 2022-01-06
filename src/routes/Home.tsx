@@ -7,6 +7,7 @@ import {
   TableAnalysis,
   FrequencyAnalysis,
   SubstitutionDecipher,
+  VignereDecipher,
 } from '../features/solve';
 import { CeasarDecipher, TableDecipher } from '../features/solve';
 
@@ -78,6 +79,7 @@ const Home: React.FC = () => {
         <CeasarDecipher text={text} setDecipheredText={setDecipheredText} />
         <TableDecipher text={text} setDecipheredText={setDecipheredText} />
         <SubstitutionDecipher text={text} setDecipheredText={setDecipheredText} />
+        <VignereDecipher text={text} setDecipheredText={setDecipheredText} />
         <CipherTextBox text={decipheredText} />
       </Stack>
     </Container>
