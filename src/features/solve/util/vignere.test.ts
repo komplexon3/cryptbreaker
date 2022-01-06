@@ -112,3 +112,46 @@ describe('vignereEncrypt, vignereDecrypt', () => {
     );
   });
 });
+
+describe('verifyVignereKey', () => {
+  test('basic valid key', () => {
+    const vignereKey = 'ako';
+    expect(verifyVignereKey(vignereKey)).toBeTruthy();
+  });
+
+  test('valid one character key', () => {
+    const vignereKey = 'h';
+    expect(verifyVignereKey(vignereKey)).toBeTruthy();
+  });
+
+  test('arbitrary valid keys', () => {
+    for (let i = 0; i < 50; i++) {
+      const vignereKey = getRandomVignereKey(
+        getRandomInt(1, 50),
+        alphabet + alphabet.toUpperCase()
+      );
+      expect(verifyVignereKey(vignereKey)).toBeTruthy();
+    }
+  });
+
+  test('arbitrary valid upper case vignere keys', () => {
+    for (let i = 0; i < 10; i++) {
+      const vignereKey = getRandomVignereKey(getRandomInt(1, 50), alphabet.toUpperCase());
+      expect(verifyVignereKey(vignereKey)).toBeTruthy();
+    }
+  });
+
+  test('arbitrary valid lower case vignere keys', () => {
+    for (let i = 0; i < 10; i++) {
+      const vignereKey = getRandomVignereKey(getRandomInt(1, 50), alphabet);
+      expect(verifyVignereKey(vignereKey)).toBeTruthy();
+    }
+  });
+
+  test('invalid vignere key', () => {
+    expect(verifyVignereKey('')).toBeFalsy();
+    expect(verifyVignereKey('1231819')).toBeFalsy();
+    expect(verifyVignereKey('hello this text contains spaces and :!$')).toBeFalsy();
+    expect(verifyVignereKey('a89q3(8opu:{22jl')).toBeFalsy();
+  });
+});

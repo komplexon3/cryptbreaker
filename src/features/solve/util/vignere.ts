@@ -32,4 +32,4 @@ const applyOffsets = (s: string, offsets: number[]) => {
 
 const offsetsFromCharString = (s: string) => s.split('').map((c) => c.charCodeAt(0) - 97);
 
-const verifyVignereKey = (key: string) => /^[a-z]+$/i.test(key);
+export const verifyVignereKey = (key: string) => /^[a-z]+$/i.test(key);
