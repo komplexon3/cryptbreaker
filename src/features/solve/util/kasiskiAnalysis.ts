@@ -1,17 +1,16 @@
-export interface kasiskiGroup {
+export interface kasiskiItem {
   segment: string;
-  intervals: interval[];
+  interval: interval;
 }
 
-export const kasiski = (s: string, segLen: number): kasiskiGroup[] => {
-  const kasinskiGroups: kasiskiGroup[] = [];
+export const kasiski = (s: string, segLen: number): kasiskiItem[] => {
+  const kasinskiItems: kasiskiItem[] = [];
   findAllMatchesOfLength(s, segLen).forEach((v, k) =>
-    kasinskiGroups.push({
-      segment: k,
-      intervals: joinOverlappingAdjacentIntervals(createIntervals(v, segLen)),
-    })
+    joinOverlappingAdjacentIntervals(createIntervals(v, segLen)).forEach((e) =>
+      kasinskiItems.push({ segment: k, interval: e })
+    )
   );
-  return kasinskiGroups;
+  return kasinskiItems;
 };
 
 export const findStringMatches = (s: string, searchString: string): number[] => {
