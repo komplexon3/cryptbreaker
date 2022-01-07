@@ -41,7 +41,7 @@ export const verifySubstitutionKey = (key: string) => {
   if (key.length !== 26) {
     return false;
   }
-  return !'abcdefghijklmnopqrstivwxyz'
+  return !'abcdefghijklmnopqrstuvwxyz'
     .split('')
     .reduce((acc, val) => acc || key.indexOf(val) < 0, false);
 };
