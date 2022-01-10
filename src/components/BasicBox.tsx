@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 
 export const BasicBox: React.FC = ({ children }) => {
   return (
-    <Box padding={5} borderWidth='1px' borderRadius='lg' overflow='hidden'>
+    <Box borderWidth='1px' borderRadius='lg' borderColor='uiBorder' overflow='hidden'>
       {children}
     </Box>
   );
