@@ -1,12 +1,10 @@
-import { AddButton, Card } from '../../../../components';
+import { AddButton } from '../../../../components';
 import { DecipherTools } from './Decipher.ds';
 import { useEffect, useState } from 'react';
 import DecipherToolSwitch from './DecipherToolSwitch';
-import { AddIcon } from '@chakra-ui/icons';
 import {
   Button,
   Center,
-  Circle,
   Modal,
   ModalBody,
   ModalCloseButton,
