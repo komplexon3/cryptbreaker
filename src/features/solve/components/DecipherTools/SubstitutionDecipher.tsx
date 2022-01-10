@@ -14,7 +14,11 @@ import { Card } from '../../../../components';
 import { substitutionDecrypt, verifySubstitutionKey } from '../../util';
 import { DecipherProps } from './Decipher.ds';
 
-export const SubstitutionDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText }) => {
+export const SubstitutionDecipher: React.FC<DecipherProps> = ({
+  text,
+  setDecipheredText,
+  onClose,
+}) => {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
   const [substitutionKey, setSubstitutionKey] = useState(alphabet);
   const [isFieldInvalid, setIsFieldInvalid] = useState(Array(26).fill(false) as boolean[]);
@@ -48,7 +52,7 @@ export const SubstitutionDecipher: React.FC<DecipherProps> = ({ text, setDeciphe
   };
 
   return (
-    <Card title='Substitution Key Enty'>
+    <Card title='Substitution Key Enty' onClose={onClose}>
       <FormControl isInvalid={isInvalidSubstitution}>
         <Center>
           <SimpleGrid autoFlow='column' templateRows='repeat(7, 1fr)' spacingX='8' spacingY='4'>

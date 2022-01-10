@@ -1,10 +1,28 @@
 import { Card } from './../../../components';
-import { Box } from '@chakra-ui/react';
+import { Skeleton, Text } from '@chakra-ui/react';
 
 interface CipherTextBoxProps {
   text: string;
 }
 
 export const CipherTextBox: React.FC<CipherTextBoxProps> = ({ text }) => {
-  return <Card title='Cipher Text'>{text}</Card>;
+  return (
+    <Card title='Cipher Text'>
+      {text ? (
+        text
+      ) : (
+        <>
+          <Skeleton marginY='0.5rem'>
+            <Text>filler</Text>
+          </Skeleton>
+          <Skeleton marginY='0.5rem'>
+            <Text>filler</Text>
+          </Skeleton>
+          <Skeleton marginY='0.5rem'>
+            <Text>filler</Text>
+          </Skeleton>
+        </>
+      )}
+    </Card>
+  );
 };

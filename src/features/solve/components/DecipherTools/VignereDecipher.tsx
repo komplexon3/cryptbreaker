@@ -2,13 +2,9 @@ import { HStack, VStack, Text, Input, FormControl, FormErrorMessage } from '@cha
 import { useEffect, useState } from 'react';
 import { Card } from '../../../../components';
 import { verifyVignereKey, vignereDecrypt } from '../../util';
+import { DecipherProps } from './Decipher.ds';
 
-interface VignereDecipherProps {
-  text: string;
-  setDecipheredText: (s: string) => void;
-}
-
-export const VignereDecipher: React.FC<VignereDecipherProps> = ({ text, setDecipheredText }) => {
+export const VignereDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText, onClose }) => {
   const [inputValue, setInputValue] = useState('abc');
   const [isInvalid, setIsInvalid] = useState(false);
 
@@ -27,7 +23,7 @@ export const VignereDecipher: React.FC<VignereDecipherProps> = ({ text, setDecip
   };
 
   return (
-    <Card title='Vignere Key Entry'>
+    <Card title='Vignere Key Entry' onClose={onClose}>
       <VStack>
         <HStack>
           <Text>Vignere Key</Text>

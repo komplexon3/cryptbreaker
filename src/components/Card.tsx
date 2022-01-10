@@ -1,14 +1,21 @@
-import { Box } from '@chakra-ui/react';
+import { Box, CloseButton } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 interface CardProps {
   title?: string;
   borderColor?: string;
   titleColor?: string;
+  onClose?: () => void;
   children?: ReactNode;
 }
 
-export const Card: React.FC<CardProps> = ({ title, borderColor, titleColor, children }) => {
+export const Card: React.FC<CardProps> = ({
+  title,
+  borderColor,
+  titleColor,
+  onClose,
+  children,
+}) => {
   return (
     <Box borderWidth='1px' borderRadius='lg' borderColor='uiBorder' overflow='hidden'>
       {title && (
@@ -22,8 +29,10 @@ export const Card: React.FC<CardProps> = ({ title, borderColor, titleColor, chil
           fontWeight='semibold'
         >
           {title}
+          {onClose && <CloseButton float={'right'} onClick={onClose} />}
         </Box>
       )}
+      {!title && onClose && <CloseButton float={'right'} onClick={onClose} />}
       <Box padding='5'>{children}</Box>
     </Box>
   );

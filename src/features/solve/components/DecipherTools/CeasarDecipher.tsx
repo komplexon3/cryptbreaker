@@ -2,15 +2,11 @@ import { HStack, VStack, Text } from '@chakra-ui/react';
 import { IntegerInput } from '..';
 import { Card } from '../../../../components';
 import { CeasarDecrypt } from '../../util';
+import { DecipherProps } from './Decipher.ds';
 
-interface CeasarDecipherProps {
-  text: string;
-  setDecipheredText: (s: string) => void;
-}
-
-export const CeasarDecipher: React.FC<CeasarDecipherProps> = ({ text, setDecipheredText }) => {
+export const CeasarDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText, onClose }) => {
   return (
-    <Card title='Ceasar Key Entry'>
+    <Card title='Ceasar Key Entry' onClose={onClose}>
       <VStack>
         <HStack>
           <Text>Shift Value</Text>

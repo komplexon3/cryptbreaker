@@ -5,4 +5,5 @@ export const colors = {
   secondary: baseTheme.colors.teal,
   alert: baseTheme.colors.red,
   uiBorder: baseTheme.colors.blue[200],
+  selected: baseTheme.colors.blue[400],
 };

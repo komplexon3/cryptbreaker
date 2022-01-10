@@ -5,7 +5,7 @@ import { Card } from '../../../../components';
 import { tableDecrypt } from '../../util';
 import { DecipherProps } from './Decipher.ds';
 
-export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText }) => {
+export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText, onClose }) => {
   const [rows, setRows] = useState(5);
   const [columns, setColumns] = useState(5);
   const maxValue = text.length / 2;
@@ -21,7 +21,7 @@ export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText
   };
 
   return (
-    <Card title='Table Key Entry'>
+    <Card title='Table Key Entry' onClose={onClose}>
       <VStack>
         <HStack>
           <Text>Table Rows</Text>
