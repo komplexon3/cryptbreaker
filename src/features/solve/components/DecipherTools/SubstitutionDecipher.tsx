@@ -1,13 +1,13 @@
 import {
   VStack,
   Text,
-  Grid,
   Input,
   InputLeftAddon,
   InputGroup,
-  GridItem,
   FormControl,
   FormErrorMessage,
+  Center,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { BasicBox } from '../../../../components/BasicBox';
@@ -52,10 +52,10 @@ export const SubstitutionDecipher: React.FC<DecipherProps> = ({ text, setDeciphe
       <VStack>
         <Text>Substitution Decipher</Text>
         <FormControl isInvalid={isInvalidSubstitution}>
-          <Grid autoFlow='column' templateRows='repeat(7, 1fr)' gap='4'>
-            {alphabet.map((v, i) => (
-              <GridItem key={i}>
-                <FormControl isInvalid={isFieldInvalid[i]}>
+          <Center>
+            <SimpleGrid autoFlow='column' templateRows='repeat(7, 1fr)' spacingX='8' spacingY='4'>
+              {alphabet.map((v, i) => (
+                <FormControl key={i} isInvalid={isFieldInvalid[i]}>
                   <InputGroup>
                     <InputLeftAddon width='3rem' justifyContent='center'>
                       {v}
@@ -74,9 +74,9 @@ export const SubstitutionDecipher: React.FC<DecipherProps> = ({ text, setDeciphe
                     />
                   </InputGroup>
                 </FormControl>
-              </GridItem>
-            ))}
-          </Grid>
+              ))}
+            </SimpleGrid>
+          </Center>
           {isInvalidSubstitution && (
             <FormErrorMessage>
               The entered key isn't a permutation of the alphabet. Make sure you don't have any
