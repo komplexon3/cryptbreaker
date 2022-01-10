@@ -1,7 +1,7 @@
 import { HStack, VStack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { IntegerInput } from '..';
-import { BasicBox } from '../../../../components/BasicBox';
+import { Card } from '../../../../components';
 import { tableDecrypt } from '../../util';
 import { DecipherProps } from './Decipher.ds';
 
@@ -21,7 +21,7 @@ export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText
   };
 
   return (
-    <BasicBox>
+    <Card title='Table Key Entry'>
       <VStack>
         <HStack>
           <Text>Table Rows</Text>
@@ -42,7 +42,7 @@ export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText
           />
         </HStack>
       </VStack>
-    </BasicBox>
+    </Card>
   );
 };
 

@@ -10,7 +10,7 @@ import {
   SimpleGrid,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { BasicBox } from '../../../../components/BasicBox';
+import { Card } from '../../../../components';
 import { substitutionDecrypt, verifySubstitutionKey } from '../../util';
 import { DecipherProps } from './Decipher.ds';
 
@@ -48,44 +48,41 @@ export const SubstitutionDecipher: React.FC<DecipherProps> = ({ text, setDeciphe
   };
 
   return (
-    <BasicBox>
-      <VStack>
-        <Text>Substitution Decipher</Text>
-        <FormControl isInvalid={isInvalidSubstitution}>
-          <Center>
-            <SimpleGrid autoFlow='column' templateRows='repeat(7, 1fr)' spacingX='8' spacingY='4'>
-              {alphabet.map((v, i) => (
-                <FormControl key={i} isInvalid={isFieldInvalid[i]}>
-                  <InputGroup>
-                    <InputLeftAddon width='3rem' justifyContent='center'>
-                      {v}
-                    </InputLeftAddon>
-                    <Input
-                      width='3rem'
-                      textAlign='center'
-                      defaultValue={v}
-                      onChange={(e) => {
-                        e.preventDefault();
-                        // make it all upper case
-                        const val = e.target.value.toUpperCase();
-                        e.target.value = val;
-                        handleChange(val, i);
-                      }}
-                    />
-                  </InputGroup>
-                </FormControl>
-              ))}
-            </SimpleGrid>
-          </Center>
-          {isInvalidSubstitution && (
-            <FormErrorMessage>
-              The entered key isn't a permutation of the alphabet. Make sure you don't have any
-              duplicates.{' '}
-            </FormErrorMessage>
-          )}
-        </FormControl>
-      </VStack>
-    </BasicBox>
+    <Card title='Substitution Key Enty'>
+      <FormControl isInvalid={isInvalidSubstitution}>
+        <Center>
+          <SimpleGrid autoFlow='column' templateRows='repeat(7, 1fr)' spacingX='8' spacingY='4'>
+            {alphabet.map((v, i) => (
+              <FormControl key={i} isInvalid={isFieldInvalid[i]}>
+                <InputGroup>
+                  <InputLeftAddon width='3rem' justifyContent='center'>
+                    {v}
+                  </InputLeftAddon>
+                  <Input
+                    width='3rem'
+                    textAlign='center'
+                    defaultValue={v}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      // make it all upper case
+                      const val = e.target.value.toUpperCase();
+                      e.target.value = val;
+                      handleChange(val, i);
+                    }}
+                  />
+                </InputGroup>
+              </FormControl>
+            ))}
+          </SimpleGrid>
+        </Center>
+        {isInvalidSubstitution && (
+          <FormErrorMessage>
+            The entered key isn't a permutation of the alphabet. Make sure you don't have any
+            duplicates.{' '}
+          </FormErrorMessage>
+        )}
+      </FormControl>
+    </Card>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Card } from './../../../components';
 import { Box } from '@chakra-ui/react';
 
 interface CipherTextBoxProps {
@@ -5,9 +6,5 @@ interface CipherTextBoxProps {
 }
 
 export const CipherTextBox: React.FC<CipherTextBoxProps> = ({ text }) => {
-  return (
-    <Box maxW='sm' padding={5} borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      {text}
-    </Box>
-  );
+  return <Card title='Cipher Text'>{text}</Card>;
 };

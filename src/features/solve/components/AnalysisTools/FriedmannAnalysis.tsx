@@ -1,6 +1,5 @@
 import { Button, HStack, Input, useNumberInput, VStack, Text } from '@chakra-ui/react';
-import { useState } from 'react';
-import { BasicBox } from '../../../../components/BasicBox';
+import { Card } from '../../../../components';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -68,7 +67,7 @@ export const FriedmannAnalysis: React.FC<FriedmannAnalysisProps> = ({ text }) =>
   };
 
   return (
-    <BasicBox>
+    <Card title='Friedmann Analysis'>
       <VStack>
         <HStack>
           <Text>Key Length</Text>
@@ -76,9 +75,10 @@ export const FriedmannAnalysis: React.FC<FriedmannAnalysisProps> = ({ text }) =>
           <Button {...decMaxKeySize}>-</Button>
           <Button {...incMaxKeySize}>+</Button>
         </HStack>
+        <Text>Expected for German: {fcDE}</Text>
         <Line data={data} options={options} />
       </VStack>
-    </BasicBox>
+    </Card>
   );
 };
 

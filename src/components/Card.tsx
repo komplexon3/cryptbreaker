@@ -1,6 +1,5 @@
 import { Box } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import { BasicBox } from './BasicBox';
 
 interface CardProps {
   title?: string;
@@ -11,7 +10,7 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ title, borderColor, titleColor, children }) => {
   return (
-    <BasicBox>
+    <Box borderWidth='1px' borderRadius='lg' borderColor='uiBorder' overflow='hidden'>
       {title && (
         <Box
           paddingX='5'
@@ -26,7 +25,7 @@ export const Card: React.FC<CardProps> = ({ title, borderColor, titleColor, chil
         </Box>
       )}
       <Box padding='5'>{children}</Box>
-    </BasicBox>
+    </Box>
   );
 };
 

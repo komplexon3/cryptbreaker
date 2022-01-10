@@ -1,4 +1,3 @@
-import { BasicBox } from '../../../../components/BasicBox';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -12,6 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { ComputeRelativeFrequency } from '../../util';
+import { Card } from '../../../../components';
 
 ChartJS.register(
   CategoryScale,
@@ -65,9 +65,6 @@ const frequenciesDE = [
 ];
 
 export const FrequencyAnalysis: React.FC<FrequencyAnalysisProps> = ({ text }) => {
-  const testText =
-    'hello, my name is marc widmer and I am testing the funtionality of this component.';
-
   const data = {
     labels,
     datasets: [
@@ -85,7 +82,7 @@ export const FrequencyAnalysis: React.FC<FrequencyAnalysisProps> = ({ text }) =>
   };
 
   return (
-    <BasicBox>
+    <Card title='Frequency Analysis'>
       <Bar
         data={data}
         options={{
@@ -99,7 +96,7 @@ export const FrequencyAnalysis: React.FC<FrequencyAnalysisProps> = ({ text }) =>
           },
         }}
       />
-    </BasicBox>
+    </Card>
   );
 };
 

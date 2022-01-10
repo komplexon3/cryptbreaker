@@ -1,9 +1,8 @@
-import { VStack, Text } from '@chakra-ui/react';
-import {} from '@chakra-ui/theme';
+import { VStack, Text, HStack } from '@chakra-ui/react';
 import { ReactNode, useEffect } from 'react';
 import { useState } from 'react';
 import { IntegerInput } from '..';
-import { BasicBox } from '../../../../components/BasicBox';
+import { Card } from '../../../../components';
 import { kasiski, kasiskiItem, sortFnKasiskiItems } from '../../util';
 import { AnalysisProps } from './Analysis.ds';
 
@@ -68,20 +67,22 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text }) => {
   };
 
   return (
-    <BasicBox>
+    <Card title='Kasiski Analysis'>
       <VStack>
-        <Text>Kasiski</Text>
-        <IntegerInput
-          minValue={2}
-          maxValue={10}
-          defaultValue={3}
-          onValueChange={(v) => {
-            setSegmentLength(v);
-          }}
-        />
+        <HStack>
+          <Text>Segment Length</Text>
+          <IntegerInput
+            minValue={2}
+            maxValue={10}
+            defaultValue={3}
+            onValueChange={(v) => {
+              setSegmentLength(v);
+            }}
+          />
+        </HStack>
         <KasinskiText />
       </VStack>
-    </BasicBox>
+    </Card>
   );
 };
 

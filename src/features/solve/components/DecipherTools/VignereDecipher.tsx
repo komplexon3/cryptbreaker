@@ -1,6 +1,6 @@
 import { HStack, VStack, Text, Input, FormControl, FormErrorMessage } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { BasicBox } from '../../../../components/BasicBox';
+import { Card } from '../../../../components';
 import { verifyVignereKey, vignereDecrypt } from '../../util';
 
 interface VignereDecipherProps {
@@ -27,7 +27,7 @@ export const VignereDecipher: React.FC<VignereDecipherProps> = ({ text, setDecip
   };
 
   return (
-    <BasicBox>
+    <Card title='Vignere Key Entry'>
       <VStack>
         <HStack>
           <Text>Vignere Key</Text>
@@ -47,7 +47,7 @@ export const VignereDecipher: React.FC<VignereDecipherProps> = ({ text, setDecip
           </FormControl>
         </HStack>
       </VStack>
-    </BasicBox>
+    </Card>
   );
 };
 

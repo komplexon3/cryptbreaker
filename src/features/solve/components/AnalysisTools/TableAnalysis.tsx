@@ -1,4 +1,4 @@
-import { BasicBox } from '../../../../components/BasicBox';
+import { Card } from '../../../../components';
 import { Table, Tbody, Tr, Td, VStack, HStack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { IntegerInput } from '..';
@@ -44,7 +44,7 @@ export const TableAnalysis: React.FC<TableAnalysisProps> = ({ text }) => {
   const [columns, setColumns] = useState(5);
 
   return (
-    <BasicBox>
+    <Card title='Table Analysis'>
       <VStack>
         <HStack>
           <Text>Rows</Text>
@@ -66,7 +66,7 @@ export const TableAnalysis: React.FC<TableAnalysisProps> = ({ text }) => {
         </HStack>
         {buildTable(text, rows, columns)}
       </VStack>
-    </BasicBox>
+    </Card>
   );
 };
 
