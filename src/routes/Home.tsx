@@ -3,6 +3,7 @@ import { useState } from 'react';
 import MenuCard from '../components/MenuCard';
 import {
   CipherTextBox,
+  PlainTextBox,
   FriedmannAnalysis,
   TableAnalysis,
   FrequencyAnalysis,
@@ -83,7 +84,7 @@ const Home: React.FC = () => {
         <TableDecipher text={text} setDecipheredText={setDecipheredText} />
         <SubstitutionDecipher text={text} setDecipheredText={setDecipheredText} />
         <VignereDecipher text={text} setDecipheredText={setDecipheredText} />
-        <CipherTextBox text={decipheredText} />
+        <PlainTextBox text={decipheredText} />
       </Stack>
     </Container>
   );
