@@ -1,4 +1,4 @@
-import { Card } from '../../../../components';
+import { AddButton, Card } from '../../../../components';
 import { DecipherTools } from './Decipher.ds';
 import { useEffect, useState } from 'react';
 import DecipherToolSwitch from './DecipherToolSwitch';
@@ -42,16 +42,40 @@ const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({ text, setDe
             <ModalCloseButton />
             <ModalBody padding={6}>
               <SimpleGrid spacingY={3}>
-                <Button bg='uiBorder' onClick={() => setTool(DecipherTools.CEASAR)}>
+                <Button
+                  bg='uiBorder'
+                  onClick={() => {
+                    onClose();
+                    setTool(DecipherTools.CEASAR);
+                  }}
+                >
                   Ceasar
                 </Button>
-                <Button bg='uiBorder' onClick={() => setTool(DecipherTools.SUBSTITUTION)}>
+                <Button
+                  bg='uiBorder'
+                  onClick={() => {
+                    onClose();
+                    setTool(DecipherTools.SUBSTITUTION);
+                  }}
+                >
                   Substitution
                 </Button>
-                <Button bg='uiBorder' onClick={() => setTool(DecipherTools.TABLE)}>
+                <Button
+                  bg='uiBorder'
+                  onClick={() => {
+                    onClose();
+                    setTool(DecipherTools.TABLE);
+                  }}
+                >
                   Table
                 </Button>
-                <Button bg='uiBorder' onClick={() => setTool(DecipherTools.VIGNERE)}>
+                <Button
+                  bg='uiBorder'
+                  onClick={() => {
+                    onClose();
+                    setTool(DecipherTools.VIGNERE);
+                  }}
+                >
                   Vignere
                 </Button>
               </SimpleGrid>
@@ -60,9 +84,7 @@ const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({ text, setDe
         </Modal>
 
         <Center width='100%'>
-          <Circle size='80px' bg='uiBorder' onClick={onOpen}>
-            <AddIcon w='50px' h='50px' color='white' />
-          </Circle>
+          <AddButton onClick={onOpen} />
         </Center>
       </>
     );
