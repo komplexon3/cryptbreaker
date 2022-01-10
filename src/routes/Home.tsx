@@ -8,11 +8,13 @@ import {
   FrequencyAnalysis,
   SubstitutionDecipher,
   VignereDecipher,
+  KasiskiAnalysis,
 } from '../features/solve';
 import { CeasarDecipher, TableDecipher } from '../features/solve';
 
 const Home: React.FC = () => {
-  const text = 'hello, my name is marc widmer and I am testing the funtionality of this component.';
+  const text =
+    'hello, my name is marc widmer and I am testing the funtionality of this component. I am extending this text so that the analysis tools can be tested a bit more.';
   const [decipheredText, setDecipheredText] = useState('');
 
   return (
@@ -76,6 +78,7 @@ const Home: React.FC = () => {
         <FrequencyAnalysis text={text} />
         <FriedmannAnalysis text={text} />
         <TableAnalysis text={text} />
+        <KasiskiAnalysis text={text} />
         <CeasarDecipher text={text} setDecipheredText={setDecipheredText} />
         <TableDecipher text={text} setDecipheredText={setDecipheredText} />
         <SubstitutionDecipher text={text} setDecipheredText={setDecipheredText} />

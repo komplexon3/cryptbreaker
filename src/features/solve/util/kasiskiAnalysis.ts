@@ -3,14 +3,16 @@ export interface kasiskiItem {
   interval: interval;
 }
 
-export const kasiski = (s: string, segLen: number): kasiskiItem[] => {
+export const kasiski = (s: string, segLen: number): [kasiskiItem[], string[]] => {
   const kasinskiItems: kasiskiItem[] = [];
-  findAllMatchesOfLength(s, segLen).forEach((v, k) =>
+  const kasiskiGroups: string[] = [];
+  findAllMatchesOfLength(s, segLen).forEach((v, k) => {
+    kasiskiGroups.push(k);
     joinOverlappingAdjacentIntervals(createIntervals(v, segLen)).forEach((e) =>
       kasinskiItems.push({ segment: k, interval: e })
-    )
-  );
-  return kasinskiItems;
+    );
+  });
+  return [kasinskiItems, kasiskiGroups];
 };
 
 export const findStringMatches = (s: string, searchString: string): number[] => {
@@ -31,6 +33,9 @@ export const findAllMatchesOfLength = (s: string, segLen: number): Map<string, n
 
   for (let i = 0; i + segLen < s.length; i++) {
     const searchString = s.substring(i, i + segLen);
+    if (/[a-z]*\s[a-z]*/.test(searchString)) {
+      continue;
+    }
     const hits = findStringMatches(s, searchString);
     if (hits.length > 1 && !matches.has(searchString)) {
       matches.set(searchString, hits);
@@ -44,12 +49,12 @@ interface interval {
   end: number;
 }
 
-export const createIntervals = (startPositions: number[], length: number): interval[] => {
+const createIntervals = (startPositions: number[], length: number): interval[] => {
   const intervals = startPositions.map((v) => ({ start: v, end: v + length - 1 }));
   return intervals;
 };
 
-export const joinOverlappingAdjacentIntervals = (intervals: interval[]): interval[] => {
+const joinOverlappingAdjacentIntervals = (intervals: interval[]): interval[] => {
   const len = intervals.length;
   const joinedIntervals = [];
 
@@ -65,3 +70,8 @@ export const joinOverlappingAdjacentIntervals = (intervals: interval[]): interva
   }
   return joinedIntervals;
 };
+
+export const sortFnKasiskiItems = (a: kasiskiItem, b: kasiskiItem) =>
+  a.interval.start - b.interval.start === 0
+    ? a.interval.start - b.interval.start
+    : a.interval.end - b.interval.end;
