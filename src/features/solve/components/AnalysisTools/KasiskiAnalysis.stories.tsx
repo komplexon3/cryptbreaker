@@ -1,19 +1,19 @@
 // Button.stories.ts|tsx
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import FrequencyAnalysis from './FrequencyAnalysis';
+import KasiskiAnalysis from './KasiskiAnalysis';
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Frequency Analysis',
-  component: FrequencyAnalysis,
-} as ComponentMeta<typeof FrequencyAnalysis>;
+  title: 'Kasiski Analysis',
+  component: KasiskiAnalysis,
+} as ComponentMeta<typeof KasiskiAnalysis>;
 
-export const Basic: ComponentStory<typeof FrequencyAnalysis> = () => (
-  <FrequencyAnalysis
+export const Basic: ComponentStory<typeof KasiskiAnalysis> = () => (
+  <KasiskiAnalysis
     text='Lorem ipsum dolor sit amet, consectetur adipiscing elit,
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
