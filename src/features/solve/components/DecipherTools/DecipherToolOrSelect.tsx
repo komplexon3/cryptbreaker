@@ -1,4 +1,4 @@
-import { AddButton } from '../../../../components';
+import { AddButton, Card } from '../../../../components';
 import { DecipherTools } from './Decipher.ds';
 import { useEffect, useState } from 'react';
 import DecipherToolSwitch from './DecipherToolSwitch';
@@ -20,7 +20,10 @@ interface DecipherToolOrSelectProps {
   setDecipheredText: (s: string) => void;
 }
 
-const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({ text, setDecipheredText }) => {
+export const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({
+  text,
+  setDecipheredText,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [tool, setTool] = useState(DecipherTools.UNSPECIFIED);
 
@@ -81,9 +84,11 @@ const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({ text, setDe
           </ModalContent>
         </Modal>
 
-        <Center width='100%'>
-          <AddButton onClick={onOpen} />
-        </Center>
+        <Card borderColor='transparent'>
+          <Center width='100%'>
+            <AddButton onClick={onOpen} />
+          </Center>
+        </Card>
       </>
     );
   }

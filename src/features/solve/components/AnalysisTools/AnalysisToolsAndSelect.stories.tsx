@@ -11,7 +11,6 @@ export default {
   component: AnalysisToolsAndSelect,
   args: {
     text: 'hello',
-    setDecipheredText: (s) => {},
   },
 } as ComponentMeta<typeof AnalysisToolsAndSelect>;
 

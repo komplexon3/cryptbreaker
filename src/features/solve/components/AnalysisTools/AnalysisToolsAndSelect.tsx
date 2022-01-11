@@ -1,4 +1,4 @@
-import { AddButton } from '../../../../components';
+import { AddButton, Card } from '../../../../components';
 import { useState } from 'react';
 import {
   Button,
@@ -17,13 +17,9 @@ import AnalysisToolSwitch from './AnalysisToolSwitch';
 
 interface AnalysisToolsAndSelectProps {
   text: string;
-  setDecipheredText: (s: string) => void;
 }
 
-const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
-  text,
-  setDecipheredText,
-}) => {
+export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ text }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // value of AnalysisTools.UNSPECIFIED indicated a removed tool
   const [tools, setTools] = useState([] as AnalysisTools[]);
@@ -33,6 +29,9 @@ const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
   };
 
   const removeTool = (toolKey: number) => {
+    console.log(toolKey);
+    console.log(tools.length);
+    console.log(tools[toolKey]);
     if (toolKey >= tools.length || tools[toolKey] === AnalysisTools.UNSPECIFIED) {
       throw Error('toolKey %s cannot be removed as it is not registered');
     }
@@ -90,7 +89,7 @@ const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
         </ModalContent>
       </Modal>
 
-      <SimpleGrid>
+      <SimpleGrid gap={6}>
         {tools
           .filter((v) => v !== AnalysisTools.UNSPECIFIED)
           .map((v, k) => {
@@ -106,9 +105,11 @@ const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
             );
           })}
 
-        <Center width='100%'>
-          <AddButton onClick={onOpen} />
-        </Center>
+        <Card borderColor='transparent'>
+          <Center width='100%'>
+            <AddButton onClick={onOpen} />
+          </Center>
+        </Card>
       </SimpleGrid>
     </>
   );
