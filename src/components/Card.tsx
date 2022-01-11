@@ -17,7 +17,7 @@ export const Card: React.FC<CardProps> = ({
   children,
 }) => {
   return (
-    <Box borderWidth='1px' borderRadius='lg' borderColor='uiBorder' overflow='hidden'>
+    <Box borderWidth='1px' borderRadius='lg' borderColor={borderColor} overflow='hidden'>
       {title && (
         <Box
           paddingX='5'
