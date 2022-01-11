@@ -12,18 +12,15 @@ import {
   Legend,
 } from 'chart.js';
 import { ComputeFriedmannCharacteristic } from '../../util';
+import { AnalysisProps } from './Analysis.ds';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-
-interface FriedmannAnalysisProps {
-  text: string;
-}
 
 // TODO: Replace with properly sourced values (and add source)
 const fcDE = 0.0762;
 const fcEN = 0.0655;
 
-export const FriedmannAnalysis: React.FC<FriedmannAnalysisProps> = ({ text }) => {
+export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   // Setup key size selection
   const { valueAsNumber, getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -67,7 +64,7 @@ export const FriedmannAnalysis: React.FC<FriedmannAnalysisProps> = ({ text }) =>
   };
 
   return (
-    <Card title='Friedmann Analysis'>
+    <Card title='Friedmann Analysis' onClose={onClose}>
       <VStack>
         <HStack>
           <Text>Key Length</Text>

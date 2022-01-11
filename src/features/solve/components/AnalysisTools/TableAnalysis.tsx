@@ -2,10 +2,7 @@ import { Card } from '../../../../components';
 import { Table, Tbody, Tr, Td, VStack, HStack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { IntegerInput } from '..';
-
-interface TableAnalysisProps {
-  text: string;
-}
+import { AnalysisProps } from './Analysis.ds';
 
 const buildTable = (text: string, rows: number, columns: number) => {
   if (columns < 1) {
@@ -37,14 +34,14 @@ const buildTableRow = (textRow: string) => {
   );
 };
 
-export const TableAnalysis: React.FC<TableAnalysisProps> = ({ text }) => {
+export const TableAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   const maxValue = text.length / 2;
 
   const [rows, setRows] = useState(5);
   const [columns, setColumns] = useState(5);
 
   return (
-    <Card title='Table Analysis'>
+    <Card title='Table Analysis' onClose={onClose}>
       <VStack>
         <HStack>
           <Text>Rows</Text>

@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { ComputeRelativeFrequency } from '../../util';
 import { Card } from '../../../../components';
+import { AnalysisProps } from './Analysis.ds';
 
 ChartJS.register(
   CategoryScale,
@@ -23,10 +24,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-interface FrequencyAnalysisProps {
-  text: string;
-}
 
 const labels = [
   'a',
@@ -64,7 +61,7 @@ const frequenciesDE = [
   0.01451, 0.00052, 0.00109, 0.01258,
 ];
 
-export const FrequencyAnalysis: React.FC<FrequencyAnalysisProps> = ({ text }) => {
+export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   const data = {
     labels,
     datasets: [
@@ -82,7 +79,7 @@ export const FrequencyAnalysis: React.FC<FrequencyAnalysisProps> = ({ text }) =>
   };
 
   return (
-    <Card title='Frequency Analysis'>
+    <Card title='Frequency Analysis' onClose={onClose}>
       <Bar
         data={data}
         options={{

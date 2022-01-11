@@ -6,7 +6,7 @@ import { Card } from '../../../../components';
 import { kasiski, kasiskiItem, sortFnKasiskiItems } from '../../util';
 import { AnalysisProps } from './Analysis.ds';
 
-export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text }) => {
+export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   // elements sorted by interval start
   const [segmentLenght, setSegmentLength] = useState(2);
   const [kasinskiItems, setKasinskiItems] = useState([] as kasiskiItem[]);
@@ -67,7 +67,7 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text }) => {
   };
 
   return (
-    <Card title='Kasiski Analysis'>
+    <Card title='Kasiski Analysis' onClose={onClose}>
       <VStack>
         <HStack>
           <Text>Segment Length</Text>
