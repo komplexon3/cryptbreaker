@@ -33,7 +33,7 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
     console.log(tools.length);
     console.log(tools[toolKey]);
     if (toolKey >= tools.length || tools[toolKey] === AnalysisTools.UNSPECIFIED) {
-      throw Error('toolKey %s cannot be removed as it is not registered');
+      throw Error('toolKey ' + toolKey + ' cannot be removed as it is not registered');
     }
     tools[toolKey] = AnalysisTools.UNSPECIFIED;
     setTools([...tools]);
