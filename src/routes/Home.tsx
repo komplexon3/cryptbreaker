@@ -1,3 +1,4 @@
+import { encParam } from '../utils';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
 import MenuCard from '../components/MenuCard';
@@ -12,10 +13,12 @@ import {
   KasiskiAnalysis,
 } from '../features/solve';
 import { CeasarDecipher, TableDecipher } from '../features/solve';
+import { allProblems } from '../data/problems';
+
+const randomProblem = () => allProblems[Math.floor(allProblems.length * Math.random())];
 
 const Home: React.FC = () => {
-  const text =
-    'hello, my name is marc widmer and I am testing the funtionality of this component. I am extending this text so that the analysis tools can be tested a bit more.';
+  const text = "hello, this is a test string that I am coming up with as I'm typing";
   const [decipheredText, setDecipheredText] = useState('');
 
   return (
@@ -28,9 +31,9 @@ const Home: React.FC = () => {
         </Center>
         <SimpleGrid columns={3} spacing={10}>
           <MenuCard
-            title='hello'
-            description='best decryption tool in the world'
-            link='http://google.com'
+            title='Random Problem'
+            description='A random ciphertext to be deciphered by you'
+            link={'/solve/' + encParam(randomProblem().cipherText)}
           />
           <MenuCard
             title='hello'

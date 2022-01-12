@@ -16,6 +16,7 @@ const DecipherPage: React.FC = () => {
   }
 
   const text = decParam(encCiphertext);
+  console.log(text);
 
   return (
     <Container maxW={'3xl'} minH='90vh'>
