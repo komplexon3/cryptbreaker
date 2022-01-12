@@ -47,6 +47,7 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
 
         return (
           <HightlightedSpan
+            key={i} // okay to use index as key as the list is never mutated or reordered
             color={colors[kIndex]}
             highlighted={kasinskiGroupEnabled[kIndex]}
             onMouseEnter={() => {
