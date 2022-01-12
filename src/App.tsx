@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='problems/:cipher' element={<CipherProblems />} />
         <Route path='about' element={<About />} />
-        <Route path='solve' element={<DecipherPage match={{ text: 'bla' }} />} />
+        <Route path='solve/:encCiphertext' element={<DecipherPage />} />
         <Route path='/' element={<Home />} />
       </Routes>
       <Footer />

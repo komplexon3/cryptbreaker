@@ -1,19 +1,21 @@
+import { decParam } from '../../../utils';
 import { Center, Container, Heading, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { CipherTextBox } from '..';
 import { AnalysisToolsAndSelect } from '../components/AnalysisTools';
 import { DecipherToolOrSelect } from '../components/DecipherTools';
 
-interface DecipherPageProps {
-  match: {
-    text: string;
-  };
-}
-
-const DecipherPage: React.FC<DecipherPageProps> = ({ match }) => {
-  const text =
-    'hello, my name is marc widmer and I am testing the funtionality of this component. I am extending this text so that the analysis tools can be tested a bit more.';
+const DecipherPage: React.FC = () => {
   const [decipheredText, setDecipheredText] = useState('');
+
+  const { encCiphertext } = useParams();
+
+  if (!encCiphertext) {
+    return <div>404</div>;
+  }
+
+  const text = decParam(encCiphertext);
 
   return (
     <Container maxW={'3xl'} minH='90vh'>
