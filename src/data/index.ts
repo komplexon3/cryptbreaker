@@ -1,1 +1,1 @@
-export * from './problems/cesar_problems';
+export * from './problems';
