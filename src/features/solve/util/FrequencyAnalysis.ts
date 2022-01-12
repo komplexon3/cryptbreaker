@@ -7,12 +7,14 @@
 export const ComputeRelativeFrequency = (s: string): number[] => {
   let absoluteFrequency: { [id: string]: number } = {};
   let totalCount = 0;
-  s.split('').forEach((s) => {
-    if (s >= 'a' && s <= 'z') {
-      absoluteFrequency[s] = absoluteFrequency[s] ? absoluteFrequency[s] + 1 : 1;
-      totalCount++;
-    }
-  });
+  s.toLowerCase()
+    .split('')
+    .forEach((s) => {
+      if (s >= 'a' && s <= 'z') {
+        absoluteFrequency[s] = absoluteFrequency[s] ? absoluteFrequency[s] + 1 : 1;
+        totalCount++;
+      }
+    });
 
   let relativeFrequencies: number[] = [];
   let i = 0;
