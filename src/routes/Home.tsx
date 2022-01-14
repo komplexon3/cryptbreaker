@@ -1,28 +1,13 @@
 import { encParam } from '../utils';
 import { Center, Heading, SimpleGrid, Stack, useDisclosure } from '@chakra-ui/react';
-import { useState } from 'react';
-import MenuCard from '../components/MenuCard';
-import {
-  CipherTextBox,
-  PlainTextBox,
-  FriedmannAnalysis,
-  TableAnalysis,
-  FrequencyAnalysis,
-  SubstitutionDecipher,
-  VignereDecipher,
-  KasiskiAnalysis,
-} from '../features/solve';
-import { CeasarDecipher, TableDecipher } from '../features/solve';
-import { allProblems, ProblemTypes } from '../data/problems';
-import ProblemCodeModal from '../components/ProblemCodeModal';
+import { allProblems, ProblemTypes } from '@/data/problems';
 import { useNavigate } from 'react-router-dom';
+import { MenuCard, ProblemCodeModal } from '@/components';
 
 const randomProblem = () => allProblems[Math.floor(allProblems.length * Math.random())];
 
 const Home: React.FC = () => {
-  const text = "hello, this is a test string that I am coming up with as I'm typing";
   const navigate = useNavigate();
-  const [decipheredText, setDecipheredText] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -64,16 +49,6 @@ const Home: React.FC = () => {
             />
           ))}
         </SimpleGrid>
-        <CipherTextBox text={text} />
-        <FrequencyAnalysis text={text} />
-        <FriedmannAnalysis text={text} />
-        <TableAnalysis text={text} />
-        <KasiskiAnalysis text={text} />
-        <CeasarDecipher text={text} setDecipheredText={setDecipheredText} />
-        <TableDecipher text={text} setDecipheredText={setDecipheredText} />
-        <SubstitutionDecipher text={text} setDecipheredText={setDecipheredText} />
-        <VignereDecipher text={text} setDecipheredText={setDecipheredText} />
-        <PlainTextBox text={decipheredText} />
       </Stack>
     </>
   );

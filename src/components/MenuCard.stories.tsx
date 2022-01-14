@@ -3,7 +3,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import MenuCard from './MenuCard';
+import { MenuCard } from './MenuCard';
 
 export default {
   /* 👇 The title prop is optional.

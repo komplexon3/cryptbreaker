@@ -7,7 +7,7 @@ interface MenuCardProps {
   onClick?: () => void;
 }
 
-const MenuCard: React.FC<MenuCardProps> = ({ title, description, link, onClick }) => {
+export const MenuCard: React.FC<MenuCardProps> = ({ title, description, link, onClick }) => {
   return (
     <Box
       maxW='sm'
@@ -35,5 +35,3 @@ const MenuCard: React.FC<MenuCardProps> = ({ title, description, link, onClick }
     </Box>
   );
 };
-
-export default MenuCard;
