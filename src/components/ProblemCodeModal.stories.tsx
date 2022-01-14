@@ -3,7 +3,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ProblemCodeModal from './ProblemCodeModal';
+import { ProblemCodeModal } from './ProblemCodeModal';
 
 export default {
   /* 👇 The title prop is optional.

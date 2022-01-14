@@ -96,5 +96,3 @@ export const ProblemCodeModal: React.FC<ProblemCodeModalProps> = ({ isOpen, onCl
     </>
   );
 };
-
-export default ProblemCodeModal;

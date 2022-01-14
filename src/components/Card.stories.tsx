@@ -3,8 +3,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Text } from '@chakra-ui/react';
-
-import Card from './Card';
+import { Card } from './Card';
 
 export default {
   /* 👇 The title prop is optional.

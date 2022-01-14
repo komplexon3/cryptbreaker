@@ -2,7 +2,7 @@ import { problemsOfCipher, ProblemTypes } from '../data/problems';
 import { encParam } from '../utils';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
-import MenuCard from '../components/MenuCard';
+import { MenuCard } from '@/components';
 
 const CipherProblems: React.FC = () => {
   let { cipher } = useParams();

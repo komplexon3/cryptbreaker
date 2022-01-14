@@ -2,7 +2,7 @@ import { Box, Container, Stack, Text, Image } from '@chakra-ui/react';
 import ethLogo from '../assets/logos/ethz_logo_black.svg';
 import dInfkLogo from '../assets/logos/eth_dinfk_logo_pos.png';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <Box as='footer' bg={'gray.50'} color={'gray.700'}>
       <Container
@@ -37,5 +37,3 @@ const Footer = () => {
     </Box>
   );
 };
-
-export default Footer;
