@@ -6,8 +6,8 @@ export type Problem = {
 };
 
 export enum ProblemTypes {
-  CEASAR,
-  SUBSTITUTION,
-  TABLE,
-  VIGNERE,
+  CEASAR = 'ceasar',
+  SUBSTITUTION = 'substitution',
+  TABLE = 'table',
+  VIGNERE = 'vignere',
 }

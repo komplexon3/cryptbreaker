@@ -2,8 +2,8 @@ import { Box, Link } from '@chakra-ui/react';
 
 interface MenuCardProps {
   title: string;
-  description: string;
   link: string;
+  description?: string;
 }
 
 const MenuCard: React.FC<MenuCardProps> = ({ title, description, link }) => {
