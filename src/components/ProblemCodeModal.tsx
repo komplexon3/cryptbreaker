@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   Button,
-  ButtonGroup,
-  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -21,6 +18,7 @@ import {
 interface ProblemCodeModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onEnter: (pc: string) => void;
 }
 
 const verifyProblemCode = (pc: string): boolean => {
@@ -29,8 +27,7 @@ const verifyProblemCode = (pc: string): boolean => {
   return pc !== '';
 };
 
-export const ProblemCodeModal: React.FC<ProblemCodeModalProps> = ({ isOpen, onClose }) => {
-  const navigate = useNavigate();
+export const ProblemCodeModal: React.FC<ProblemCodeModalProps> = ({ isOpen, onClose, onEnter }) => {
   const [problemCode, setProblemCode] = useState('');
   const [valid, setValid] = useState(true);
   // whether or not anything has been entered (so the "empty" error isn't shown before text entry)
@@ -86,7 +83,7 @@ export const ProblemCodeModal: React.FC<ProblemCodeModalProps> = ({ isOpen, onCl
                   disabled={!used || !valid}
                   onClick={(e) => {
                     e.preventDefault();
-                    navigate('/solve/' + problemCode);
+                    onEnter(problemCode);
                   }}
                 >
                   Enter
