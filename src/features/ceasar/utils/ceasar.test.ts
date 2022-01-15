@@ -1,4 +1,4 @@
-import { CeasarDecrypt, CeasarEncrypt, computeCeasarShift } from './ceasar';
+import { ceasarDecrypt, ceasarEncrypt, computeCeasarShift } from './ceasar';
 
 const getRandomShiftValue = () => Math.floor(Math.random() * 100);
 const getRandomString = (len: number) =>
@@ -34,7 +34,7 @@ describe('computeCeasarShiftInUnicode', () => {
 describe('CeasarEncrypt, CeasarDecrypt', () => {
   test('basic test encrypt - simple text with special characters and whitespaces', () => {
     expect(
-      CeasarEncrypt(
+      ceasarEncrypt(
         'Hello, this is a test of my CeasarEncrypt/CeasarDecrypt functions. I hope they work as expected - here are some special characters &*"|]>/!+ and 1382 is a cool number.',
         3
       )
@@ -45,7 +45,7 @@ describe('CeasarEncrypt, CeasarDecrypt', () => {
 
   test('basic test decrypt - simple text with special characters, numbers, and whitespaces', () => {
     expect(
-      CeasarDecrypt(
+      ceasarDecrypt(
         'Khoor, wklv lv d whvw ri pb FhdvduHqfubsw/FhdvduGhfubsw ixqfwlrqv. L krsh wkhb zrun dv hashfwhg - khuh duh vrph vshfldo fkdudfwhuv &*"|]>/!+ dqg 1382 lv d frro qxpehu.',
         3
       )
@@ -67,7 +67,7 @@ describe('CeasarEncrypt, CeasarDecrypt', () => {
     for (let i = 0; i < 200; i++) {
       const shiftValue = getRandomShiftValue();
       const testPlainText = getRandomString(20);
-      expect(CeasarDecrypt(CeasarEncrypt(testPlainText, shiftValue), shiftValue)).toMatch(
+      expect(ceasarDecrypt(ceasarEncrypt(testPlainText, shiftValue), shiftValue)).toMatch(
         testPlainText
       );
     }

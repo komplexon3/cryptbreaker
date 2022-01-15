@@ -1,20 +1,20 @@
 import { VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Card, TableDimensionInput } from '@/components';
-import { tableDecrypt } from '../utils/table';
-import { DecipherProps } from '@/types';
+import { tableEncrypt } from '../utils/table';
+import { EncryptProps } from '@/types';
 
-export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText, onClose }) => {
+export const TableEncrypt: React.FC<EncryptProps> = ({ text, setCipherText, onClose }) => {
   const [rows, setRows] = useState(5);
   const [columns, setColumns] = useState(5);
   const maxValue = text.length / 2;
 
   useEffect(() => {
-    setDecipheredText(tableDecrypt(text, rows, columns));
-  }, [rows, columns, text, setDecipheredText]);
+    setCipherText(tableEncrypt(text, rows, columns));
+  }, [rows, columns, text, setCipherText]);
 
   return (
-    <Card title='Table Key Entry' onClose={onClose}>
+    <Card title='Encrypt with table' onClose={onClose}>
       <VStack>
         <TableDimensionInput
           maxRowsValue={maxValue}
