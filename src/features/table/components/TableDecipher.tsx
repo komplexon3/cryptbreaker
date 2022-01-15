@@ -1,6 +1,6 @@
-import { HStack, VStack, Text } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import { useState } from 'react';
-import { IntegerInput, Card } from '@/components';
+import { Card, TableDimensionInput } from '@/components';
 import { tableDecrypt } from '../utils/table';
 import { DecipherProps } from '@/types';
 
@@ -22,24 +22,12 @@ export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText
   return (
     <Card title='Table Key Entry' onClose={onClose}>
       <VStack>
-        <HStack>
-          <Text>Table Rows</Text>
-          <IntegerInput
-            minValue={1}
-            maxValue={maxValue}
-            defaultValue={5}
-            onValueChange={(v) => handleValueChange(rows)}
-          />
-        </HStack>
-        <HStack>
-          <Text>Table Columns</Text>
-          <IntegerInput
-            minValue={1}
-            maxValue={maxValue}
-            defaultValue={5}
-            onValueChange={(v) => handleValueChange(undefined, columns)}
-          />
-        </HStack>
+        <TableDimensionInput
+          maxRowsValue={maxValue}
+          maxColumnsValue={maxValue}
+          onRowsValueChange={(v) => handleValueChange(v)}
+          onColumnsValueChange={(v) => handleValueChange(undefined, v)}
+        />
       </VStack>
     </Card>
   );

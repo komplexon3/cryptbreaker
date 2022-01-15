@@ -2,7 +2,9 @@ export * from './Footer';
 export * from './MenuCard';
 export * from './Card';
 export * from './AddButton';
+
 export * from './IntegerInput';
+export * from './TableDimensionInput';
 
 export * from './ProblemCodeModal';
 

@@ -1,4 +1,4 @@
-import { Card, IntegerInput } from '@/components';
+import { Card, TableDimensionInput } from '@/components';
 import { Table, Tbody, Tr, Td, VStack, HStack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { AnalysisProps } from '@/types';
@@ -42,24 +42,10 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   return (
     <Card title='Table Analysis' onClose={onClose}>
       <VStack>
-        <HStack>
-          <Text>Rows</Text>
-          <IntegerInput
-            minValue={1}
-            maxValue={maxValue}
-            defaultValue={5}
-            onValueChange={(v) => setRows(v)}
-          />
-        </HStack>
-        <HStack>
-          <Text>Columns</Text>
-          <IntegerInput
-            minValue={1}
-            maxValue={maxValue}
-            defaultValue={5}
-            onValueChange={(v) => setColumns(v)}
-          />
-        </HStack>
+        <TableDimensionInput
+          onRowsValueChange={(v) => setRows(v)}
+          onColumnsValueChange={(v) => setColumns(v)}
+        />
         {buildTable(text, rows, columns)}
       </VStack>
     </Card>
