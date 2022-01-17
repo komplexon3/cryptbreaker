@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AnalysisToolsAndSelect, DecipherToolOrSelect, CipherTextBox } from '@/components';
 
-const DecipherPage: React.FC = () => {
+export const DecipherPage: React.FC = () => {
   const [decipheredText, setDecipheredText] = useState('');
 
   const { encCiphertext } = useParams();
@@ -32,5 +32,3 @@ const DecipherPage: React.FC = () => {
     </Container>
   );
 };
-
-export default DecipherPage;

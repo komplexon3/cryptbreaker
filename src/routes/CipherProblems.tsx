@@ -4,7 +4,7 @@ import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom';
 import { MenuCard } from '@/components';
 
-const CipherProblems: React.FC = () => {
+export const CipherProblems: React.FC = () => {
   let { cipher } = useParams();
   cipher = cipher ? cipher.toLocaleLowerCase() : '';
 
@@ -31,5 +31,3 @@ const CipherProblems: React.FC = () => {
     </Container>
   );
 };
-
-export default CipherProblems;

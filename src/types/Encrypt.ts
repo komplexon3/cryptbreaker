@@ -3,3 +3,11 @@ export interface EncryptProps {
   setCipherText: (s: string) => void;
   onClose?: () => void;
 }
+
+export enum EncryptionTools {
+  UNSPECIFIED = 'EncryptionToolUnpecified',
+  CEASAR = 'Ceasar',
+  SUBSTITUTION = 'Substitution',
+  TABLE = 'Table',
+  VIGNERE = 'Vignere',
+}

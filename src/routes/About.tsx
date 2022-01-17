@@ -88,7 +88,7 @@ const boxes = [
   },
 ];
 
-const About = () => {
+export const About = () => {
   return (
     <Box p={4}>
       <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
@@ -112,5 +112,3 @@ const About = () => {
     </Box>
   );
 };
-
-export default About;
