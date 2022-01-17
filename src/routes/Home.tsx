@@ -12,11 +12,7 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <ProblemCodeModal
-        isOpen={isOpen}
-        onClose={onClose}
-        onEnter={(pc) => navigate('/solve/' + pc)}
-      />
+      <ProblemCodeModal isOpen={isOpen} onClose={onClose} onEnter={(pcURL) => navigate(pcURL)} />
       <Stack spacing={6}>
         <SimpleGrid columns={3} spacing={10}>
           <MenuCard
