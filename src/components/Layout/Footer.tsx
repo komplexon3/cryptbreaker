@@ -4,7 +4,7 @@ import dInfkLogo from '@/assets/logos/eth_dinfk_logo_pos.png';
 
 export const Footer = () => {
   return (
-    <Box as='footer' bg={'gray.50'} color={'gray.700'}>
+    <Box as='footer' marginTop='10' bg={'gray.50'} color={'gray.700'}>
       <Container
         as={Stack}
         py={4}
