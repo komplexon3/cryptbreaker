@@ -5,17 +5,33 @@ interface MenuCardProps {
   description?: string;
   link?: string;
   onClick?: () => void;
+  color?: string;
+  backgroundColor?: string;
+  hoverBackgroundColor?: string;
+  borderColor?: string;
 }
 
-export const MenuCard: React.FC<MenuCardProps> = ({ title, description, link, onClick }) => {
+export const MenuCard: React.FC<MenuCardProps> = ({
+  title,
+  description,
+  link,
+  onClick,
+  color,
+  backgroundColor,
+  hoverBackgroundColor,
+  borderColor,
+}) => {
   return (
     <Box
       maxW='sm'
       padding={5}
+      color={color}
       borderWidth='1px'
       borderRadius='lg'
+      borderColor={borderColor}
       overflow='hidden'
-      _hover={{ bg: 'gray.100' }}
+      backgroundColor={backgroundColor}
+      _hover={{ bg: hoverBackgroundColor }}
       as={Link}
       href={link}
       onClick={
@@ -34,4 +50,9 @@ export const MenuCard: React.FC<MenuCardProps> = ({ title, description, link, on
       <Box>{description}</Box>
     </Box>
   );
+};
+
+MenuCard.defaultProps = {
+  backgroundColor: 'white',
+  hoverBackgroundColor: 'gray.100',
 };

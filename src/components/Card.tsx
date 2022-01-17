@@ -1,10 +1,11 @@
-import { Box, CloseButton } from '@chakra-ui/react';
+import { background, Box, CloseButton } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 interface CardProps {
   title?: string;
   borderColor?: string;
   titleColor?: string;
+  backgroundColor?: string;
   onClose?: () => void;
   children?: ReactNode;
 }
@@ -13,6 +14,7 @@ export const Card: React.FC<CardProps> = ({
   title,
   borderColor,
   titleColor,
+  backgroundColor,
   onClose,
   children,
 }) => {
@@ -33,12 +35,15 @@ export const Card: React.FC<CardProps> = ({
         </Box>
       )}
       {!title && onClose && <CloseButton float={'right'} onClick={onClose} />}
-      <Box padding='5'>{children}</Box>
+      <Box bg={backgroundColor} padding='5'>
+        {children}
+      </Box>
     </Box>
   );
 };
 
 Card.defaultProps = {
+  backgroundColor: 'white',
   borderColor: 'primary.200',
   titleColor: 'black',
 };
