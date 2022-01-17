@@ -35,6 +35,7 @@ export const Home: React.FC = () => {
         <SimpleGrid columns={3} spacing={10}>
           {Object.values(ProblemTypes).map((v) => (
             <MenuCard
+              key={v}
               title={v.toUpperCase()}
               description={'Problems for ' + v + 'ciphers.'}
               link={'/problems/' + v}
