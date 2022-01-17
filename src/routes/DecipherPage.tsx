@@ -19,11 +19,6 @@ export const DecipherPage: React.FC = () => {
   return (
     <Container maxW={'3xl'} minH='90vh'>
       <Stack spacing={6}>
-        <Center>
-          <Heading as='h1' size='4xl' marginTop={6}>
-            Crypt Breaker
-          </Heading>
-        </Center>
         <CipherTextBox text={text} />
         <AnalysisToolsAndSelect text={text} />
         <DecipherToolOrSelect text={text} setDecipheredText={setDecipheredText} />
