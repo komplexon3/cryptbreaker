@@ -1,13 +1,13 @@
 import { isLetter } from '../../../utils';
 
-export const CeasarEncrypt = (plainText: string, shiftValue: number) => {
+export const ceasarEncrypt = (plainText: string, shiftValue: number) => {
   return plainText
     .split('')
     .map((c) => computeCeasarShift(c, shiftValue))
     .join('');
 };
 
-export const CeasarDecrypt = (cipherText: string, shiftValue: number) => {
+export const ceasarDecrypt = (cipherText: string, shiftValue: number) => {
   return cipherText
     .split('')
     .map((c) => computeCeasarShift(c, -shiftValue))

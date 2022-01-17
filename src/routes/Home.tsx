@@ -6,7 +6,7 @@ import { MenuCard, ProblemCodeModal } from '@/components';
 
 const randomProblem = () => allProblems[Math.floor(allProblems.length * Math.random())];
 
-const Home: React.FC = () => {
+export const Home: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -29,11 +29,7 @@ const Home: React.FC = () => {
             description='Enter code for a specific problem'
             onClick={onOpen}
           />
-          <MenuCard
-            title='hello'
-            description='best decryption tool in the world'
-            link='http://google.com'
-          />
+          <MenuCard title='Create Problem' description='Create a new problem' link='/create' />
         </SimpleGrid>
         <Center>
           <Heading as='h2' size='2xl'>
@@ -53,5 +49,3 @@ const Home: React.FC = () => {
     </>
   );
 };
-
-export default Home;

@@ -1,12 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Home from './routes/Home';
-import About from './routes/About';
-import { Footer } from './components/Footer';
-import CipherProblems from './routes/CipherProblems';
-import DecipherPage from './routes/DecipherPage';
 import { Center, Container, Heading } from '@chakra-ui/react';
+import { Footer } from '@/components';
+import { About, CipherProblems, DecipherPage, EncryptionPage, Home } from '@/routes';
 
 function App() {
   return (
@@ -21,6 +18,7 @@ function App() {
         <Route path='about' element={<About />} />
         <Route path='solve/:encCiphertext' element={<DecipherPage />} />
         <Route path='problems/:cipher' element={<CipherProblems />} />
+        <Route path='create' element={<EncryptionPage />} />
         <Route path='/' element={<Home />} />
       </Routes>
       <Footer />
