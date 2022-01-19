@@ -3,16 +3,19 @@ import { Center, Heading, SimpleGrid, Stack, useDisclosure } from '@chakra-ui/re
 import { allProblems, ProblemTypes } from '@/data/problems';
 import { useNavigate } from 'react-router-dom';
 import { MenuCard, ProblemCodeModal } from '@/components';
+import { useTranslation } from 'react-i18next';
 
 const randomProblem = () => allProblems[Math.floor(allProblems.length * Math.random())];
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { t } = useTranslation();
 
   return (
     <>
       <ProblemCodeModal isOpen={isOpen} onClose={onClose} onEnter={(pcURL) => navigate(pcURL)} />
+      {t('test')}
       <Stack spacing={6}>
         <SimpleGrid columns={3} spacing={10}>
           <MenuCard

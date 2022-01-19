@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -10,7 +10,9 @@ import theme from './theme';
 ReactDOM.render(
   <ChakraProvider theme={theme}>
     <BrowserRouter>
-      <App />
+      <Suspense fallback='loading'>
+        <App />
+      </Suspense>
     </BrowserRouter>
   </ChakraProvider>,
   document.getElementById('root')

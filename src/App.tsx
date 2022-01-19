@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
 import { About, CipherProblems, DecipherPage, EncryptionPage, Home } from '@/routes';
 import { Layout } from '@/components/Layout';
+import '@/i18n';
 
 function App() {
   return (

@@ -1,6 +1,7 @@
 export * from './MenuCard';
 export * from './Card';
 export * from './AddButton';
+export * from './LanguageSwitcher';
 
 export * from './IntegerInput';
 export * from './TableDimensionInput';
