@@ -1,15 +1,15 @@
 import { encParam } from '../utils';
 import { Center, Heading, SimpleGrid, Stack, useDisclosure } from '@chakra-ui/react';
-import { allProblems, ProblemTypes } from '@/data/problems';
+import { ProblemTypes } from '@/data/problems';
 import { useNavigate } from 'react-router-dom';
 import { MenuCard, ProblemCodeModal } from '@/components';
 import { useTranslation } from 'react-i18next';
-
-const randomProblem = () => allProblems[Math.floor(allProblems.length * Math.random())];
+import { useRandomProblem } from '@/data/problems/problems';
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const randomProblem = useRandomProblem();
   const { t } = useTranslation();
 
   return (
@@ -21,7 +21,7 @@ export const Home: React.FC = () => {
           <MenuCard
             title='Random Problem'
             description='A random ciphertext to be deciphered by you'
-            link={'/solve/' + encParam(randomProblem().cipherText)}
+            link={'/solve/' + encParam(randomProblem.cipherText) + '?lng=' + randomProblem.language}
           />
           <MenuCard
             title='Problem Code'

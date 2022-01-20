@@ -1,18 +1,19 @@
-import { problemsOfCipher, ProblemTypes } from '../data/problems';
+import { ProblemTypes } from '@/data/problems';
 import { encParam } from '../utils';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { MenuCard } from '@/components';
+import { useProblemsOfCipher } from '@/data/problems/problems';
 
 export const CipherProblems: React.FC = () => {
   let { cipher } = useParams();
   cipher = cipher ? cipher.toLocaleLowerCase() : '';
+  // defaulting to Ceasar but actually rendering 404 if the cast doesn't work - cannot conditionally call hooks...
+  const problems = useProblemsOfCipher((cipher as ProblemTypes) || ProblemTypes.CEASAR);
 
   if (cipher in ProblemTypes) {
     return <div>404</div>;
   }
-
-  const problems = problemsOfCipher(cipher as ProblemTypes);
 
   return (
     <Container maxW={'3xl'} minH='90vh'>

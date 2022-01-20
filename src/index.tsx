@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 import theme from './theme';
+import i18n from './i18n';
 
 ReactDOM.render(
   <ChakraProvider theme={theme}>
     <BrowserRouter>
       <Suspense fallback='loading'>
-        <App />
+        <App key={i18n.language} />
       </Suspense>
     </BrowserRouter>
   </ChakraProvider>,

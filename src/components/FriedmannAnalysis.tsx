@@ -11,16 +11,21 @@ import {
   Legend,
 } from 'chart.js';
 import { Card } from '@/components';
-import { ComputeFriedmannCharacteristic } from '@/utils';
+import { ComputeFriedmannCharacteristic, useLanguageFromQueryParams } from '@/utils';
 import { AnalysisProps } from '@/types';
+import { problemLanguagesEnableMap } from '@/data/problems/problems';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // TODO: Replace with properly sourced values (and add source)
-const fcDE = 0.0762;
-const fcEN = 0.0655;
+const friedmannCharicteristic = {
+  en: 0.0655,
+  de: 0.0762,
+};
 
 export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
+  const problemLang = useLanguageFromQueryParams();
+  const enableMap = problemLanguagesEnableMap(problemLang);
   // Setup key size selection
   const { valueAsNumber, getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -60,6 +65,20 @@ export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) =>
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
+      {
+        label: 'Expected for German',
+        data: Array(labels.length).fill(friedmannCharicteristic.de),
+        borderColor: 'rgb(0, 255, 0)',
+        backgroundColor: 'rgba(0, 255, 0, 0.5)',
+        hidden: !enableMap.de,
+      },
+      {
+        label: 'Expected for English',
+        data: Array(labels.length).fill(friedmannCharicteristic.en),
+        borderColor: 'rgb(0, 0, 255)',
+        backgroundColor: 'rgba(0, 0, 255, 0.5)',
+        hidden: !enableMap.en,
+      },
     ],
   };
 
@@ -72,7 +91,6 @@ export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) =>
           <Button {...decMaxKeySize}>-</Button>
           <Button {...incMaxKeySize}>+</Button>
         </HStack>
-        <Text>Expected for German: {fcDE}</Text>
         <Line data={data} options={options} />
       </VStack>
     </Card>
