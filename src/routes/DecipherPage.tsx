@@ -1,12 +1,11 @@
-import { decParam } from '../utils';
-import { Center, Container, Heading, Stack } from '@chakra-ui/react';
+import { decParam } from '@/utils';
+import { Container, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AnalysisToolsAndSelect, DecipherToolOrSelect, CipherTextBox } from '@/components';
 
 export const DecipherPage: React.FC = () => {
   const [decipheredText, setDecipheredText] = useState('');
-
   const { encCiphertext } = useParams();
 
   if (!encCiphertext) {
