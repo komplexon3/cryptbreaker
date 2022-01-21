@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { addDecorator } from '@storybook/react';
 import { Center, Container } from '@chakra-ui/react';
 import theme from '../src/theme';
@@ -17,7 +17,9 @@ export const parameters = {
 };
 
 addDecorator((storyFn) => (
-  <Center>
-    <Container width='48rem'>{storyFn()}</Container>
-  </Center>
+  <Suspense fallback='loading'>
+    <Center>
+      <Container width='48rem'>{storyFn()}</Container>
+    </Center>
+  </Suspense>
 ));
