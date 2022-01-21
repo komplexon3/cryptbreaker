@@ -1,4 +1,5 @@
 // Button.stories.ts|tsx
+import { ProblemLanguages } from '@/data';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { LanguageSelector } from './LanguageSelector';
@@ -13,5 +14,5 @@ export default {
 } as ComponentMeta<typeof LanguageSelector>;
 
 export const Basic: ComponentStory<typeof LanguageSelector> = () => (
-  <LanguageSelector onChange={(l) => {}} />
+  <LanguageSelector onChange={(l) => {}} defaultValue={ProblemLanguages.EN} />
 );

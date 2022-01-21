@@ -1,4 +1,4 @@
-import i18n, { languages } from '@/i18n';
+import i18n from '@/i18n';
 import { Button } from '@chakra-ui/react';
 
 const toggleLng = () => {
