@@ -1,3 +1,5 @@
+import { alphabet } from '@/utils';
+
 /**
  * Computer relative frequency for letters [a-z] in the provided string.
  * If a character doesn't appear in the string, its relative frequency is defined to be 0.
@@ -18,7 +20,7 @@ export const ComputeRelativeFrequency = (s: string): number[] => {
 
   let relativeFrequencies: number[] = [];
   let i = 0;
-  'abcdefghijklmnopqrstuvwxyz'.split('').forEach((c) => {
+  alphabet.split('').forEach((c) => {
     if (absoluteFrequency[c]) {
       relativeFrequencies[i] = absoluteFrequency[c] / totalCount;
     } else {

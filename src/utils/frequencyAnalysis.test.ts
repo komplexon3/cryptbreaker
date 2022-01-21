@@ -1,8 +1,9 @@
+import { alphabet } from '@/utils';
 import { ComputeRelativeFrequency } from './frequencyAnalysis';
 
 describe('Relative Frequencies', () => {
   test('basic test - full alphabet, no whitespaces', () => {
-    const relFreqs = ComputeRelativeFrequency('abcdefghijklmnopqrstuvwxyz');
+    const relFreqs = ComputeRelativeFrequency(alphabet);
     relFreqs.forEach((e) => expect(e).toBeCloseTo(1.0 / 26));
   });
 

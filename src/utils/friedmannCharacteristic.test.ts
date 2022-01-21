@@ -1,16 +1,20 @@
+import { alphabet } from '@/utils';
 import { ComputeFriedmannCharacteristic } from './friedmannCharacteristic';
 
 describe('Compute Strided Friedman Characteristic', () => {
   test('basic test - full alphabet, key 1', () => {
-    expect(ComputeFriedmannCharacteristic('abcdefghijklmnopqrstuvwxyz', 1)).toBeCloseTo(0.0);
+    expect(ComputeFriedmannCharacteristic(alphabet, 1)).toBeCloseTo(0.0);
   });
   test('basic test - full alphabet, key 2', () => {
-    expect(ComputeFriedmannCharacteristic('abcdefghijklmnopqrstuvwxyz', 2)).not.toBeCloseTo(0.0);
+    expect(ComputeFriedmannCharacteristic(alphabet, 2)).not.toBeCloseTo(0.0);
   });
   test('basic test - full alphabet * 3 strided, key 1', () => {
     expect(
       ComputeFriedmannCharacteristic(
-        'aaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz',
+        alphabet
+          .split('')
+          .map((c) => c + c + c)
+          .join(''),
         1
       )
     ).toBeCloseTo(0.0);
@@ -18,7 +22,10 @@ describe('Compute Strided Friedman Characteristic', () => {
   test('basic test - full alphabet * 3 strided, key 3', () => {
     expect(
       ComputeFriedmannCharacteristic(
-        'aaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz',
+        alphabet
+          .split('')
+          .map((c) => c + c + c)
+          .join(''),
         3
       )
     ).toBeCloseTo(0.0);

@@ -1,8 +1,9 @@
+import { alphabet, digits } from '@/utils';
 import { isLetter } from './utils';
 
 describe('isLetter', () => {
   test('check entire alphabet', () => {
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach((v) => {
+    (alphabet + alphabet.toUpperCase()).split('').forEach((v) => {
       expect(isLetter(v)).toBeTruthy();
     });
   });
@@ -14,7 +15,7 @@ describe('isLetter', () => {
   });
 
   test('check numbers', () => {
-    '1234567890'.split('').forEach((v) => {
+    digits.split('').forEach((v) => {
       expect(isLetter(v)).toBeFalsy();
     });
   });

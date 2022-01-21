@@ -1,11 +1,12 @@
+import { alphabet } from '@/utils';
+
 /**
  * Utility function selecting an arbitrary character out of
  * 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 .,:;'
  * @returns Character choosen
  */
 const selectRandomCharacter = () => {
-  const randomSelectionAlphabet =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 .,:;'.split('');
+  const randomSelectionAlphabet = (alphabet + alphabet.toUpperCase() + ' .,:;').split('');
   return randomSelectionAlphabet[Math.floor(Math.random() * randomSelectionAlphabet.length)];
 };
 

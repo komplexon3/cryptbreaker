@@ -1,3 +1,4 @@
+import { alphabet } from '@/utils';
 import { ceasarDecrypt, ceasarEncrypt, computeCeasarShift } from './ceasar';
 
 const getRandomShiftValue = () => Math.floor(Math.random() * 100);
@@ -8,13 +9,13 @@ const getRandomString = (len: number) =>
 
 describe('computeCeasarShiftInUnicode', () => {
   test('basic test - lower case stays lower case', () => {
-    'abcdefghijklmnopqrstuvwxyz'.split('').forEach((v) => {
+    alphabet.split('').forEach((v) => {
       expect(computeCeasarShift(v, getRandomShiftValue())).toMatch(/[a-z]/);
     });
   });
 
   test('basic test - upper case stays upper case', () => {
-    'abcdefghijklmnopqrstuvwxyz'
+    alphabet
       .toUpperCase()
       .split('')
       .forEach((v) => {
@@ -55,7 +56,7 @@ describe('CeasarEncrypt, CeasarDecrypt', () => {
   });
 
   test('basic test - upper case stays upper case', () => {
-    'abcdefghijklmnopqrstuvwxyz'
+    alphabet
       .toUpperCase()
       .split('')
       .forEach((v) => {

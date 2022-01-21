@@ -1,4 +1,4 @@
-import { isLetter } from '../../../utils';
+import { alphabet, isLetter } from '../../../utils';
 
 export const substitutionEncrypt = (plainText: string, substitutionKey: string): string => {
   if (!verifySubstitutionKey(substitutionKey)) {
@@ -41,7 +41,5 @@ export const verifySubstitutionKey = (key: string) => {
   if (key.length !== 26) {
     return false;
   }
-  return !'abcdefghijklmnopqrstuvwxyz'
-    .split('')
-    .reduce((acc, val) => acc || key.indexOf(val) < 0, false);
+  return !alphabet.split('').reduce((acc, val) => acc || key.indexOf(val) < 0, false);
 };

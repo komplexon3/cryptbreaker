@@ -1,3 +1,4 @@
+import { alphabet } from '@/utils';
 import {
   Input,
   InputLeftAddon,
@@ -15,8 +16,8 @@ interface SubstitutionKeyInputProps {
 }
 
 export const SubstitutionKeyInput: React.FC<SubstitutionKeyInputProps> = ({ onChange }) => {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
-  const [substitutionKey, setSubstitutionKey] = useState(alphabet);
+  const alphabetArr = alphabet.toUpperCase().split('');
+  const [substitutionKey, setSubstitutionKey] = useState(alphabetArr);
   const [isFieldInvalid, setIsFieldInvalid] = useState(Array(26).fill(false) as boolean[]);
   const [isInvalidSubstitution, setIsInvalidSubstitution] = useState(false);
 
@@ -51,7 +52,7 @@ export const SubstitutionKeyInput: React.FC<SubstitutionKeyInputProps> = ({ onCh
     <FormControl isInvalid={isInvalidSubstitution}>
       <Center>
         <SimpleGrid autoFlow='column' templateRows='repeat(7, 1fr)' spacingX='8' spacingY='4'>
-          {alphabet.map((v, i) => (
+          {alphabetArr.map((v, i) => (
             <FormControl key={i} isInvalid={isFieldInvalid[i]}>
               <InputGroup>
                 <InputLeftAddon width='3rem' justifyContent='center'>

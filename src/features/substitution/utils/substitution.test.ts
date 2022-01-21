@@ -1,3 +1,4 @@
+import { alphabet } from '@/utils';
 import { substitutionDecrypt, substitutionEncrypt, verifySubstitutionKey } from './substitution';
 
 const getRandomInt = (min: number, max: number) => Math.floor(min + Math.random() * (max + 1));
@@ -18,7 +19,7 @@ const getPermutation = (s: string): string => {
 
 describe('verifySubstitutionKey', () => {
   test('basic - plain alphabet', () => {
-    expect(verifySubstitutionKey('abcdefghijklmnopqrstuvwxyz')).toBeTruthy();
+    expect(verifySubstitutionKey(alphabet)).toBeTruthy();
   });
   test('basic - empty key', () => {
     expect(verifySubstitutionKey('')).toBeFalsy();
@@ -27,11 +28,11 @@ describe('verifySubstitutionKey', () => {
     expect(verifySubstitutionKey('aaaaaaaaaaaaaaaaaaaaaaaaaa')).toBeFalsy();
   });
   test('arbitrary permutation', () => {
-    expect(verifySubstitutionKey(getPermutation('abcdefghijklmnopqrstuvwxyz'))).toBeTruthy();
+    expect(verifySubstitutionKey(getPermutation(alphabet))).toBeTruthy();
   });
   test('arbitrary permutation of a messed up alphabet', () => {
     for (let reps = 0; reps < 100; reps++) {
-      let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+      let alphabetArr = alphabet.split('');
       const numberOfMistakes = 1 + Math.floor(Math.random() * 10); // max 10 mistakes
       for (let k = 0; k < numberOfMistakes; k++) {
         // select character to duplicate
@@ -42,9 +43,9 @@ describe('verifySubstitutionKey', () => {
           j = Math.floor(Math.random() * 26);
         }
         // duplicate
-        alphabet[j] = alphabet[i];
+        alphabetArr[j] = alphabetArr[i];
       }
-      const substitutionKey = alphabet.join('');
+      const substitutionKey = alphabetArr.join('');
       expect(verifySubstitutionKey(getPermutation(substitutionKey))).toBeFalsy();
     }
   });
@@ -75,7 +76,7 @@ describe('CeasarEncrypt, CeasarDecrypt', () => {
     for (let i = 0; i < 20; i++) {
       const textLength = getRandomInt(20, 200);
       const testPlainText = getRandomString(textLength);
-      const substitutionKey = getPermutation('abcdefghijklmnopqrstuvwxyz');
+      const substitutionKey = getPermutation(alphabet);
       expect(
         substitutionDecrypt(substitutionEncrypt(testPlainText, substitutionKey), substitutionKey)
       ).toMatch(testPlainText);
