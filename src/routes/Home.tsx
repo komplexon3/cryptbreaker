@@ -1,4 +1,4 @@
-import { encParam } from '../utils';
+import { problemPath } from '../utils';
 import { Center, Heading, SimpleGrid, Stack, useDisclosure } from '@chakra-ui/react';
 import { ProblemTypes } from '@/data/problems';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const Home: React.FC = () => {
           <MenuCard
             title='Random Problem'
             description='A random ciphertext to be deciphered by you'
-            link={'/solve/' + encParam(randomProblem.cipherText) + '?lng=' + randomProblem.language}
+            link={problemPath(randomProblem.cipherText, randomProblem.language)}
           />
           <MenuCard
             title='Problem Code'

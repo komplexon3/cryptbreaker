@@ -1,5 +1,5 @@
 import { ProblemTypes } from '@/data/problems';
-import { encParam } from '../utils';
+import { problemPath } from '../utils';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { MenuCard } from '@/components';
@@ -25,7 +25,7 @@ export const CipherProblems: React.FC = () => {
         </Center>
         <SimpleGrid columns={3} spacing={10}>
           {problems.map((v) => (
-            <MenuCard key={v.title} title={v.title} link={'/solve/' + encParam(v.cipherText)} />
+            <MenuCard key={v.title} title={v.title} link={problemPath(v.cipherText, v.language)} />
           ))}
         </SimpleGrid>
       </Stack>

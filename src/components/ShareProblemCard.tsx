@@ -1,7 +1,7 @@
 import { Button, HStack, Text, useClipboard, VStack } from '@chakra-ui/react';
 
 import { Card } from '@/components';
-import { encParam } from '@/utils';
+import { encParam, problemPath } from '@/utils';
 import { ProblemLanguages } from '@/data';
 
 interface ShareProblemCardProps {
@@ -10,9 +10,8 @@ interface ShareProblemCardProps {
 }
 
 export const ShareProblemCard: React.FC<ShareProblemCardProps> = ({ cipherText, language }) => {
-  const encodedText = encParam(cipherText);
-  const problemCode = encodedText + '?lng=' + language;
-  const urlToProblem = window.location.origin.toString() + '/solve/' + problemCode;
+  const problemCode = encParam(cipherText) + '?lng=' + language;
+  const urlToProblem = window.location.origin.toString() + problemPath(cipherText, language);
 
   const { hasCopied: hasCopiedProblemCode, onCopy: onCopyProblemCode } = useClipboard(problemCode);
   const { hasCopied: hasCopiedURL, onCopy: onCopyURL } = useClipboard(urlToProblem);
