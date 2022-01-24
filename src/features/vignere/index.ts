@@ -1,2 +1,2 @@
-export * from './components/VignereDecipher';
+export * from './components/VignereDecrypt';
 export * from './components/VignereEncrypt';

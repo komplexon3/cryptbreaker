@@ -1,22 +1,22 @@
 // Button.stories.ts|tsx
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { DecipherTools } from '@/types';
-import { DecipherToolSwitch } from './DecipherToolSwitch';
+import { DecryptionTools } from '@/types';
+import { DecryptionToolSwitch } from './DecryptionToolSwitch';
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Decipher Tool Switch',
-  component: DecipherToolSwitch,
+  title: 'Decryption Tool Switch',
+  component: DecryptionToolSwitch,
   argTypes: {
     tool: {
       options: [
-        DecipherTools.CEASAR,
-        DecipherTools.SUBSTITUTION,
-        DecipherTools.TABLE,
-        DecipherTools.VIGNERE,
+        DecryptionTools.CEASAR,
+        DecryptionTools.SUBSTITUTION,
+        DecryptionTools.TABLE,
+        DecryptionTools.VIGNERE,
       ],
       control: {
         type: 'radio',
@@ -31,13 +31,13 @@ export default {
   },
   args: {
     text: 'hello',
-    tool: DecipherTools.CEASAR,
+    tool: DecryptionTools.CEASAR,
     setDecipheredText: (s) => {},
   },
-} as ComponentMeta<typeof DecipherToolSwitch>;
+} as ComponentMeta<typeof DecryptionToolSwitch>;
 
-const Template: ComponentStory<typeof DecipherToolSwitch> = (args) => (
-  <DecipherToolSwitch {...args} />
+const Template: ComponentStory<typeof DecryptionToolSwitch> = (args) => (
+  <DecryptionToolSwitch {...args} />
 );
 
 export const Ceasar = Template.bind({});

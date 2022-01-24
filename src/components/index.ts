@@ -20,7 +20,7 @@ export * from './TableAnalysis';
 export * from './AnalysisToolSwitch';
 export * from './AnalysisToolsAndSelect';
 
-export * from './DecipherToolSwitch';
-export * from './DecipherToolOrSelect';
+export * from './DecryptionToolSwitch';
+export * from './DecryptionToolOrSelect';
 
 export * from './EncryptionToolSwitch';

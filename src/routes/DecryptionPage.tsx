@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   AnalysisToolsAndSelect,
-  DecipherToolOrSelect,
+  DecryptionToolOrSelect,
   TextEntryCard,
   TextCard,
 } from '@/components';
 
-export const DecipherPage: React.FC = () => {
+export const DecryptionPage: React.FC = () => {
   const [cipherText, setCipherText] = useState('');
   const [decipheredText, setDecipheredText] = useState('');
   const { encCiphertext: encCipherText } = useParams();
@@ -36,7 +36,7 @@ export const DecipherPage: React.FC = () => {
           />
         )}
         <AnalysisToolsAndSelect text={cipherText} />
-        <DecipherToolOrSelect text={cipherText} setDecipheredText={setDecipheredText} />
+        <DecryptionToolOrSelect text={cipherText} setDecipheredText={setDecipheredText} />
         <TextCard title='Deciphered Text' text={decipheredText} skeletonIfEmpty />
       </Stack>
     </Container>

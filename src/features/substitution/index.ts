@@ -1,2 +1,2 @@
-export * from './components/SubstitutionDecipher';
+export * from './components/SubstitutionDecrypt';
 export * from './components/SubstitutionEncrypt';

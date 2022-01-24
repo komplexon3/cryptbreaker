@@ -2,9 +2,9 @@ import { VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Card, TableDimensionInput } from '@/components';
 import { tableDecrypt } from '../utils/table';
-import { DecipherProps } from '@/types';
+import { DecryptionProps } from '@/types';
 
-export const TableDecipher: React.FC<DecipherProps> = ({ text, setDecipheredText, onClose }) => {
+export const TableDecrypt: React.FC<DecryptionProps> = ({ text, setDecipheredText, onClose }) => {
   const [rows, setRows] = useState(5);
   const [columns, setColumns] = useState(5);
   const maxValue = text.length / 2;

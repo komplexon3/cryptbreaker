@@ -1,10 +1,10 @@
-export interface DecipherProps {
+export interface DecryptionProps {
   text: string;
   setDecipheredText: (s: string) => void;
   onClose?: () => void;
 }
 
-export enum DecipherTools {
+export enum DecryptionTools {
   UNSPECIFIED,
   CEASAR,
   SUBSTITUTION,
