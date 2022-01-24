@@ -1,22 +1,22 @@
 // Button.stories.ts|tsx
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { DecipherToolOrSelect } from './DecipherToolOrSelect';
+import { DecryptionToolOrSelect } from './DecryptionToolOrSelect';
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Decipher Tool Or Select',
-  component: DecipherToolOrSelect,
+  title: 'Decryption Tool Or Select',
+  component: DecryptionToolOrSelect,
   args: {
     text: 'hello',
     setDecipheredText: (s) => {},
   },
-} as ComponentMeta<typeof DecipherToolOrSelect>;
+} as ComponentMeta<typeof DecryptionToolOrSelect>;
 
-const Template: ComponentStory<typeof DecipherToolOrSelect> = (args) => (
-  <DecipherToolOrSelect {...args} />
+const Template: ComponentStory<typeof DecryptionToolOrSelect> = (args) => (
+  <DecryptionToolOrSelect {...args} />
 );
 
 export const Basic = Template.bind({});

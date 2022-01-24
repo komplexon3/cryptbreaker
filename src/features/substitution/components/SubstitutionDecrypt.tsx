@@ -1,9 +1,9 @@
 import { Card } from '@/components';
-import { DecipherProps } from '@/types';
+import { DecryptionProps } from '@/types';
 import { substitutionDecrypt } from '../utils/substitution';
 import { SubstitutionKeyInput } from './SubstitutionKeyInput';
 
-export const SubstitutionDecipher: React.FC<DecipherProps> = ({
+export const SubstitutionDecrypt: React.FC<DecryptionProps> = ({
   text,
   setDecipheredText,
   onClose,

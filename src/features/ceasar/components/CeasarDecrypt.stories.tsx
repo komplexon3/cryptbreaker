@@ -1,19 +1,19 @@
 // Button.stories.ts|tsx
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { VignereDecipher } from './VignereDecipher';
+import { CeasarDecrypt } from './CeasarDecrypt';
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'VignereDecipher',
-  component: VignereDecipher,
-} as ComponentMeta<typeof VignereDecipher>;
+  title: 'Ceasar Decryption',
+  component: CeasarDecrypt,
+} as ComponentMeta<typeof CeasarDecrypt>;
 
-export const Basic: ComponentStory<typeof VignereDecipher> = () => (
-  <VignereDecipher
+export const Basic: ComponentStory<typeof CeasarDecrypt> = () => (
+  <CeasarDecrypt
     text='Lorem ipsum dolor sit amet, consectetur adipiscing elit,
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
