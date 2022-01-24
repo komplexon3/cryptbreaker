@@ -12,9 +12,6 @@ export * from './TextCard';
 export * from './ProblemCodeModal';
 export * from './ShareProblemCard';
 
-export * from './CipherTextBox';
-export * from './PlainTextBox';
-
 export * from './FrequencyAnalysis';
 export * from './FriedmannAnalysis';
 export * from './KasiskiAnalysis';

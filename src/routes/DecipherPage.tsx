@@ -37,7 +37,7 @@ export const DecipherPage: React.FC = () => {
         )}
         <AnalysisToolsAndSelect text={cipherText} />
         <DecipherToolOrSelect text={cipherText} setDecipheredText={setDecipheredText} />
-        <TextCard title='Deciphered Text' text={decipheredText} />
+        <TextCard title='Deciphered Text' text={decipheredText} skeletonIfEmpty />
       </Stack>
     </Container>
   );
