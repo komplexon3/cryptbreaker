@@ -1,5 +1,5 @@
 import { Card, TableDimensionInput } from '@/components';
-import { Table, Tbody, Tr, Td, VStack, HStack, Text } from '@chakra-ui/react';
+import { Table, Tbody, Tr, Td, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import { AnalysisProps } from '@/types';
 
@@ -43,6 +43,8 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
     <Card title='Table Analysis' onClose={onClose}>
       <VStack>
         <TableDimensionInput
+          maxRowsValue={maxValue}
+          maxColumnsValue={maxValue}
           onRowsValueChange={(v) => setRows(v)}
           onColumnsValueChange={(v) => setColumns(v)}
         />

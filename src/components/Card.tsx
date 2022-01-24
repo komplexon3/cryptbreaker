@@ -1,4 +1,4 @@
-import { background, Box, CloseButton } from '@chakra-ui/react';
+import { Box, CloseButton } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 interface CardProps {

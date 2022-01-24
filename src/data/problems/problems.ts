@@ -48,7 +48,6 @@ export const useRandomProblem = () => {
   return useMemo(() => {
     const allProblemsInLng = allProblems((lng as ProblemLanguages) || ProblemLanguages.EN);
     const prob = allProblemsInLng[Math.floor(allProblemsInLng.length * Math.random())];
-    console.log(prob);
     return prob;
   }, [lng]);
 };

@@ -28,9 +28,6 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
   };
 
   const removeTool = (toolKey: number) => {
-    console.log(toolKey);
-    console.log(tools.length);
-    console.log(tools[toolKey]);
     if (toolKey >= tools.length || tools[toolKey] === AnalysisTools.UNSPECIFIED) {
       throw Error('toolKey ' + toolKey + ' cannot be removed as it is not registered');
     }

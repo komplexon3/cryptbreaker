@@ -36,5 +36,5 @@ export const useLanguageFromQueryParams = () => {
   return (params.get('lng') && (params.get('lng') as ProblemLanguages)) || ProblemLanguages.EN;
 };
 
-export const problemPath = (cipherText: string, language: ProblemLanguages) =>
-  '/solve/' + encParam(cipherText) + '?lng=' + language;
+export const problemPath = (cipherText?: string, language?: ProblemLanguages) =>
+  cipherText ? '/solve/' + encParam(cipherText) + '?lng=' + language : '/solve';

@@ -1,5 +1,4 @@
 export * from './Home';
-export * from './About';
 export * from './CipherProblems';
-export * from './DecipherPage';
+export * from './DecryptionPage';
 export * from './EncryptionPage';

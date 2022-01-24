@@ -8,7 +8,7 @@ interface VignereKeyInputProps {
 
 // Note: onChange only called if current input is valid
 export const VignereKeyInput: React.FC<VignereKeyInputProps> = ({ onChange }) => {
-  const [inputValue, setInputValue] = useState('abc');
+  const [inputValue, setInputValue] = useState('ABC');
   const [isInvalid, setIsInvalid] = useState(false);
 
   useEffect(() => {

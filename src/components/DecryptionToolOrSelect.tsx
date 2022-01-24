@@ -1,5 +1,5 @@
-import { AddButton, Card, DecipherToolSwitch } from '@/components';
-import { DecipherTools } from '@/types';
+import { AddButton, Card, DecryptionToolSwitch } from '@/components';
+import { DecryptionTools } from '@/types';
 import { useEffect, useState } from 'react';
 import {
   Button,
@@ -14,25 +14,25 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-interface DecipherToolOrSelectProps {
+interface DecryptionToolOrSelectProps {
   text: string;
   setDecipheredText: (s: string) => void;
 }
 
-export const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({
+export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
   text,
   setDecipheredText,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [tool, setTool] = useState(DecipherTools.UNSPECIFIED);
+  const [tool, setTool] = useState(DecryptionTools.UNSPECIFIED);
 
   useEffect(() => {
-    if (tool === DecipherTools.UNSPECIFIED) {
+    if (tool === DecryptionTools.UNSPECIFIED) {
       setDecipheredText('');
     }
   }, [tool, setDecipheredText]);
 
-  if (tool === DecipherTools.UNSPECIFIED) {
+  if (tool === DecryptionTools.UNSPECIFIED) {
     return (
       <>
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -46,7 +46,7 @@ export const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({
                   bg='uiBorder'
                   onClick={() => {
                     onClose();
-                    setTool(DecipherTools.CEASAR);
+                    setTool(DecryptionTools.CEASAR);
                   }}
                 >
                   Ceasar
@@ -55,7 +55,7 @@ export const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({
                   bg='uiBorder'
                   onClick={() => {
                     onClose();
-                    setTool(DecipherTools.SUBSTITUTION);
+                    setTool(DecryptionTools.SUBSTITUTION);
                   }}
                 >
                   Substitution
@@ -64,7 +64,7 @@ export const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({
                   bg='uiBorder'
                   onClick={() => {
                     onClose();
-                    setTool(DecipherTools.TABLE);
+                    setTool(DecryptionTools.TABLE);
                   }}
                 >
                   Table
@@ -73,7 +73,7 @@ export const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({
                   bg='uiBorder'
                   onClick={() => {
                     onClose();
-                    setTool(DecipherTools.VIGNERE);
+                    setTool(DecryptionTools.VIGNERE);
                   }}
                 >
                   Vignere
@@ -93,11 +93,11 @@ export const DecipherToolOrSelect: React.FC<DecipherToolOrSelectProps> = ({
   }
 
   return (
-    <DecipherToolSwitch
+    <DecryptionToolSwitch
       text={text}
       tool={tool}
       setDecipheredText={setDecipheredText}
-      onClose={() => setTool(DecipherTools.UNSPECIFIED)}
+      onClose={() => setTool(DecryptionTools.UNSPECIFIED)}
     />
   );
 };

@@ -1,2 +1,2 @@
-export * from './components/TableDecipher';
+export * from './components/TableDecrypt';
 export * from './components/TableEncrypt';
