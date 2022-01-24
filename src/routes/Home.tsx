@@ -17,7 +17,7 @@ export const Home: React.FC = () => {
       <ProblemCodeModal isOpen={isOpen} onClose={onClose} onEnter={(pcURL) => navigate(pcURL)} />
       {t('test')}
       <Stack spacing={6}>
-        <SimpleGrid columns={3} spacing={10}>
+        <SimpleGrid columns={2} spacing={10}>
           <MenuCard
             title='Random Problem'
             description='A random ciphertext to be deciphered by you'
@@ -28,6 +28,11 @@ export const Home: React.FC = () => {
             description='Enter code for a specific problem'
             onClick={onOpen}
           />
+          <MenuCard
+            title='Custom Problem'
+            description='Decipher an arbitrary cipher text'
+            link={problemPath()}
+          />
           <MenuCard title='Create Problem' description='Create a new problem' link='/create' />
         </SimpleGrid>
         <Center>
@@ -35,7 +40,7 @@ export const Home: React.FC = () => {
             Problems for Ciphers
           </Heading>
         </Center>
-        <SimpleGrid columns={3} spacing={10}>
+        <SimpleGrid columns={2} spacing={10}>
           {Object.values(ProblemTypes).map((v) => (
             <MenuCard
               key={v}

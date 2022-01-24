@@ -1,27 +1,43 @@
 import { decParam } from '@/utils';
 import { Container, Stack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AnalysisToolsAndSelect, DecipherToolOrSelect, CipherTextBox } from '@/components';
+import {
+  AnalysisToolsAndSelect,
+  DecipherToolOrSelect,
+  TextEntryCard,
+  TextCard,
+} from '@/components';
 
 export const DecipherPage: React.FC = () => {
+  const [cipherText, setCipherText] = useState('');
   const [decipheredText, setDecipheredText] = useState('');
-  const { encCiphertext } = useParams();
+  const { encCiphertext: encCipherText } = useParams();
 
-  if (!encCiphertext) {
-    return <div>404</div>;
-  }
-
-  const text = decParam(encCiphertext);
-  console.log(text);
+  useEffect(() => {
+    if (encCipherText) {
+      setCipherText(decParam(encCipherText));
+    }
+  }, [encCipherText]);
 
   return (
     <Container maxW={'3xl'} minH='90vh'>
       <Stack spacing={6}>
-        <CipherTextBox text={text} />
-        <AnalysisToolsAndSelect text={text} />
-        <DecipherToolOrSelect text={text} setDecipheredText={setDecipheredText} />
-        <CipherTextBox text={decipheredText} />
+        {encCipherText ? (
+          <TextCard title='Cipher Text' text={cipherText} />
+        ) : (
+          <TextEntryCard
+            title='Cipher Text'
+            onChange={(e) => {
+              e.preventDefault();
+              setCipherText(e.target.value);
+            }}
+            placeholderText='Enter cipher text...'
+          />
+        )}
+        <AnalysisToolsAndSelect text={cipherText} />
+        <DecipherToolOrSelect text={cipherText} setDecipheredText={setDecipheredText} />
+        <TextCard title='Deciphered Text' text={decipheredText} />
       </Stack>
     </Container>
   );
