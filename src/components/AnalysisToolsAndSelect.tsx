@@ -16,9 +16,17 @@ import { AnalysisTools } from '@/types';
 
 interface AnalysisToolsAndSelectProps {
   text: string;
+  buttonBackgroundColor?: string;
+  buttonTextColor?: string;
+  iconColor?: string;
 }
 
-export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ text }) => {
+export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
+  text,
+  buttonBackgroundColor,
+  buttonTextColor,
+  iconColor,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // value of AnalysisTools.UNSPECIFIED indicated a removed tool
   const [tools, setTools] = useState([] as AnalysisTools[]);
@@ -45,7 +53,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
           <ModalBody padding={6}>
             <SimpleGrid spacingY={3}>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.FREQUENCY);
@@ -54,7 +63,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
                 Frequency
               </Button>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.FRIEDMANN);
@@ -63,7 +73,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
                 Friedmann
               </Button>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.KASISKI);
@@ -72,7 +83,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
                 Kasiski
               </Button>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.TABLE);
@@ -104,10 +116,20 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
 
         <Card borderColor='transparent'>
           <Center width='100%'>
-            <AddButton onClick={onOpen} />
+            <AddButton
+              backgroundColor={buttonBackgroundColor}
+              iconColor={iconColor}
+              onClick={onOpen}
+            />
           </Center>
         </Card>
       </SimpleGrid>
     </>
   );
+};
+
+AnalysisToolsAndSelect.defaultProps = {
+  buttonBackgroundColor: 'uiBorder',
+  buttonTextColor: 'black',
+  iconColor: 'white',
 };
