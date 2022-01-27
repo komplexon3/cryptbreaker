@@ -86,20 +86,21 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
       </Modal>
 
       <SimpleGrid gap={6}>
-        {tools
-          .filter((v) => v !== AnalysisTools.UNSPECIFIED)
-          .map((v, k) => {
-            return (
-              <AnalysisToolSwitch
-                key={k}
-                text={text}
-                tool={v}
-                onClose={() => {
-                  removeTool(k);
-                }}
-              />
-            );
-          })}
+        {tools.map((v, k) => {
+          if (v === AnalysisTools.UNSPECIFIED) {
+            return null;
+          }
+          return (
+            <AnalysisToolSwitch
+              key={k}
+              text={text}
+              tool={v}
+              onClose={() => {
+                removeTool(k);
+              }}
+            />
+          );
+        })}
 
         <Card borderColor='transparent'>
           <Center width='100%'>
