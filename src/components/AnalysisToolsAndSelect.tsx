@@ -18,6 +18,7 @@ interface AnalysisToolsAndSelectProps {
   text: string;
   buttonBackgroundColor?: string;
   buttonTextColor?: string;
+  iconBackgroundColor?: string;
   iconColor?: string;
 }
 
@@ -25,6 +26,7 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
   text,
   buttonBackgroundColor,
   buttonTextColor,
+  iconBackgroundColor,
   iconColor,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -117,7 +119,7 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
         <Card borderColor='transparent'>
           <Center width='100%'>
             <AddButton
-              backgroundColor={buttonBackgroundColor}
+              backgroundColor={iconBackgroundColor}
               iconColor={iconColor}
               onClick={onOpen}
             />

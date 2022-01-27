@@ -17,11 +17,19 @@ import {
 interface DecryptionToolOrSelectProps {
   text: string;
   setDecipheredText: (s: string) => void;
+  buttonBackgroundColor?: string;
+  buttonTextColor?: string;
+  iconBackgroundColor?: string;
+  iconColor?: string;
 }
 
 export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
   text,
   setDecipheredText,
+  buttonBackgroundColor,
+  buttonTextColor,
+  iconBackgroundColor,
+  iconColor,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [tool, setTool] = useState(DecryptionTools.UNSPECIFIED);
@@ -43,7 +51,8 @@ export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
             <ModalBody padding={6}>
               <SimpleGrid spacingY={3}>
                 <Button
-                  bg='uiBorder'
+                  color={buttonTextColor}
+                  bg={buttonBackgroundColor}
                   onClick={() => {
                     onClose();
                     setTool(DecryptionTools.CEASAR);
@@ -52,7 +61,8 @@ export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
                   Ceasar
                 </Button>
                 <Button
-                  bg='uiBorder'
+                  color={buttonTextColor}
+                  bg={buttonBackgroundColor}
                   onClick={() => {
                     onClose();
                     setTool(DecryptionTools.SUBSTITUTION);
@@ -61,7 +71,8 @@ export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
                   Substitution
                 </Button>
                 <Button
-                  bg='uiBorder'
+                  color={buttonTextColor}
+                  bg={buttonBackgroundColor}
                   onClick={() => {
                     onClose();
                     setTool(DecryptionTools.TABLE);
@@ -70,7 +81,8 @@ export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
                   Table
                 </Button>
                 <Button
-                  bg='uiBorder'
+                  color={buttonTextColor}
+                  bg={buttonBackgroundColor}
                   onClick={() => {
                     onClose();
                     setTool(DecryptionTools.VIGNERE);
@@ -85,7 +97,11 @@ export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
 
         <Card borderColor='transparent'>
           <Center width='100%'>
-            <AddButton onClick={onOpen} />
+            <AddButton
+              backgroundColor={iconBackgroundColor}
+              iconColor={iconColor}
+              onClick={onOpen}
+            />
           </Center>
         </Card>
       </>
@@ -100,4 +116,11 @@ export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
       onClose={() => setTool(DecryptionTools.UNSPECIFIED)}
     />
   );
+};
+
+DecryptionToolOrSelect.defaultProps = {
+  buttonBackgroundColor: 'uiBorder',
+  buttonTextColor: 'black',
+  iconBackgroundColor: 'uiBorder',
+  iconColor: 'white',
 };
