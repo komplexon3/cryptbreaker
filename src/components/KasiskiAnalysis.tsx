@@ -104,7 +104,7 @@ const HightlightedSpan: React.FC<HightlightedSpanProps> = ({
   const element = (
     <span
       style={{ color: color }}
-      onMouseEnter={(e) => {
+      onClick={(e) => {
         e.preventDefault();
         onMouseEnter();
       }}
@@ -116,5 +116,5 @@ const HightlightedSpan: React.FC<HightlightedSpanProps> = ({
       {children}
     </span>
   );
-  return highlighted ? <b>{element}</b> : element;
+  return highlighted ? <u>{element}</u> : element;
 };
