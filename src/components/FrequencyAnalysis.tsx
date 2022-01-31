@@ -1,4 +1,4 @@
-import { HStack, IconButton, VStack, Text } from '@chakra-ui/react';
+import { HStack, VStack, Text } from '@chakra-ui/react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -16,7 +16,8 @@ import { Card, IntegerInput } from '@/components';
 import { AnalysisProps } from '@/types';
 import { problemLanguagesEnableMap } from '@/data/problems/problems';
 import { useEffect, useState } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { usePagination } from '@/hooks';
+import { PaginationButtons } from './PaginationButtons';
 
 ChartJS.register(
   CategoryScale,
@@ -93,51 +94,13 @@ const useStridedRelaticeFrequency = (text: string, defaultStride?: number) => {
   };
 };
 
-const usePagination = (numOfPages: number, defaultValue?: number) => {
-  const [page, setPage] = useState(defaultValue ?? 1);
-
-  const incPage = () => {
-    if (page < numOfPages) {
-      setPage(page + 1);
-    }
-  };
-
-  const decPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
-  const onPageChange = (value: number) => {
-    if (value <= numOfPages && value >= 1) {
-      setPage(value);
-    }
-  };
-
-  // in case numberOfPages changes and the page number is not too big
-  useEffect(() => {
-    if (page > numOfPages) {
-      setPage(numOfPages);
-    }
-  }, [numOfPages, page]);
-
-  return {
-    page,
-    incPage,
-    decPage,
-    setPage: onPageChange,
-    isFirstPage: page === 1,
-    isLastPage: page === numOfPages,
-  };
-};
-
 export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   // only compute on first render - after that we don't want to mess
   // with dis/enabled languages programatically anymore
   const problemLng = useLanguageFromQueryParams();
   const enabledMap = problemLanguagesEnableMap(problemLng);
   const { relativeFrequencies, stride, setStride } = useStridedRelaticeFrequency(text, 1);
-  const { page, incPage, decPage, isFirstPage, isLastPage } = usePagination(stride);
+  const { page, incPage, decPage } = usePagination(stride);
 
   const data = {
     labels,
@@ -182,29 +145,12 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) =>
             },
           }}
         />
-        <HStack>
-          <IconButton
-            icon={<ChevronLeftIcon />}
-            aria-label='Previous Element'
-            disabled={isFirstPage}
-            onClick={(e) => {
-              e.preventDefault();
-              decPage();
-            }}
-          />
-          <Text>
-            {page} / {stride}
-          </Text>
-          <IconButton
-            icon={<ChevronRightIcon />}
-            aria-label='Next Element'
-            disabled={isLastPage}
-            onClick={(e) => {
-              e.preventDefault();
-              incPage();
-            }}
-          />
-        </HStack>
+        <PaginationButtons
+          page={page}
+          numberOfPages={stride}
+          onDecrement={decPage}
+          onIncrement={incPage}
+        />
       </VStack>
     </Card>
   );
