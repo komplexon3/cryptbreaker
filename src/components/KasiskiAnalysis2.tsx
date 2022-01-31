@@ -37,7 +37,14 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
 
   const useKasiskiItem = (item: kasiskiItem) => {
     const groups = item.groups;
-    const defaultColor = groups.length === 1 ? colorMap.get(groups[0]) : 'back';
+    const defaultColor = (() => {
+      if (groups.length === 1) {
+        return colorMap.get(groups[0]);
+      } else if (groups.length > 1) {
+        return '#4A5568';
+      }
+      return 'black';
+    })();
     const [color, setColor] = useState(defaultColor);
     const [enabled, setEnabled] = useState(false);
 
@@ -121,13 +128,14 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
           <IntegerInput
             minValue={2}
             maxValue={10}
-            defaultValue={3}
+            defaultValue={2}
             onValueChange={(v) => {
               setSegmentLength(v);
             }}
           />
         </HStack>
         <KasinskiText />
+        <Text color={'gray.600'}>Note: Grey characters are part of multiple segments.</Text>
       </VStack>
     </Card>
   );
