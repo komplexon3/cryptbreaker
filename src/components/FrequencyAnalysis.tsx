@@ -51,7 +51,7 @@ const labels = [
   'V',
   'W',
   'X',
-  'Z',
+  'Y',
   'Z',
 ];
 

@@ -109,7 +109,7 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
 
   const KasinskiText = () => {
     return (
-      <Text>
+      <Text style={{ wordWrap: 'break-word', maxWidth: '100%' }}>
         {kasinskiItems.map((v, i) => (
           <KasiskiItem
             key={i} // okay to use index as key as the list is never mutated or reordered
