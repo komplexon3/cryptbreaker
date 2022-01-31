@@ -4,37 +4,71 @@ export const substitutionProblems: { [id: string]: Problem[] } = {
   en: [
     {
       type: ProblemTypes.SUBSTITUTION,
-      title: 'Substitution 1',
+      title: 'Daddy Long Legs',
       language: ProblemLanguages.EN,
-      plainText: 'THE QUICK BROWN FOX JUMPED OVER THE FENCE',
-      cipherText: 'RCY AWLUM KOESN JEZ FWBHYD EXYO RCY JYNUY',
-      // encoded: UkNZIEFXTFVNIEtPRVNOIEpFWiBGV0JIWUQgRVhZTyBSQ1kgSllOVVk%3D
+      // source: https://www.gutenberg.org/cache/epub/157/pg157.html
+      plainText:
+        'ThefirstWednesdayineverymonthwasaPerfectlyAwfulDayadaytobeawaitedwithdreadenduredwithcourageandforgottenwithhasteEveryfloormustbespotlesseverychairdustlessandeverybedwithoutawrinkleNinetysevensquirminglittleorphansmustbescrubbedandcombedandbuttonedintofreshlystarchedginghamsandallninetysevenremindedoftheirmannersandtoldtosayYessirNosirwheneveraTrusteespoke',
+      // key: ICAKLFZGDBEHWXNYUVMJQOPTRS
+      cipherText:
+        'JglfdvmjPlkxlmkirdxlolvrwnxjgpimiYlvflajhrIpfqhKirikirjnclipidjlkpdjgkvliklxkqvlkpdjganqvizlixkfnvznjjlxpdjggimjlLolvrfhnnvwqmjclmynjhlmmlolvragidvkqmjhlmmixklolvrclkpdjgnqjipvdxehlXdxljrmlolxmuqdvwdxzhdjjhlnvygixmwqmjclmavqcclkixkanwclkixkcqjjnxlkdxjnfvlmghrmjivaglkzdxzgiwmixkihhxdxljrmlolxvlwdxklknfjgldvwixxlvmixkjnhkjnmirRlmmdvXnmdvpglxlolviJvqmjllmynel',
     },
     {
       type: ProblemTypes.SUBSTITUTION,
-      title: 'Substitution 2',
+      title: 'Human Rights 1',
       language: ProblemLanguages.EN,
-      plainText: "HELLO, THIS IS A TEST STRING THAT I AM COMING UP WITH AS I'M TYPING",
-      cipherText: "AHCCG, ZAIO IO B ZHOZ OZVIXW ZABZ I BJ KGJIXW QM YIZA BO I'J ZUMIXW",
-      // encoded: QUhDQ0csIFpBSU8gSU8gQiBaSE9aIE9aVklYVyBaQUJaIEkgQkogS0dKSVhXIFFNIFlJWkEgQk8gSSdKIFpVTUlYVw%3D%3D
+      // source: EpewtzskHmdepadrjqnvgmrpxwnkseajlXeiqmckwgAnqclUlgaulgtfmmanlqtvoeikslrvlleeocrvoeikskolcigvlvdwzzgfebeehqtysiskpMvvcgfczwrdfatspapfetejdmvvcgcylqrufatcpasrylempzysplwzepoleiwitvkcpViepbyjpdeedyuzcuiertiketefcxhryamldbbvdkrlmjeulvdtzubvoinumctkzveutvtfqzejstyjeirtsmdxtvgylusrylacwviepbyjpdeecmmzyleuzntypqrdlvnvcaaeobocobojlgYvdaiiYwszcehvymvvciTifatvpapfvm
+      plainText:
+        'AllhumanbeingsarebornfreeandequalindignityandrightsTheyareendowedwithreasonandconscienceandshouldacttowardsoneanotherinaspiritofbrotherhood',
+      // key: HWXNYUVMJQOPTRSICAKLFZGDBE
+      cipherText:
+        'HppmfthrwyjrvkhaywsaruayyhrnycfhpjrnjvrjlbhrnajvmlkLmybhayyrnsgyngjlmayhksrhrnxsrkxjyrxyhrnkmsfpnhxllsghanksryhrslmyajrhkijajlsuwaslmyamssn',
+    },
+    {
+      type: ProblemTypes.SUBSTITUTION,
+      title: 'Human Rights 2',
+      language: ProblemLanguages.EN,
+      // source: EpewtzskHmdepadrjqnvgmrpxwnkseajlXeiqmckwgAnqclUlgaulgtfmmanlqtvoeikslrvlleeocrvoeikskolcigvlvdwzzgfebeehqtysiskpMvvcgfczwrdfatspapfetejdmvvcgcylqrufatcpasrylempzysplwzepoleiwitvkcpViepbyjpdeedyuzcuiertiketefcxhryamldbbvdkrlmjeulvdtzubvoinumctkzveutvtfqzejstyjeirtsmdxtvgylusrylacwviepbyjpdeecmmzyleuzntypqrdlvnvcaaeobocobojlgYvdaiiYwszcehvymvvciTifatvpapfvm
+      plainText:
+        'EveryoneisentitledtoalltherightsandfreedomssetforthinthisDeclarationwithoutdistinctionofanykindsuchasracecoloursexlanguagereligionpoliticalorotheropinionnationalorsocialoriginpropertybirthorotherstatusFurthermorenodistinctionshallbemadeonthebasisofthepoliticaljurisdictionalorinternationalstatusofthecountryorterritorytowhichapersonbelongswhetheritbeindependenttrustnonselfgoverningorunderanyotherlimitationofsovereignty',
+      // key: UVMJQOPTRHWXNYSICAKLFZGDBE
+      cipherText:
+        'QzqabsyqrkqylrlxqjlsuxxltqarptlkuyjoaqqjsnkkqlosaltryltrkJqmxuaulrsygrltsfljrklrymlrsysouybwryjkfmtukaumqmsxsfakqdxuypfupqaqxrprsyisxrlrmuxsasltqasiryrsyyulrsyuxsaksmruxsarpryiasiqalbvraltsasltqaklulfkOfaltqansaqysjrklrymlrsyktuxxvqnujqsyltqvukrksoltqisxrlrmuxhfarkjrmlrsyuxsarylqayulrsyuxklulfksoltqmsfylabsalqaarlsablsgtrmtuiqaksyvqxsypkgtqltqarlvqryjqiqyjqyllafklysykqxopszqayrypsafyjqauybsltqaxrnrlulrsysokszqaqrpylb',
     },
   ],
   de: [
     {
       type: ProblemTypes.SUBSTITUTION,
-      title: 'Substitution 1 DE',
+      title: 'Im tropischen Busch',
       language: ProblemLanguages.DE,
-      plainText: 'THE QUICK BROWN FOX JUMPED OVER THE FENCE',
-      cipherText: 'RCY AWLUM KOESN JEZ FWBHYD EXYO RCY JYNUY',
-      // encoded: UkNZIEFXTFVNIEtPRVNOIEpFWiBGV0JIWUQgRVhZTyBSQ1kgSllOVVk%3D
+      // source: https://www.gutenberg.org/files/67286/67286-h/67286-h.htm
+      plainText:
+        'UndurchdringlicherDschungelbedecktdieweitenEbenenderFlussgebietedesPanucounddesTamesiZweiBahnliniennurdurchziehendiesenneunzigtausendQuadratkilometergrossenTeilderTierraCalienteWosichAnsiedelungenbefindenhabensiesichdichtundängstlichandiewenigenEisenbahnstationengedraengtEuropaeerwohnenhiernurganzvereinzeltundwieverlorenDieermuedendeGleichfoermigkeitdesDschungelswirdvoneinigensichlanghinstreckendenHoehenzuegenunterbrochendiemittropischemUrbuschbewachsensindderebensoundurchdringlichistwiederDschungelundindessenTiefenwoimmerDaemmerungherrschtalleMysterienundGrauenderWeltzulauernscheinen',
+      // key: HWXNYUVMJQOPTRSICAKLFZGDBE
+      cipherText:
+        'FrnfaxmnajrvpjxmyaNkxmfrvypwynyxolnjygyjlyrYwyryrnyaUpfkkvywjylynykIhrfxsfrnnykLhtykjEgyjWhmrpjrjyrrfanfaxmejymyrnjykyrryfrejvlhfkyrnCfhnahlojpstylyavaskkyrLyjpnyaLjyaahXhpjyrlyGskjxmHrkjynypfrvyrwyujrnyrmhwyrkjykjxmnjxmlfrnärvklpjxmhrnjygyrjvyrYjkyrwhmrklhljsryrvynahyrvlYfasihyyagsmryrmjyarfavhrezyayjreyplfrngjyzyapsayrNjyyatfynyrnyVpyjxmusyatjvoyjlnykNkxmfrvypkgjanzsryjrjvyrkjxmphrvmjrklayxoyrnyrMsymyrefyvyrfrlyawasxmyrnjytjllasijkxmytFawfkxmwyghxmkyrkjrnnyaywyrksfrnfaxmnajrvpjxmjklgjynyaNkxmfrvypfrnjrnykkyrLjyuyrgsjttyaNhyttyafrvmyaakxmlhppyTbklyajyrfrnVahfyrnyaGyplefphfyarkxmyjryr',
     },
     {
       type: ProblemTypes.SUBSTITUTION,
-      title: 'Substitution 2 DE',
+      title: 'Menschenrechte 1',
       language: ProblemLanguages.DE,
-      plainText: "HELLO, THIS IS A TEST STRING THAT I AM COMING UP WITH AS I'M TYPING",
-      cipherText: "AHCCG, ZAIO IO B ZHOZ OZVIXW ZABZ I BJ KGJIXW QM YIZA BO I'J ZUMIXW",
-      // encoded: QUhDQ0csIFpBSU8gSU8gQiBaSE9aIE9aVklYVyBaQUJaIEkgQkogS0dKSVhXIFFNIFlJWkEgQk8gSSdKIFpVTUlYVw%3D%3D
+      // source: https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=ger
+      plainText:
+        'AlleMenschensindfreiundgleichanWuerdeundRechtengeborenSiesindmitVernunftundGewissenbegabtundsolleneinanderimGeistderBruederlichkeitbegegnen',
+      // key: UVMJQOPTRHWXNYSICAKLFZGDBE
+      cipherText:
+        'UxxqNqykmtqykryjoaqrfyjpxqrmtuyGfqajqfyjAqmtlqypqvsaqyKrqkryjnrlZqayfyolfyjPqgrkkqyvqpuvlfyjksxxqyqryuyjqarnPqrkljqaVafqjqaxrmtwqrlvqpqpyqy',
+    },
+    {
+      type: ProblemTypes.SUBSTITUTION,
+      title: 'Menschenrechte 2',
+      language: ProblemLanguages.DE,
+      // source: https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=ger
+      plainText:
+        'JederhatAnspruchaufdieindieserErklaerungverkuendetenRechteundFreiheitenohneirgendeinenUnterschiedetwanachRasseHautfarbeGeschlechtSpracheReligionpolitischerodersonstigerUeberzeugungnationalerodersozialerHerkunftVermoegenGeburtodersonstigemStandDesweiterendarfkeinUnterschiedgemachtwerdenaufGrundderpolitischenrechtlichenoderinternationalenStellungdesLandesoderGebietsdemeinePersonangehoertgleichgueltigobdiesesunabhaengigistunterTreuhandschaftstehtkeineSelbstregierungbesitztodersonstinseinerSouveraenitaeteingeschraenktist',
+      // key: HWXNYSICAKLFZGDBEUVMJQOPTR
+      cipherText:
+        'KynyuchmHgvbujxchjsnayagnayvyuYulfhyujgiqyuljygnymygUyxcmyjgnSuyacyamygdcgyauiygnyagygJgmyuvxcaynymohghxcUhvvyChjmshuwyIyvxcfyxcmVbuhxcyUyfaiadgbdfamavxcyudnyuvdgvmaiyuJywyuryjijgighmadghfyudnyuvdrahfyuCyuljgsmQyuzdyiygIywjumdnyuvdgvmaiyzVmhgnNyvoyamyuygnhuslyagJgmyuvxcayniyzhxcmoyunyghjsIujgnnyubdfamavxcyguyxcmfaxcygdnyuagmyughmadghfygVmyffjginyvFhgnyvdnyuIywaymvnyzyagyByuvdghgiycdyumifyaxcijyfmaidwnayvyvjghwchygiaiavmjgmyuMuyjchgnvxchsmvmycmlyagyVyfwvmuyiayujgiwyvamrmdnyuvdgvmagvyagyuVdjqyuhygamhymyagiyvxcuhyglmavm',
     },
   ],
 };

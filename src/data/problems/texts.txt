@@ -1,0 +1,34 @@
+// https://www.gutenberg.org/files/67286/67286-h/67286-h.htm
+Undurchdringlicher Dschungel bedeckt die weiten Ebenen der Flußgebiete des Panuco und des Tamesi. Zwei Bahnlinien nur durchziehen diesen neunzigtausend Quadratkilometer großen Teil der Tierra Caliente. Wo sich Ansiedelungen befinden, haben sie sich dicht und ängstlich an die wenigen Eisenbahnstationen gedrängt. Europäer wohnen hier nur ganz vereinzelt und wie verloren. Die ermüdende Gleichförmigkeit des Dschungels wird von einigen sich langhinstreckenden Höhenzügen unterbrochen, die mit tropischem Urbusch bewachsen sind, der ebenso undurchdringlich ist wie der Dschungel und in dessen Tiefen, wo immer Dämmerung herrscht, alle Mysterien und Grauen der Welt zu lauern scheinen.
+
+UndurchdringlicherDschungelbedecktdieweitenEbenenderFlussgebietedesPanucounddesTamesiZweiBahnliniennurdurchziehendiesenneunzigtausendQuadratkilometergrossenTeilderTierraCalienteWosichAnsiedelungenbefindenhabensiesichdichtundängstlichandiewenigenEisenbahnstationengedraengtEuropaeerwohnenhiernurganzvereinzeltundwieverlorenDieermuedendeGleichfoermigkeitdesDschungelswirdvoneinigensichlanghinstreckendenHoehenzuegenunterbrochendiemittropischemUrbuschbewachsensindderebensoundurchdringlichistwiederDschungelundindessenTiefenwoimmerDaemmerungherrschtalleMysterienundGrauenderWeltzulauernscheinen
+
+// https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=ger
+Alle Menschen sind frei und gleich an Würde und Rechten geboren. Sie sind mit Vernunft und Gewissen begabt und sollen einander im Geist der Brüderlichkeit begegnen.
+
+AlleMenschensindfreiundgleichanWuerdeundRechtengeborenSiesindmitVernunftundGewissenbegabtundsolleneinanderimGeistderBruederlichkeitbegegnen
+
+--
+
+Jeder hat Anspruch auf die in dieser Erklärung verkündeten Rechte und Freiheiten ohne irgendeinen Unterschied, etwa nach Rasse, Hautfarbe, Geschlecht, Sprache, Religion, politischer oder sonstiger Überzeugung, nationaler oder sozialer Herkunft, Vermögen, Geburt oder sonstigem Stand.
+Des weiteren darf kein Unterschied gemacht werden auf Grund der politischen, rechtlichen oder internationalen Stellung des Landes oder Gebiets, dem eine Person angehört, gleichgültig ob dieses unabhängig ist, unter Treuhandschaft steht, keine Selbstregierung besitzt oder sonst in seiner Souveränität eingeschränkt ist.
+
+JederhatAnspruchaufdieindieserErklaerungverkuendetenRechteundFreiheitenohneirgendeinenUnterschiedetwanachRasseHautfarbeGeschlechtSpracheReligionpolitischerodersonstigerUeberzeugungnationalerodersozialerHerkunftVermoegenGeburtodersonstigemStandDesweiterendarfkeinUnterschiedgemachtwerdenaufGrundderpolitischenrechtlichenoderinternationalenStellungdesLandesoderGebietsdemeinePersonangehoertgleichgueltigobdiesesunabhaengigistunterTreuhandschaftstehtkeineSelbstregierungbesitztodersonstinseinerSouveraenitaeteingeschraenktist
+
+====
+
+// https://www.gutenberg.org/cache/epub/157/pg157.html
+The first Wednesday in every month was a Perfectly Awful Day—a day to be awaited with dread, endured with courage and forgotten with haste. Every floor must be spotless, every chair dustless, and every bed without a wrinkle. Ninety-seven squirming little orphans must be scrubbed and combed and buttoned into freshly starched ginghams; and all ninety-seven reminded of their manners, and told to say, 'Yes, sir,' 'No, sir,' whenever a Trustee spoke.
+
+ThefirstWednesdayineverymonthwasaPerfectlyAwfulDayadaytobeawaitedwithdreadenduredwithcourageandforgottenwithhasteEveryfloormustbespotlesseverychairdustlessandeverybedwithoutawrinkleNinetysevensquirminglittleorphansmustbescrubbedandcombedandbuttonedintofreshlystarchedginghamsandallninetysevenremindedoftheirmannersandtoldtosayYessirNosirwheneveraTrusteespoke
+
+// https://www.un.org/en/about-us/universal-declaration-of-human-rights
+All human beings are born free and equal in dignity and rights. They are endowed with reason and conscience and should act towards one another in a spirit of brotherhood.
+
+AllhumanbeingsarebornfreeandequalindignityandrightsTheyareendowedwithreasonandconscienceandshouldacttowardsoneanotherinaspiritofbrotherhood
+
+--
+
+Everyone is entitled to all the rights and freedoms set forth in this Declaration, without distinction of any kind, such as race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth or other status. Furthermore, no distinction shall be made on the basis of the political, jurisdictional or international status of the country or territory to which a person belongs, whether it be independent, trust, non-self-governing or under any other limitation of sovereignty.
+
+EveryoneisentitledtoalltherightsandfreedomssetforthinthisDeclarationwithoutdistinctionofanykindsuchasracecoloursexlanguagereligionpoliticalorotheropinionnationalorsocialoriginpropertybirthorotherstatusFurthermorenodistinctionshallbemadeonthebasisofthepoliticaljurisdictionalorinternationalstatusofthecountryorterritorytowhichapersonbelongswhetheritbeindependenttrustnonselfgoverningorunderanyotherlimitationofsovereignty

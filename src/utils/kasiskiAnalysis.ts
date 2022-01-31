@@ -1,16 +1,29 @@
 export interface kasiskiItem {
-  segment: string;
-  interval: interval;
+  index: number;
+  character: string;
+  groups: string[];
 }
 
+const initKasiski = (s: string): kasiskiItem[] => {
+  return s.split('').map((v, i) => {
+    return {
+      index: i,
+      character: v,
+      groups: [],
+    };
+  });
+};
+
 export const kasiski = (s: string, segLen: number): [kasiskiItem[], string[]] => {
-  const kasinskiItems: kasiskiItem[] = [];
+  const kasinskiItems = initKasiski(s);
   const kasiskiGroups: string[] = [];
   findAllMatchesOfLength(s, segLen).forEach((v, k) => {
     kasiskiGroups.push(k);
-    joinOverlappingAdjacentIntervals(createIntervals(v, segLen)).forEach((e) =>
-      kasinskiItems.push({ segment: k, interval: e })
-    );
+    v.forEach((matchIndex) => {
+      for (let i = 0; i < segLen; i++) {
+        kasinskiItems[matchIndex + i].groups.push(k);
+      }
+    });
   });
   return [kasinskiItems, kasiskiGroups];
 };
@@ -43,35 +56,3 @@ export const findAllMatchesOfLength = (s: string, segLen: number): Map<string, n
   }
   return matches;
 };
-
-interface interval {
-  start: number;
-  end: number;
-}
-
-const createIntervals = (startPositions: number[], length: number): interval[] => {
-  const intervals = startPositions.map((v) => ({ start: v, end: v + length - 1 }));
-  return intervals;
-};
-
-const joinOverlappingAdjacentIntervals = (intervals: interval[]): interval[] => {
-  const len = intervals.length;
-  const joinedIntervals = [];
-
-  let j = 0,
-    k = 0;
-  for (let i = 0; i < len; i = j) {
-    const start = intervals[i].start;
-    let end = intervals[i].end;
-    while (++j < len && intervals[j].start <= end + 1) {
-      end = intervals[j].end;
-    }
-    joinedIntervals[k++] = { start: start, end: end };
-  }
-  return joinedIntervals;
-};
-
-export const sortFnKasiskiItems = (a: kasiskiItem, b: kasiskiItem) =>
-  a.interval.start - b.interval.start === 0
-    ? a.interval.start - b.interval.start
-    : a.interval.end - b.interval.end;

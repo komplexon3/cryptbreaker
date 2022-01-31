@@ -16,9 +16,19 @@ import { AnalysisTools } from '@/types';
 
 interface AnalysisToolsAndSelectProps {
   text: string;
+  buttonBackgroundColor?: string;
+  buttonTextColor?: string;
+  iconBackgroundColor?: string;
+  iconColor?: string;
 }
 
-export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ text }) => {
+export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
+  text,
+  buttonBackgroundColor,
+  buttonTextColor,
+  iconBackgroundColor,
+  iconColor,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // value of AnalysisTools.UNSPECIFIED indicated a removed tool
   const [tools, setTools] = useState([] as AnalysisTools[]);
@@ -45,7 +55,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
           <ModalBody padding={6}>
             <SimpleGrid spacingY={3}>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.FREQUENCY);
@@ -54,7 +65,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
                 Frequency
               </Button>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.FRIEDMANN);
@@ -63,7 +75,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
                 Friedmann
               </Button>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.KASISKI);
@@ -72,7 +85,8 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
                 Kasiski
               </Button>
               <Button
-                bg='uiBorder'
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
                 onClick={() => {
                   onClose();
                   addTool(AnalysisTools.TABLE);
@@ -86,27 +100,38 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({ 
       </Modal>
 
       <SimpleGrid gap={6}>
-        {tools
-          .filter((v) => v !== AnalysisTools.UNSPECIFIED)
-          .map((v, k) => {
-            return (
-              <AnalysisToolSwitch
-                key={k}
-                text={text}
-                tool={v}
-                onClose={() => {
-                  removeTool(k);
-                }}
-              />
-            );
-          })}
+        {tools.map((v, k) => {
+          if (v === AnalysisTools.UNSPECIFIED) {
+            return null;
+          }
+          return (
+            <AnalysisToolSwitch
+              key={k}
+              text={text}
+              tool={v}
+              onClose={() => {
+                removeTool(k);
+              }}
+            />
+          );
+        })}
 
         <Card borderColor='transparent'>
           <Center width='100%'>
-            <AddButton onClick={onOpen} />
+            <AddButton
+              backgroundColor={iconBackgroundColor}
+              iconColor={iconColor}
+              onClick={onOpen}
+            />
           </Center>
         </Card>
       </SimpleGrid>
     </>
   );
+};
+
+AnalysisToolsAndSelect.defaultProps = {
+  buttonBackgroundColor: 'uiBorder',
+  buttonTextColor: 'black',
+  iconColor: 'white',
 };
