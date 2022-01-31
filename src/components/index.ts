@@ -14,7 +14,7 @@ export * from './ShareProblemCard';
 
 export * from './FrequencyAnalysis';
 export * from './FriedmannAnalysis';
-export * from './KasiskiAnalysis2';
+export * from './KasiskiAnalysis';
 export * from './TableAnalysis';
 
 export * from './AnalysisToolSwitch';
