@@ -1,3 +1,4 @@
+import { HStack, VStack, Text } from '@chakra-ui/react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -10,10 +11,13 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { ComputeRelativeFrequency, useLanguageFromQueryParams } from '@/utils';
-import { Card } from '@/components';
+import { ComputeStridedRelativeFrequency, useLanguageFromQueryParams } from '@/utils';
+import { Card, IntegerInput } from '@/components';
 import { AnalysisProps } from '@/types';
 import { problemLanguagesEnableMap } from '@/data/problems/problems';
+import { useEffect, useState } from 'react';
+import { usePagination } from '@/hooks';
+import { PaginationButtons } from './PaginationButtons';
 
 ChartJS.register(
   CategoryScale,
@@ -69,11 +73,34 @@ const frequencies = {
   ],
 };
 
+const useStridedRelaticeFrequency = (text: string, defaultStride?: number) => {
+  const [stride, setStride] = useState(defaultStride ?? 1);
+  const [relativeFrequencies, setRelativeFrequencies] = useState([] as number[][]);
+
+  useEffect(() => {
+    setRelativeFrequencies(ComputeStridedRelativeFrequency(text, stride));
+  }, [stride, text]);
+
+  const onStrideChange = (value: number) => {
+    if (value >= 0) {
+      setStride(value);
+    }
+  };
+
+  return {
+    relativeFrequencies,
+    stride,
+    setStride: onStrideChange,
+  };
+};
+
 export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   // only compute on first render - after that we don't want to mess
   // with dis/enabled languages programatically anymore
   const problemLng = useLanguageFromQueryParams();
   const enabledMap = problemLanguagesEnableMap(problemLng);
+  const { relativeFrequencies, stride, setStride } = useStridedRelaticeFrequency(text, 1);
+  const { page, incPage, decPage } = usePagination(stride);
 
   const data = {
     labels,
@@ -92,7 +119,7 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) =>
       },
       {
         label: 'Relative Frequency Cipher Text',
-        data: ComputeRelativeFrequency(text),
+        data: relativeFrequencies[page - 1],
         backgroundColor: 'blue',
       },
     ],
@@ -100,19 +127,31 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) =>
 
   return (
     <Card title='Frequency Analysis' onClose={onClose}>
-      <Bar
-        data={data}
-        options={{
-          plugins: {
-            title: {
-              display: false,
+      <VStack>
+        <HStack>
+          <Text>Stride</Text>
+          <IntegerInput defaultValue={1} minValue={1} onValueChange={(v) => setStride(v)} />
+        </HStack>
+        <Bar
+          data={data}
+          options={{
+            plugins: {
+              title: {
+                display: false,
+              },
+              legend: {
+                display: true,
+              },
             },
-            legend: {
-              display: true,
-            },
-          },
-        }}
-      />
+          }}
+        />
+        <PaginationButtons
+          page={page}
+          numberOfPages={stride}
+          onDecrement={decPage}
+          onIncrement={incPage}
+        />
+      </VStack>
     </Card>
   );
 };

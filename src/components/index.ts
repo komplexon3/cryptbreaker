@@ -7,6 +7,8 @@ export * from './IntegerInput';
 export * from './TableDimensionInput';
 export * from './TextEntryCard';
 
+export * from './PaginationButtons';
+
 export * from './TextCard';
 
 export * from './ProblemCodeModal';
