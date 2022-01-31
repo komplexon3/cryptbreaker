@@ -1,8 +1,8 @@
 import { VStack, Text, HStack } from '@chakra-ui/react';
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { Card, IntegerInput } from '@/components';
-import { kasiski, kasiskiItem, sortFnKasiskiItems } from '@/utils';
+import { kasiski, kasiskiItem } from '@/utils/kasiskiAnalysis';
 import { AnalysisProps } from '@/types';
 
 export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
@@ -10,7 +10,7 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
   const [segmentLenght, setSegmentLength] = useState(2);
   const [kasinskiItems, setKasinskiItems] = useState([] as kasiskiItem[]);
   const [kasinskiGroups, setKasinskiGroups] = useState([] as string[]);
-  const [kasinskiGroupEnabled, setKasinskiGroupEnable] = useState([] as boolean[]);
+  const [enabledKasiskiGroup, setEneabledKasiskiGroup] = useState('');
   const colors = [
     '#e53e3e',
     '#2f855a',
@@ -22,48 +22,102 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
     '#319795',
     '#975a16',
   ];
+  const colorMap = new Map(kasinskiGroups.map((v, i) => [v, colors[i]]));
+
+  useEffect(() => {
+    console.log(enabledKasiskiGroup);
+  }, [enabledKasiskiGroup]);
 
   useEffect(() => {
     const [newKasiskiItems, newKasiskiGroups] = kasiski(text, segmentLenght);
-    setKasinskiItems(newKasiskiItems.sort(sortFnKasiskiItems));
+    setKasinskiItems(newKasiskiItems);
     setKasinskiGroups(newKasiskiGroups);
-    setKasinskiGroupEnable(Array(newKasiskiGroups.length).fill(false));
+    console.log(newKasiskiItems);
   }, [text, segmentLenght]);
 
-  const KasinskiText = () => {
-    const parseItem = (v: string, i: number): ReactNode => {
-      for (let j = 0; j < kasinskiItems.length; j++) {
-        const item = kasinskiItems[j];
-        if (item.interval.start > i) {
-          return v;
-        }
-        if (i > item.interval.end) {
-          continue;
-        }
-
-        const kIndex = kasinskiGroups.indexOf(item.segment);
-        // TODO exception if not found
-
-        return (
-          <HightlightedSpan
-            key={i} // okay to use index as key as the list is never mutated or reordered
-            color={colors[kIndex]}
-            highlighted={kasinskiGroupEnabled[kIndex]}
-            onMouseEnter={() => {
-              kasinskiGroupEnabled[kIndex] = true;
-              setKasinskiGroupEnable([...kasinskiGroupEnabled]);
-            }}
-            onMouseLeave={() => {
-              kasinskiGroupEnabled[kIndex] = false;
-              setKasinskiGroupEnable([...kasinskiGroupEnabled]);
-            }}
-          >
-            {v}
-          </HightlightedSpan>
-        );
+  const useKasiskiItem = (item: kasiskiItem) => {
+    const groups = item.groups;
+    const defaultColor = (() => {
+      if (groups.length === 1) {
+        return colorMap.get(groups[0]);
+      } else if (groups.length > 1) {
+        return '#4A5568';
       }
+      return 'black';
+    })();
+    const [color, setColor] = useState(defaultColor);
+    const [enabled, setEnabled] = useState(false);
+
+    useEffect(() => {
+      for (const group of groups) {
+        if (enabledKasiskiGroup === group) {
+          setEnabled(true);
+          setColor(colorMap.get(group));
+          return;
+        }
+      }
+      // none of it's group were enabled -> needs to be set to the default
+      setEnabled(false);
+      setColor(defaultColor);
+    }, [defaultColor, groups]);
+
+    let onFocusEnter = () => {};
+    let onFocusLeave = () => {};
+
+    if (groups.length === 1) {
+      onFocusEnter = () => {
+        setEneabledKasiskiGroup(groups[0]);
+      };
+      onFocusLeave = () => {
+        setEneabledKasiskiGroup('');
+      };
+    }
+
+    return {
+      character: item.character,
+      color: color,
+      enabled: enabled,
+      onFocusEnter: onFocusEnter,
+      onFocusLeave: onFocusLeave,
     };
-    return <Text>{text.split('').map(parseItem)}</Text>;
+  };
+
+  interface KasiskiItemProps {
+    kasiskiItem: kasiskiItem;
+  }
+
+  const KasiskiItem: React.FC<KasiskiItemProps> = ({ kasiskiItem }) => {
+    const { character, color, enabled, onFocusEnter, onFocusLeave } = useKasiskiItem(kasiskiItem);
+
+    const element = (
+      <span
+        style={{ color: color }}
+        onMouseEnter={(e) => {
+          e.preventDefault();
+          onFocusEnter();
+        }}
+        onMouseLeave={(e) => {
+          e.preventDefault();
+          onFocusLeave();
+        }}
+      >
+        {character}
+      </span>
+    );
+    return enabled ? <b>{element}</b> : element;
+  };
+
+  const KasinskiText = () => {
+    return (
+      <Text>
+        {kasinskiItems.map((v, i) => (
+          <KasiskiItem
+            key={i} // okay to use index as key as the list is never mutated or reordered
+            kasiskiItem={v}
+          />
+        ))}
+      </Text>
+    );
   };
 
   return (
@@ -74,47 +128,15 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
           <IntegerInput
             minValue={2}
             maxValue={10}
-            defaultValue={3}
+            defaultValue={2}
             onValueChange={(v) => {
               setSegmentLength(v);
             }}
           />
         </HStack>
         <KasinskiText />
+        <Text color={'gray.600'}>Note: Grey characters are part of multiple segments.</Text>
       </VStack>
     </Card>
   );
-};
-
-interface HightlightedSpanProps {
-  color: string;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-  highlighted?: boolean;
-  children?: React.ReactNode;
-}
-
-const HightlightedSpan: React.FC<HightlightedSpanProps> = ({
-  color,
-  highlighted,
-  onMouseEnter,
-  onMouseLeave,
-  children,
-}) => {
-  const element = (
-    <span
-      style={{ color: color }}
-      onMouseEnter={(e) => {
-        e.preventDefault();
-        onMouseEnter();
-      }}
-      onMouseLeave={(e) => {
-        e.preventDefault();
-        onMouseLeave();
-      }}
-    >
-      {children}
-    </span>
-  );
-  return highlighted ? <b>{element}</b> : element;
 };
