@@ -59,7 +59,7 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
       // none of it's group were enabled -> needs to be set to the default
       setEnabled(false);
       setColor(defaultColor);
-    });
+    }, [defaultColor, groups]);
 
     let onFocusEnter = () => {};
     let onFocusLeave = () => {};
