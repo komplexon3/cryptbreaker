@@ -11,9 +11,10 @@ import {
   Legend,
 } from 'chart.js';
 import { Card } from '@/components';
-import { ComputeFriedmannCharacteristic, useLanguageFromQueryParams } from '@/utils';
+import { ComputeFriedmannCharacteristic } from '@/utils';
 import { AnalysisProps } from '@/types';
 import { problemLanguagesEnableMap } from '@/data/problems/problems';
+import { useDecryptionContext } from '@/contexts';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -23,8 +24,9 @@ const friedmannCharicteristic = {
   de: 0.0762,
 };
 
-export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
-  const problemLang = useLanguageFromQueryParams();
+export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+  const { cipherText: text, language: problemLang } = useDecryptionContext();
+
   const enableMap = problemLanguagesEnableMap(problemLang);
   // Setup key size selection
   const { valueAsNumber, getInputProps, getIncrementButtonProps, getDecrementButtonProps } =

@@ -15,7 +15,6 @@ import {
 import { AnalysisTools } from '@/types';
 
 interface AnalysisToolsAndSelectProps {
-  text: string;
   buttonBackgroundColor?: string;
   buttonTextColor?: string;
   iconBackgroundColor?: string;
@@ -23,7 +22,6 @@ interface AnalysisToolsAndSelectProps {
 }
 
 export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
-  text,
   buttonBackgroundColor,
   buttonTextColor,
   iconBackgroundColor,
@@ -107,7 +105,6 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
           return (
             <AnalysisToolSwitch
               key={k}
-              text={text}
               tool={v}
               onClose={() => {
                 removeTool(k);

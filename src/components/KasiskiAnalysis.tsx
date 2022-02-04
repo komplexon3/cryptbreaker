@@ -4,10 +4,9 @@ import { useState } from 'react';
 import { Card, IntegerInput } from '@/components';
 import { kasiski, kasiskiItem } from '@/utils/kasiskiAnalysis';
 import { AnalysisProps } from '@/types';
+import { useDecryptionContext } from '@/contexts';
 
 interface Kasiski {
-  text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
   segmentLenght: number;
   setSegmentLength: React.Dispatch<React.SetStateAction<number>>;
   kasiskiItems: kasiskiItem[];
@@ -22,8 +21,7 @@ interface Kasiski {
 const KasiskiContext = createContext<Kasiski | undefined>(undefined!);
 
 export const KasiskiProvider = (props: any) => {
-  // can be replaced with a call to decryption context once it has been created
-  const [text, setText] = useState('');
+  const { cipherText: text } = useDecryptionContext();
   const [segmentLenght, setSegmentLength] = useState(2);
   const [enabledKasiskiGroup, setEnabledKasiskiGroup] = useState('');
   const [focusPersistent, setFocusPersistent] = useState(false);
@@ -51,8 +49,6 @@ export const KasiskiProvider = (props: any) => {
   }, [colorMap]);
 
   const value = {
-    text,
-    setText,
     segmentLenght,
     setSegmentLength,
     kasiskiItems,
@@ -139,11 +135,8 @@ const useKasiskiItem = (item: kasiskiItem) => {
   };
 };
 
-export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
-  const { setText, kasiskiItems, setSegmentLength } = useKasiskiContext();
-  useEffect(() => {
-    setText(text);
-  });
+export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+  const { kasiskiItems, setSegmentLength } = useKasiskiContext();
 
   interface KasiskiItemProps {
     kasiskiItem: kasiskiItem;

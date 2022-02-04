@@ -2,6 +2,7 @@ import { Card, TableDimensionInput } from '@/components';
 import { Table, Tbody, Tr, Td, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import { AnalysisProps } from '@/types';
+import { useDecryptionContext } from '@/contexts';
 
 const buildTable = (text: string, rows: number, columns: number) => {
   if (columns < 1) {
@@ -33,8 +34,10 @@ const buildTableRow = (textRow: string) => {
   );
 };
 
-export const TableAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
-  const maxValue = text.length / 2;
+export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+  const { cipherText } = useDecryptionContext();
+
+  const maxValue = cipherText.length / 2;
 
   const [rows, setRows] = useState(5);
   const [columns, setColumns] = useState(5);
@@ -48,7 +51,7 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
           onRowsValueChange={(v) => setRows(v)}
           onColumnsValueChange={(v) => setColumns(v)}
         />
-        {buildTable(text, rows, columns)}
+        {buildTable(cipherText, rows, columns)}
       </VStack>
     </Card>
   );

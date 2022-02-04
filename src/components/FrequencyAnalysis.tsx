@@ -18,6 +18,7 @@ import { problemLanguagesEnableMap } from '@/data/problems/problems';
 import { useEffect, useState } from 'react';
 import { usePagination } from '@/hooks';
 import { PaginationButtons } from './PaginationButtons';
+import { useDecryptionContext } from '@/contexts';
 
 ChartJS.register(
   CategoryScale,
@@ -94,12 +95,14 @@ const useStridedRelaticeFrequency = (text: string, defaultStride?: number) => {
   };
 };
 
-export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
+export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   // only compute on first render - after that we don't want to mess
   // with dis/enabled languages programatically anymore
+  const { cipherText, language } = useDecryptionContext();
+
   const problemLng = useLanguageFromQueryParams();
   const enabledMap = problemLanguagesEnableMap(problemLng);
-  const { relativeFrequencies, stride, setStride } = useStridedRelaticeFrequency(text, 1);
+  const { relativeFrequencies, stride, setStride } = useStridedRelaticeFrequency(cipherText, 1);
   const { page, incPage, decPage } = usePagination(stride);
 
   const data = {
