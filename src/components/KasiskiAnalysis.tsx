@@ -136,50 +136,7 @@ const useKasiskiItem = (item: kasiskiItem) => {
 };
 
 export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
-  const { kasiskiItems, setSegmentLength } = useKasiskiContext();
-
-  interface KasiskiItemProps {
-    kasiskiItem: kasiskiItem;
-  }
-
-  const KasiskiItem: React.FC<KasiskiItemProps> = ({ kasiskiItem }) => {
-    const { character, color, enabled, onFocusEnter, onFocusLeave, onClick } =
-      useKasiskiItem(kasiskiItem);
-
-    const element = (
-      <span
-        style={{ color: color }}
-        onMouseEnter={(e) => {
-          e.preventDefault();
-          onFocusEnter();
-        }}
-        onMouseLeave={(e) => {
-          e.preventDefault();
-          onFocusLeave();
-        }}
-        onClick={(e) => {
-          e.preventDefault();
-          onClick();
-        }}
-      >
-        {color === 'black' ? character : <b>{character}</b>}
-      </span>
-    );
-    return enabled ? <span style={{ backgroundColor: '#F6E05E' }}>{element}</span> : element;
-  };
-
-  const KasinskiText = () => {
-    return (
-      <Text style={{ wordWrap: 'break-word', maxWidth: '100%' }}>
-        {kasiskiItems.map((v, i) => (
-          <KasiskiItem
-            key={i} // okay to use index as key as the list is never mutated or reordered
-            kasiskiItem={v}
-          />
-        ))}
-      </Text>
-    );
-  };
+  const { setSegmentLength } = useKasiskiContext();
 
   return (
     <Card title='Kasiski Analysis' onClose={onClose}>
@@ -200,4 +157,49 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
       </VStack>
     </Card>
   );
+};
+
+const KasinskiText = () => {
+  const { kasiskiItems } = useKasiskiContext();
+
+  return (
+    <Text style={{ wordWrap: 'break-word', maxWidth: '100%' }}>
+      {kasiskiItems.map((v, i) => (
+        <KasiskiItem
+          key={i} // okay to use index as key as the list is never mutated or reordered
+          kasiskiItem={v}
+        />
+      ))}
+    </Text>
+  );
+};
+
+interface KasiskiItemProps {
+  kasiskiItem: kasiskiItem;
+}
+
+const KasiskiItem: React.FC<KasiskiItemProps> = ({ kasiskiItem }) => {
+  const { character, color, enabled, onFocusEnter, onFocusLeave, onClick } =
+    useKasiskiItem(kasiskiItem);
+
+  const element = (
+    <span
+      style={{ color: color }}
+      onMouseEnter={(e) => {
+        e.preventDefault();
+        onFocusEnter();
+      }}
+      onMouseLeave={(e) => {
+        e.preventDefault();
+        onFocusLeave();
+      }}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+    >
+      {color === 'black' ? character : <b>{character}</b>}
+    </span>
+  );
+  return enabled ? <span style={{ backgroundColor: '#F6E05E' }}>{element}</span> : element;
 };
