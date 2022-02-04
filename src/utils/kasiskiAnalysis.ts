@@ -1,3 +1,8 @@
+export interface kasiskiGroup {
+  segment: string;
+  positions: number[];
+}
+
 export interface kasiskiItem {
   index: number;
   character: string;
@@ -14,23 +19,36 @@ const initKasiski = (s: string): kasiskiItem[] => {
   });
 };
 
-export const kasiski = (s: string, segLen: number): [kasiskiItem[], string[]] => {
+export const kasiski = (s: string, segLen: number): [kasiskiItem[], kasiskiGroup[]] => {
   const kasinskiItems = initKasiski(s);
-  const kasiskiGroups: string[] = [];
-  findAllMatchesOfLength(s, segLen).forEach((v, k) => {
-    kasiskiGroups.push(k);
-    v.forEach((matchIndex) => {
+  const kasiskiGroups: kasiskiGroup[] = Array.from(
+    findAllMatchesOfLength(s, segLen),
+    ([segment, positions]) => ({
+      segment,
+      positions,
+    })
+  );
+  kasiskiGroups.forEach(({ segment, positions }) => {
+    positions.forEach((matchIndex) => {
       for (let i = 0; i < segLen; i++) {
-        kasinskiItems[matchIndex + i].groups.push(k);
+        if (
+          kasinskiItems[matchIndex + i].groups[kasinskiItems[matchIndex + i].groups.length - 1] ===
+          segment
+        ) {
+          continue;
+        }
+        kasinskiItems[matchIndex + i].groups.push(segment);
       }
     });
   });
+
   return [kasinskiItems, kasiskiGroups];
 };
 
 export const findStringMatches = (s: string, searchString: string): number[] => {
-  const match = s.matchAll(RegExp(searchString, 'gi'));
+  const match = s.matchAll(RegExp(`(?=(${searchString}))`, 'gi'));
   const indices: number[] = [];
+
   for (let m = match.next(); !m.done; m = match.next()) {
     const index = m.value.index;
     if (index === undefined) {

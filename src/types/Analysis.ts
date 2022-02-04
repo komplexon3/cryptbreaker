@@ -1,5 +1,4 @@
 export interface AnalysisProps {
-  text: string;
   onClose?: () => void;
 }
 

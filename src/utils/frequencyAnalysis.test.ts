@@ -65,7 +65,6 @@ describe('Strided Relative Frequencies', () => {
         .join(''),
       5
     );
-    console.log(relFreqs);
     relFreqs.forEach((seg) => seg.forEach((e) => expect(e).toBeCloseTo(1.0 / 26)));
   });
 

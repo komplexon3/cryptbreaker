@@ -1,124 +1,142 @@
 import { VStack, Text, HStack } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useMemo } from 'react';
 import { useState } from 'react';
 import { Card, IntegerInput } from '@/components';
 import { kasiski, kasiskiItem } from '@/utils/kasiskiAnalysis';
 import { AnalysisProps } from '@/types';
+import { useDecryptionContext } from '@/contexts';
 
-export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
-  // elements sorted by interval start
+interface Kasiski {
+  segmentLenght: number;
+  setSegmentLength: React.Dispatch<React.SetStateAction<number>>;
+  kasiskiItems: kasiskiItem[];
+  kasiskiGroups: string[];
+  enabledKasiskiGroup: string;
+  setEnabledKasiskiGroup: React.Dispatch<React.SetStateAction<string>>;
+  focusPersistent: boolean;
+  setFocusPersistent: React.Dispatch<React.SetStateAction<boolean>>;
+  colorMap: Map<string, string>;
+}
+
+const KasiskiContext = createContext<Kasiski | undefined>(undefined!);
+
+export const KasiskiProvider = (props: any) => {
+  const { cipherText: text } = useDecryptionContext();
   const [segmentLenght, setSegmentLength] = useState(2);
-  const [kasinskiItems, setKasinskiItems] = useState([] as kasiskiItem[]);
-  const [kasinskiGroups, setKasinskiGroups] = useState([] as string[]);
-  const [enabledKasiskiGroup, setEneabledKasiskiGroup] = useState('');
-  const colors = [
-    '#e53e3e',
-    '#2f855a',
-    '#2b6cb0',
-    '#6b46c1',
-    '#d53f8c',
-    '#dd6b20',
-    '#285e61',
-    '#319795',
-    '#975a16',
-  ];
-  const colorMap = new Map(kasinskiGroups.map((v, i) => [v, colors[i]]));
+  const [enabledKasiskiGroup, setEnabledKasiskiGroup] = useState('');
+  const [focusPersistent, setFocusPersistent] = useState(false);
 
-  useEffect(() => {
-    console.log(enabledKasiskiGroup);
-  }, [enabledKasiskiGroup]);
-
-  useEffect(() => {
-    const [newKasiskiItems, newKasiskiGroups] = kasiski(text, segmentLenght);
-    setKasinskiItems(newKasiskiItems);
-    setKasinskiGroups(newKasiskiGroups);
-    console.log(newKasiskiItems);
+  const [kasiskiItems, kasiskiGroups] = useMemo(() => {
+    return kasiski(text, segmentLenght);
   }, [text, segmentLenght]);
 
-  const useKasiskiItem = (item: kasiskiItem) => {
-    const groups = item.groups;
-    const defaultColor = (() => {
-      if (groups.length === 1) {
-        return colorMap.get(groups[0]);
-      } else if (groups.length > 1) {
-        return '#4A5568';
-      }
-      return 'black';
-    })();
-    const [color, setColor] = useState(defaultColor);
-    const [enabled, setEnabled] = useState(false);
+  const colorMap = useMemo(() => {
+    const colors = [
+      '#e53e3e',
+      '#38a169',
+      '#2b6cb0',
+      '#805ad5',
+      '#d53f8c',
+      '#dd6b20',
+      '#38b2ac',
+      '#975a16',
+    ];
+    return new Map(kasiskiGroups.map((v, i) => [v.segment, colors[i % colors.length]]));
+  }, [kasiskiGroups]);
 
-    useEffect(() => {
-      for (const group of groups) {
-        if (enabledKasiskiGroup === group) {
-          setEnabled(true);
-          setColor(colorMap.get(group));
-          return;
-        }
-      }
-      // none of it's group were enabled -> needs to be set to the default
-      setEnabled(false);
-      setColor(defaultColor);
-    }, [defaultColor, groups]);
+  useEffect(() => {
+    console.log(colorMap);
+  }, [colorMap]);
 
-    let onFocusEnter = () => {};
-    let onFocusLeave = () => {};
-
-    if (groups.length === 1) {
-      onFocusEnter = () => {
-        setEneabledKasiskiGroup(groups[0]);
-      };
-      onFocusLeave = () => {
-        setEneabledKasiskiGroup('');
-      };
-    }
-
-    return {
-      character: item.character,
-      color: color,
-      enabled: enabled,
-      onFocusEnter: onFocusEnter,
-      onFocusLeave: onFocusLeave,
-    };
+  const value = {
+    segmentLenght,
+    setSegmentLength,
+    kasiskiItems,
+    kasiskiGroups,
+    enabledKasiskiGroup,
+    setEnabledKasiskiGroup,
+    focusPersistent,
+    setFocusPersistent,
+    colorMap,
   };
 
-  interface KasiskiItemProps {
-    kasiskiItem: kasiskiItem;
+  return <KasiskiContext.Provider value={value} {...props} />;
+};
+
+const useKasiskiContext = (): Kasiski => {
+  const context = useContext(KasiskiContext);
+
+  if (!context) {
+    throw new Error('useKasiskiContext must be used inside a KasiskiProvider');
   }
 
-  const KasiskiItem: React.FC<KasiskiItemProps> = ({ kasiskiItem }) => {
-    const { character, color, enabled, onFocusEnter, onFocusLeave } = useKasiskiItem(kasiskiItem);
+  return context;
+};
 
-    const element = (
-      <span
-        style={{ color: color }}
-        onMouseEnter={(e) => {
-          e.preventDefault();
-          onFocusEnter();
-        }}
-        onMouseLeave={(e) => {
-          e.preventDefault();
-          onFocusLeave();
-        }}
-      >
-        {character}
-      </span>
-    );
-    return enabled ? <b>{element}</b> : element;
-  };
+const useKasiskiItem = (item: kasiskiItem) => {
+  const {
+    enabledKasiskiGroup,
+    setEnabledKasiskiGroup,
+    focusPersistent,
+    setFocusPersistent,
+    colorMap,
+  } = useKasiskiContext();
 
-  const KasinskiText = () => {
-    return (
-      <Text style={{ wordWrap: 'break-word', maxWidth: '100%' }}>
-        {kasinskiItems.map((v, i) => (
-          <KasiskiItem
-            key={i} // okay to use index as key as the list is never mutated or reordered
-            kasiskiItem={v}
-          />
-        ))}
-      </Text>
-    );
+  const groups = item.groups;
+  const defaultColor = (() => {
+    if (groups.length === 1) {
+      return colorMap.get(groups[0]);
+    } else if (groups.length > 1) {
+      return '#4a5568'; // gray
+    }
+    return 'black';
+  })();
+  const [color, setColor] = useState(defaultColor);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    for (const group of groups) {
+      if (enabledKasiskiGroup === group) {
+        setEnabled(true);
+        setColor(colorMap.get(group));
+        return;
+      }
+    }
+    // none of it's group were enabled -> needs to be set to the default
+    setEnabled(false);
+    setColor(defaultColor);
+  }, [defaultColor, groups, enabledKasiskiGroup, colorMap]);
+
+  let onFocusEnter = () => {};
+  let onFocusLeave = () => {};
+  let onClick = () => {};
+
+  if (groups.length === 1) {
+    onFocusEnter = () => {
+      focusPersistent || setEnabledKasiskiGroup(groups[0]);
+    };
+    onFocusLeave = () => {
+      focusPersistent || setEnabledKasiskiGroup('');
+    };
+    onClick = () => {
+      if (groups.includes(enabledKasiskiGroup)) {
+        setFocusPersistent(!focusPersistent);
+      }
+    };
+  }
+
+  return {
+    character: item.character,
+    color: color,
+    enabled: enabled,
+    onFocusEnter: onFocusEnter,
+    onFocusLeave: onFocusLeave,
+    onClick: onClick,
   };
+};
+
+export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+  const { setSegmentLength } = useKasiskiContext();
 
   return (
     <Card title='Kasiski Analysis' onClose={onClose}>
@@ -139,4 +157,49 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ text, onClose }) => {
       </VStack>
     </Card>
   );
+};
+
+const KasinskiText = () => {
+  const { kasiskiItems } = useKasiskiContext();
+
+  return (
+    <Text style={{ wordWrap: 'break-word', maxWidth: '100%' }}>
+      {kasiskiItems.map((v, i) => (
+        <KasiskiItem
+          key={i} // okay to use index as key as the list is never mutated or reordered
+          kasiskiItem={v}
+        />
+      ))}
+    </Text>
+  );
+};
+
+interface KasiskiItemProps {
+  kasiskiItem: kasiskiItem;
+}
+
+const KasiskiItem: React.FC<KasiskiItemProps> = ({ kasiskiItem }) => {
+  const { character, color, enabled, onFocusEnter, onFocusLeave, onClick } =
+    useKasiskiItem(kasiskiItem);
+
+  const element = (
+    <span
+      style={{ color: color }}
+      onMouseEnter={(e) => {
+        e.preventDefault();
+        onFocusEnter();
+      }}
+      onMouseLeave={(e) => {
+        e.preventDefault();
+        onFocusLeave();
+      }}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+    >
+      {color === 'black' ? character : <b>{character}</b>}
+    </span>
+  );
+  return enabled ? <span style={{ backgroundColor: '#F6E05E' }}>{element}</span> : element;
 };
