@@ -1,7 +1,9 @@
-import { CeasarDecrypt } from '@/features/ceasar';
-import { SubstitutionDecrypt } from '@/features/substitution';
-import { TableDecrypt } from '@/features/table';
-import { VignereDecrypt } from '@/features/vignere';
+import {
+  CeasarDecrypt,
+  SubstitutionDecrypt,
+  TableDecrypt,
+  VignereDecrypt,
+} from '@/features/ciphers';
 import { DecryptionTools } from '@/types';
 
 interface DecryptionToolSwitchProps {

@@ -1,4 +1,4 @@
-import { ComputeRelativeFrequency } from './frequencyAnalysis';
+import { ComputeRelativeFrequency } from '@/features/analysis/frequency';
 
 export const ComputeFriedmannCharacteristic = (text: string, stride: number): number => {
   if (stride < 1) {

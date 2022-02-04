@@ -1,6 +1,9 @@
-import { FrequencyAnalysis, FriedmannAnalysis, KasiskiAnalysis, TableAnalysis } from '@/components';
+import { FrequencyAnalysis, FriedmannAnalysis, TableAnalysis } from '@/features/analysis';
 import { AnalysisTools } from '@/types';
-import { KasiskiProvider } from './KasiskiAnalysis';
+import {
+  KasiskiAnalysis,
+  KasiskiProvider,
+} from '../features/analysis/kasiski/components/KasiskiAnalysis';
 
 interface AnalysisToolSwitchProps {
   tool: AnalysisTools;

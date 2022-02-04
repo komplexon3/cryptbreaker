@@ -2,7 +2,7 @@ import { VStack, Text, HStack } from '@chakra-ui/react';
 import React, { createContext, useContext, useEffect, useMemo } from 'react';
 import { useState } from 'react';
 import { Card, IntegerInput } from '@/components';
-import { kasiski, kasiskiItem } from '@/utils/kasiskiAnalysis';
+import { kasiski, kasiskiItem } from '../utils/kasiskiAnalysis';
 import { AnalysisProps } from '@/types';
 import { useDecryptionContext } from '@/contexts';
 

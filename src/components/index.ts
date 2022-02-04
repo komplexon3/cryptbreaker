@@ -14,11 +14,6 @@ export * from './TextCard';
 export * from './ProblemCodeModal';
 export * from './ShareProblemCard';
 
-export * from './FrequencyAnalysis';
-export * from './FriedmannAnalysis';
-export * from './KasiskiAnalysis';
-export * from './TableAnalysis';
-
 export * from './AnalysisToolSwitch';
 export * from './AnalysisToolsAndSelect';
 

@@ -11,13 +11,12 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { ComputeStridedRelativeFrequency, useLanguageFromQueryParams } from '@/utils';
-import { Card, IntegerInput } from '@/components';
+import { ComputeStridedRelativeFrequency } from '../utils/frequencyAnalysis';
+import { Card, IntegerInput, PaginationButtons } from '@/components';
 import { AnalysisProps } from '@/types';
 import { problemLanguagesEnableMap } from '@/data/problems/problems';
 import { useEffect, useState } from 'react';
 import { usePagination } from '@/hooks';
-import { PaginationButtons } from './PaginationButtons';
 import { useDecryptionContext } from '@/contexts';
 
 ChartJS.register(
@@ -100,8 +99,7 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   // with dis/enabled languages programatically anymore
   const { cipherText, language } = useDecryptionContext();
 
-  const problemLng = useLanguageFromQueryParams();
-  const enabledMap = problemLanguagesEnableMap(problemLng);
+  const enabledMap = problemLanguagesEnableMap(language);
   const { relativeFrequencies, stride, setStride } = useStridedRelaticeFrequency(cipherText, 1);
   const { page, incPage, decPage } = usePagination(stride);
 
