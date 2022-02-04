@@ -1,3 +1,4 @@
+import { useEncryptionContext } from '@/contexts';
 import { CeasarEncrypt } from '@/features/ceasar';
 import { SubstitutionEncrypt } from '@/features/substitution';
 import { TableEncrypt } from '@/features/table';
@@ -5,28 +6,24 @@ import { VignereEncrypt } from '@/features/vignere';
 import { EncryptionTools } from '@/types';
 
 interface EncryptionToolSwitchProps {
-  text: string;
   tool: EncryptionTools;
-  setCipherText: (s: string) => void;
 }
 
-export const EncryptionToolSwitch: React.FC<EncryptionToolSwitchProps> = ({
-  text,
-  tool,
-  setCipherText,
-}) => {
+export const EncryptionToolSwitch: React.FC<EncryptionToolSwitchProps> = ({ tool }) => {
+  const { plainText, setCipherText } = useEncryptionContext();
+
   switch (tool) {
     case EncryptionTools.CEASAR: {
-      return <CeasarEncrypt text={text} setCipherText={setCipherText} />;
+      return <CeasarEncrypt text={plainText} setCipherText={setCipherText} />;
     }
     case EncryptionTools.SUBSTITUTION: {
-      return <SubstitutionEncrypt text={text} setCipherText={setCipherText} />;
+      return <SubstitutionEncrypt text={plainText} setCipherText={setCipherText} />;
     }
     case EncryptionTools.TABLE: {
-      return <TableEncrypt text={text} setCipherText={setCipherText} />;
+      return <TableEncrypt text={plainText} setCipherText={setCipherText} />;
     }
     case EncryptionTools.VIGNERE: {
-      return <VignereEncrypt text={text} setCipherText={setCipherText} />;
+      return <VignereEncrypt text={plainText} setCipherText={setCipherText} />;
     }
     default:
       throw Error('Invalid encryption tool selection. Cannot be rendered.');
