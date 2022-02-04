@@ -1,5 +1,6 @@
 import { FrequencyAnalysis, FriedmannAnalysis, KasiskiAnalysis, TableAnalysis } from '@/components';
 import { AnalysisTools } from '@/types';
+import { KasiskiProvider } from './KasiskiAnalysis';
 
 interface AnalysisToolSwitchProps {
   text: string;
@@ -16,7 +17,11 @@ export const AnalysisToolSwitch: React.FC<AnalysisToolSwitchProps> = ({ text, to
       return <FriedmannAnalysis text={text} onClose={onClose} />;
     }
     case AnalysisTools.KASISKI: {
-      return <KasiskiAnalysis text={text} onClose={onClose} />;
+      return (
+        <KasiskiProvider>
+          <KasiskiAnalysis text={text} onClose={onClose} />
+        </KasiskiProvider>
+      );
     }
     case AnalysisTools.TABLE: {
       return <TableAnalysis text={text} onClose={onClose} />;
