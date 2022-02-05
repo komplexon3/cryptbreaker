@@ -1,20 +1,23 @@
-import { Box, Container, Stack, Text, Image } from '@chakra-ui/react';
-import ethLogo from '@/assets/logos/ethz_logo_black.svg';
-import dInfkLogo from '@/assets/logos/eth_dinfk_logo_pos.png';
+import { Box, Container, Image, Stack, Text } from '@chakra-ui/react';
+
+const ethLogoPath = '/assets/logos/ethz_logo_black.svg';
+const inkfLogoPath = '/assets/logos/eth_dinfk_logo_pos.png';
+const abzLogoPath = '/assets/logos/abz_web_logo.png';
 
 export const Footer = () => {
   return (
     <Box as='footer' marginTop='10' bg={'gray.50'} color={'gray.700'}>
       <Container
         as={Stack}
-        py={4}
+        py={6}
         direction={{ base: 'column', md: 'row' }}
-        spacing={4}
+        spacing={8}
         justify={{ base: 'center' }}
         align={{ base: 'center', md: 'center' }}
       >
-        <Image src={ethLogo} width={'10em'} />
-        <Image src={dInfkLogo} width={'10em'} />
+        <Image src={ethLogoPath} width={'10em'} />
+        <Image src={abzLogoPath} width={'10em'} />
+        <Image src={inkfLogoPath} width={'10em'} />
       </Container>
       <Box borderTopWidth={1} borderStyle={'solid'} borderColor={'gray.200'}>
         <Container

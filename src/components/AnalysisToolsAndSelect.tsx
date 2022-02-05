@@ -1,5 +1,5 @@
-import { AddButton, Card, AnalysisToolSwitch } from '@/components';
-import { useState } from 'react';
+import { AddButton, AnalysisToolSwitch, Card } from '@/components';
+import { AnalysisTools } from '@/types';
 import {
   Button,
   Center,
@@ -12,10 +12,9 @@ import {
   SimpleGrid,
   useDisclosure,
 } from '@chakra-ui/react';
-import { AnalysisTools } from '@/types';
+import { useState } from 'react';
 
 interface AnalysisToolsAndSelectProps {
-  text: string;
   buttonBackgroundColor?: string;
   buttonTextColor?: string;
   iconBackgroundColor?: string;
@@ -23,7 +22,6 @@ interface AnalysisToolsAndSelectProps {
 }
 
 export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
-  text,
   buttonBackgroundColor,
   buttonTextColor,
   iconBackgroundColor,
@@ -107,7 +105,6 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
           return (
             <AnalysisToolSwitch
               key={k}
-              text={text}
               tool={v}
               onClose={() => {
                 removeTool(k);

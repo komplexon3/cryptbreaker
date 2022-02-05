@@ -1,8 +1,7 @@
-import { Button, HStack, Text, useClipboard, VStack } from '@chakra-ui/react';
-
 import { Card } from '@/components';
-import { encParam, problemPath } from '@/utils';
 import { ProblemLanguages } from '@/data';
+import { encParam, problemPath } from '@/utils';
+import { Button, HStack, Text, useClipboard, VStack } from '@chakra-ui/react';
 
 interface ShareProblemCardProps {
   cipherText: string;

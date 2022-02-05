@@ -1,9 +1,8 @@
-import { ProblemTypes } from '@/data/problems';
+import { ProblemTypes, useProblemsOfCipher } from '@/data';
 import { problemPath } from '../utils';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { MenuCard } from '@/components';
-import { useProblemsOfCipher } from '@/data/problems/problems';
 
 export const CipherProblems: React.FC = () => {
   let { cipher } = useParams();

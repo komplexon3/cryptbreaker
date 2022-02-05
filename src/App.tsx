@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import { CipherProblems, DecryptionPage, EncryptionPage, Home } from '@/routes';
 import { Layout } from '@/components/Layout';
 import '@/i18n';
+import { CipherProblems, DecryptionPage, EncryptionPage, Home } from '@/routes';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
 
 function App() {
   return (

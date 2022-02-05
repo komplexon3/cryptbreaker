@@ -1,7 +1,6 @@
+import { Card } from '@/components';
 import { Textarea } from '@chakra-ui/react';
 import { ChangeEventHandler } from 'react';
-
-import { Card } from '@/components';
 
 interface TextEntryCardProps {
   title: string;

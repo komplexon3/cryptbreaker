@@ -1,4 +1,4 @@
-import { Problem, ProblemLanguages, ProblemTypes } from './types';
+import { Problem, ProblemLanguages, ProblemTypes } from '../types';
 
 export const substitutionProblems: { [id: string]: Problem[] } = {
   en: [
