@@ -1,4 +1,4 @@
-import { decParam, useLanguageFromQueryParams } from '@/utils';
+import { decParam } from '@/utils';
 import { Container, Stack } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -9,6 +9,7 @@ import {
   TextCard,
 } from '@/components';
 import { DecryptionProvider, useDecryptionContext } from '@/contexts';
+import { useLanguageFromQueryParams } from '@/hooks';
 
 export const DecryptionPage: React.FC = () => {
   const DcPage = () => {

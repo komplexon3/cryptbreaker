@@ -14,7 +14,7 @@ import {
 import { ComputeStridedRelativeFrequency } from '../utils';
 import { Card, IntegerInput, PaginationButtons } from '@/components';
 import { AnalysisProps } from '@/types';
-import { problemLanguagesEnableMap } from '@/data/problems/problems';
+import { problemLanguagesEnableMap } from '@/data';
 import { useEffect, useState } from 'react';
 import { usePagination } from '@/hooks';
 import { useDecryptionContext } from '@/contexts';

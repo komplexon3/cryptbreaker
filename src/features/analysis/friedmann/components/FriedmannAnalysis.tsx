@@ -13,7 +13,7 @@ import {
 import { Card } from '@/components';
 import { ComputeFriedmannCharacteristic } from '../utils';
 import { AnalysisProps } from '@/types';
-import { problemLanguagesEnableMap } from '@/data/problems/problems';
+import { problemLanguagesEnableMap } from '@/data';
 import { useDecryptionContext } from '@/contexts';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);

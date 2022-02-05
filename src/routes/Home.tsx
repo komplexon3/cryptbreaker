@@ -1,10 +1,9 @@
 import { problemPath } from '../utils';
 import { Center, Heading, SimpleGrid, Stack, useDisclosure } from '@chakra-ui/react';
-import { ProblemTypes } from '@/data/problems';
+import { ProblemTypes, useRandomProblem } from '@/data';
 import { useNavigate } from 'react-router-dom';
 import { MenuCard, ProblemCodeModal } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { useRandomProblem } from '@/data/problems/problems';
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();

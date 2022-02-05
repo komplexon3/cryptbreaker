@@ -1,6 +1,4 @@
 import { ProblemLanguages } from '@/data';
-import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
 
 export const isLetter = (c: string) => {
   if (c.length !== 1) {
@@ -22,18 +20,6 @@ export const encParam = (s: string): string => {
 
 export const decParam = (s: string): string => {
   return window.atob(decodeURIComponent(s));
-};
-
-export const useQueryParams = () => {
-  const { search } = useLocation();
-  return useMemo(() => {
-    return new URLSearchParams(search);
-  }, [search]);
-};
-
-export const useLanguageFromQueryParams = () => {
-  const params = useQueryParams();
-  return (params.get('lng') && (params.get('lng') as ProblemLanguages)) || ProblemLanguages.EN;
 };
 
 export const problemPath = (cipherText?: string, language?: ProblemLanguages) =>
