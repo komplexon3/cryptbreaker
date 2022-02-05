@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Card } from '@/components';
-import { ComputeFriedmannCharacteristic } from '@/utils';
+import { ComputeFriedmannCharacteristic } from '../utils';
 import { AnalysisProps } from '@/types';
 import { problemLanguagesEnableMap } from '@/data/problems/problems';
 import { useDecryptionContext } from '@/contexts';

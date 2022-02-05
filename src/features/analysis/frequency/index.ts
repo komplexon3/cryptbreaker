@@ -1,2 +1,2 @@
 export { FrequencyAnalysis } from './components/FrequencyAnalysis';
-export { ComputeRelativeFrequency } from './utils/frequencyAnalysis';
+export { ComputeRelativeFrequency } from './utils';

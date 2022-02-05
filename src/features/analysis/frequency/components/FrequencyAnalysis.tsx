@@ -11,7 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { ComputeStridedRelativeFrequency } from '../utils/frequencyAnalysis';
+import { ComputeStridedRelativeFrequency } from '../utils';
 import { Card, IntegerInput, PaginationButtons } from '@/components';
 import { AnalysisProps } from '@/types';
 import { problemLanguagesEnableMap } from '@/data/problems/problems';
