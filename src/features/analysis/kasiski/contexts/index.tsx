@@ -1,5 +1,6 @@
 import { useDecryptionContext } from '@/contexts';
 import React, { createContext, useContext, useMemo, useState } from 'react';
+import { useDebugValue } from 'react';
 import { kasiskiGroup, kasiskiItem } from '../types';
 import { kasiski } from '../utils';
 
@@ -13,7 +14,7 @@ interface Kasiski {
   selectedKasikiItem: kasiskiItem;
   setSelectedKasikiItem: React.Dispatch<React.SetStateAction<kasiskiItem | undefined>>;
   colorMap: Map<string, string>;
-  kasiskiGroupsToPositions: Map<string, number[]>;
+  kasiskiGroupsToPositionsMap: Map<string, number[]>;
 }
 
 const KasiskiContext = createContext<Kasiski | undefined>(undefined!);

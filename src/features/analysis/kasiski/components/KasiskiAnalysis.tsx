@@ -24,8 +24,8 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
               }}
             />
           </HStack>
-          <KasiskiPopover />
           <KasinskiText />
+          <KasiskiPopover />
           <Text color={'gray.600'}>Note: Grey characters are part of multiple segments.</Text>
         </VStack>
       </Card>
