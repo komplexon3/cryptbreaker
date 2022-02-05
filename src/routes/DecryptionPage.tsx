@@ -1,4 +1,4 @@
-import { decParam } from '@/utils';
+import { cleanText, decParam } from '@/utils';
 import { Container, Stack } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -38,7 +38,9 @@ export const DecryptionPage: React.FC = () => {
               title='Cipher Text'
               onChange={(e) => {
                 e.preventDefault();
-                setCipherText(e.target.value);
+                const cleanedText = cleanText(e.target.value).toUpperCase();
+                e.target.value = cleanedText;
+                setCipherText(cleanedText);
               }}
               placeholderText='Enter cipher text...'
             />
