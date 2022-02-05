@@ -1,23 +1,23 @@
-import { HStack, VStack, Text } from '@chakra-ui/react';
-import { Bar } from 'react-chartjs-2';
+import { Card, IntegerInput, PaginationButtons } from '@/components';
+import { useDecryptionContext } from '@/contexts';
+import { problemLanguagesEnableMap } from '@/data';
+import { usePagination } from '@/hooks';
+import { AnalysisProps } from '@/types';
+import { HStack, Text, VStack } from '@chakra-ui/react';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
-  PointElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
 } from 'chart.js';
-import { ComputeStridedRelativeFrequency } from '../utils';
-import { Card, IntegerInput, PaginationButtons } from '@/components';
-import { AnalysisProps } from '@/types';
-import { problemLanguagesEnableMap } from '@/data';
 import { useEffect, useState } from 'react';
-import { usePagination } from '@/hooks';
-import { useDecryptionContext } from '@/contexts';
+import { Bar } from 'react-chartjs-2';
+import { ComputeStridedRelativeFrequency } from '../utils';
 
 ChartJS.register(
   CategoryScale,

@@ -1,6 +1,6 @@
 import { Card } from '@/components';
-import { vignereEncrypt } from '../utils/vignere';
 import { EncryptProps } from '@/types';
+import { vignereEncrypt } from '../utils/vignere';
 import { VignereKeyInput } from './VignereKeyInput';
 
 export const VignereEncrypt: React.FC<EncryptProps> = ({ text, setCipherText, onClose }) => {

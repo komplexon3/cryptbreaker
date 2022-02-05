@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   Button,
   FormControl,
@@ -14,6 +13,7 @@ import {
   ModalOverlay,
   VStack,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
 interface ProblemCodeModalProps {
   isOpen: boolean;

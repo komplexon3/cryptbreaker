@@ -1,11 +1,11 @@
 import { alphabet } from '@/utils';
 import {
-  Input,
-  InputLeftAddon,
-  InputGroup,
+  Center,
   FormControl,
   FormErrorMessage,
-  Center,
+  Input,
+  InputGroup,
+  InputLeftAddon,
   SimpleGrid,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';

@@ -1,5 +1,5 @@
-import { HStack, Text } from '@chakra-ui/react';
 import { IntegerInput } from '@/components';
+import { HStack, Text } from '@chakra-ui/react';
 
 interface CeasarKeyInputProps {
   onChange: (v: number) => void;

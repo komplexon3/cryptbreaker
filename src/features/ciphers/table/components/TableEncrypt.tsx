@@ -1,8 +1,8 @@
+import { Card, TableDimensionInput } from '@/components';
+import { EncryptProps } from '@/types';
 import { VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { Card, TableDimensionInput } from '@/components';
 import { tableEncrypt } from '../utils/table';
-import { EncryptProps } from '@/types';
 
 export const TableEncrypt: React.FC<EncryptProps> = ({ text, setCipherText, onClose }) => {
   const [rows, setRows] = useState(5);

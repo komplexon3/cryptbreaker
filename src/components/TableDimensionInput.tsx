@@ -1,5 +1,5 @@
-import { HStack, VStack, Text } from '@chakra-ui/react';
 import { IntegerInput } from '@/components';
+import { HStack, Text, VStack } from '@chakra-ui/react';
 
 interface TableDimensionInputProps {
   minRowsValue?: number;

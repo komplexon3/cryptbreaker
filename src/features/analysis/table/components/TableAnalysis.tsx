@@ -1,8 +1,8 @@
 import { Card, TableDimensionInput } from '@/components';
-import { Table, Tbody, Tr, Td, VStack } from '@chakra-ui/react';
-import { useState } from 'react';
-import { AnalysisProps } from '@/types';
 import { useDecryptionContext } from '@/contexts';
+import { AnalysisProps } from '@/types';
+import { Table, Tbody, Td, Tr, VStack } from '@chakra-ui/react';
+import { useState } from 'react';
 
 const buildTable = (text: string, rows: number, columns: number) => {
   if (columns < 1) {

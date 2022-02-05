@@ -1,7 +1,7 @@
-import { VStack, Text, HStack } from '@chakra-ui/react';
-import React from 'react';
 import { Card, IntegerInput } from '@/components';
 import { AnalysisProps } from '@/types';
+import { HStack, Text, VStack } from '@chakra-ui/react';
+import React from 'react';
 import { KasiskiProvider, useKasiskiContext } from '../contexts';
 import { KasinskiText } from './KasiskiText';
 

@@ -1,4 +1,4 @@
-import { FormControl, FormErrorMessage, HStack, VStack, Input, Text } from '@chakra-ui/react';
+import { FormControl, FormErrorMessage, HStack, Input, Text, VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { verifyVignereKey } from '../utils/vignere';
 

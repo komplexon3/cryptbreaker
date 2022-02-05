@@ -1,6 +1,5 @@
 import { alphabet } from '@/utils';
-import { verifyVignereKey } from './vignere';
-import { vignereDecrypt, vignereEncrypt } from './vignere';
+import { verifyVignereKey, vignereDecrypt, vignereEncrypt } from './vignere';
 
 const getRandomInt = (min: number, max: number) => Math.floor(min + Math.random() * (max + 1));
 const getRandomString = (len: number) =>

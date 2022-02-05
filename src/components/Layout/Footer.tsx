@@ -1,4 +1,4 @@
-import { Box, Container, Stack, Text, Image } from '@chakra-ui/react';
+import { Box, Container, Image, Stack, Text } from '@chakra-ui/react';
 
 const ethLogoPath = '/assets/logos/ethz_logo_black.svg';
 const inkfLogoPath = '/assets/logos/eth_dinfk_logo_pos.png';

@@ -1,5 +1,4 @@
 import { Problem, ProblemLanguages, ProblemTypes } from '../types';
-
 import { ceasarProblems } from './ceasarProblems';
 import { substitutionProblems } from './substitutionProblems';
 import { tableProblems } from './tableProblems';

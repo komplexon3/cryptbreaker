@@ -1,20 +1,20 @@
-import { Button, HStack, Input, useNumberInput, VStack, Text } from '@chakra-ui/react';
-import { Line } from 'react-chartjs-2';
+import { Card } from '@/components';
+import { useDecryptionContext } from '@/contexts';
+import { problemLanguagesEnableMap } from '@/data';
+import { AnalysisProps } from '@/types';
+import { Button, HStack, Input, Text, useNumberInput, VStack } from '@chakra-ui/react';
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
 } from 'chart.js';
-import { Card } from '@/components';
+import { Line } from 'react-chartjs-2';
 import { ComputeFriedmannCharacteristic } from '../utils';
-import { AnalysisProps } from '@/types';
-import { problemLanguagesEnableMap } from '@/data';
-import { useDecryptionContext } from '@/contexts';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 

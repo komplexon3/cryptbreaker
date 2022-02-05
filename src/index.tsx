@@ -1,12 +1,12 @@
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import { Suspense } from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import theme from './theme';
+import App from './App';
 import i18n from './i18n';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import theme from './theme';
 
 ReactDOM.render(
   <ChakraProvider theme={theme}>
