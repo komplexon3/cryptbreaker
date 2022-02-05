@@ -1,18 +1,20 @@
 import { useDecryptionContext } from '@/contexts';
-import { createContext, useContext, useMemo, useState } from 'react';
-import { kasiskiItem } from '../types';
+import React, { createContext, useContext, useMemo, useState } from 'react';
+import { useDebugValue } from 'react';
+import { kasiskiGroup, kasiskiItem } from '../types';
 import { kasiski } from '../utils';
 
 interface Kasiski {
   segmentLenght: number;
   setSegmentLength: React.Dispatch<React.SetStateAction<number>>;
   kasiskiItems: kasiskiItem[];
-  kasiskiGroups: string[];
+  kasiskiGroups: kasiskiGroup[];
   enabledKasiskiGroup: string;
   setEnabledKasiskiGroup: React.Dispatch<React.SetStateAction<string>>;
-  focusPersistent: boolean;
-  setFocusPersistent: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedKasikiItem: kasiskiItem;
+  setSelectedKasikiItem: React.Dispatch<React.SetStateAction<kasiskiItem | undefined>>;
   colorMap: Map<string, string>;
+  kasiskiGroupsToPositionsMap: Map<string, number[]>;
 }
 
 const KasiskiContext = createContext<Kasiski | undefined>(undefined!);
@@ -21,13 +23,13 @@ export const KasiskiProvider = (props: any) => {
   const { cipherText: text } = useDecryptionContext();
   const [segmentLenght, setSegmentLength] = useState(2);
   const [enabledKasiskiGroup, setEnabledKasiskiGroup] = useState('');
-  const [focusPersistent, setFocusPersistent] = useState(false);
+  const [selectedKasikiItem, setSelectedKasikiItem] = useState<kasiskiItem | undefined>(undefined);
 
   const [kasiskiItems, kasiskiGroups] = useMemo(() => {
     return kasiski(text, segmentLenght);
   }, [text, segmentLenght]);
 
-  const colorMap = useMemo(() => {
+  const colorMap: Map<string, string> = useMemo(() => {
     const colors = [
       '#e53e3e',
       '#38a169',
@@ -41,6 +43,11 @@ export const KasiskiProvider = (props: any) => {
     return new Map(kasiskiGroups.map((v, i) => [v.segment, colors[i % colors.length]]));
   }, [kasiskiGroups]);
 
+  const kasiskiGroupsToPositionsMap: Map<string, number[]> = useMemo(
+    () => new Map(kasiskiGroups.map((v) => [v.segment, v.positions])),
+    [kasiskiGroups]
+  );
+
   const value = {
     segmentLenght,
     setSegmentLength,
@@ -48,9 +55,10 @@ export const KasiskiProvider = (props: any) => {
     kasiskiGroups,
     enabledKasiskiGroup,
     setEnabledKasiskiGroup,
-    focusPersistent,
-    setFocusPersistent,
+    selectedKasikiItem,
+    setSelectedKasikiItem,
     colorMap,
+    kasiskiGroupsToPositionsMap,
   };
 
   return <KasiskiContext.Provider value={value} {...props} />;

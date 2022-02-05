@@ -54,7 +54,7 @@ export const findAllMatchesOfLength = (s: string, segLen: number): Map<string, n
   const matches = new Map<string, number[]>();
 
   for (let i = 0; i + segLen < s.length; i++) {
-    const searchString = s.substring(i, i + segLen);
+    const searchString = s.substring(i, i + segLen).toLocaleUpperCase();
     if (/[a-z]*\s[a-z]*/.test(searchString)) {
       continue;
     }

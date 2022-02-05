@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useKasiskiContext } from '../contexts';
 import { kasiskiItem } from '../types';
 
@@ -6,8 +6,8 @@ export const useKasiskiItem = (item: kasiskiItem) => {
   const {
     enabledKasiskiGroup,
     setEnabledKasiskiGroup,
-    focusPersistent,
-    setFocusPersistent,
+    selectedKasikiItem,
+    setSelectedKasikiItem,
     colorMap,
   } = useKasiskiContext();
 
@@ -40,17 +40,22 @@ export const useKasiskiItem = (item: kasiskiItem) => {
   let onFocusLeave = () => {};
   let onClick = () => {};
 
+  const ignoreFocus: boolean = useMemo(() => !!selectedKasikiItem, [selectedKasikiItem]);
+
   if (groups.length === 1) {
     onFocusEnter = () => {
-      focusPersistent || setEnabledKasiskiGroup(groups[0]);
+      ignoreFocus || setEnabledKasiskiGroup(groups[0]);
     };
     onFocusLeave = () => {
-      focusPersistent || setEnabledKasiskiGroup('');
+      ignoreFocus || setEnabledKasiskiGroup('');
     };
     onClick = () => {
-      if (groups.includes(enabledKasiskiGroup)) {
-        setFocusPersistent(!focusPersistent);
-      }
+      setSelectedKasikiItem(item);
+      setEnabledKasiskiGroup(groups[0]);
+    };
+  } else if (groups.length > 1) {
+    onClick = () => {
+      setSelectedKasikiItem(item);
     };
   }
 
