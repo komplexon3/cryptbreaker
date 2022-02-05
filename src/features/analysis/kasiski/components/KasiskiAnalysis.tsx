@@ -8,7 +8,7 @@ import { KasinskiText } from './KasiskiText';
 
 export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   const KA = () => {
-    const { setSegmentLength } = useKasiskiContext();
+    const { segmentLenght, setSegmentLength } = useKasiskiContext();
 
     return (
       <Card title='Kasiski Analysis' onClose={onClose}>
@@ -18,7 +18,7 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
             <IntegerInput
               minValue={2}
               maxValue={10}
-              defaultValue={2}
+              value={segmentLenght}
               onValueChange={(v) => {
                 setSegmentLength(v);
               }}
