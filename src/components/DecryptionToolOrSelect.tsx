@@ -1,6 +1,5 @@
 import { AddButton, Card, DecryptionToolSwitch } from '@/components';
 import { DecryptionTools } from '@/types';
-import { useEffect, useState } from 'react';
 import {
   Button,
   Center,
@@ -13,6 +12,7 @@ import {
   SimpleGrid,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
 interface DecryptionToolOrSelectProps {
   text: string;

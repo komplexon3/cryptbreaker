@@ -1,6 +1,6 @@
+import { LanguageSwitcher } from '@/components';
 import { Center, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { LanguageSwitcher } from '@/components';
 
 export const Header = () => {
   return (

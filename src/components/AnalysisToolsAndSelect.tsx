@@ -1,5 +1,5 @@
-import { AddButton, Card, AnalysisToolSwitch } from '@/components';
-import { useState } from 'react';
+import { AddButton, AnalysisToolSwitch, Card } from '@/components';
+import { AnalysisTools } from '@/types';
 import {
   Button,
   Center,
@@ -12,7 +12,7 @@ import {
   SimpleGrid,
   useDisclosure,
 } from '@chakra-ui/react';
-import { AnalysisTools } from '@/types';
+import { useState } from 'react';
 
 interface AnalysisToolsAndSelectProps {
   buttonBackgroundColor?: string;

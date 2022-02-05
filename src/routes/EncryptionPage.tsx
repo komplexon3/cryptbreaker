@@ -4,7 +4,7 @@ import { EncryptionToolSwitch, ShareProblemCard, TextCard, TextEntryCard } from 
 import { EncryptionTools } from '@/types';
 import { ProblemLanguages } from '@/data';
 import { LanguageSelector } from '@/components/LanguageSelector';
-import { useLng } from '@/i18n';
+import { useLng } from '@/hooks';
 import { EncryptionProvider, useEncryptionContext } from '@/contexts';
 
 // TODO: write code that cleans text (e.g. ä -> ae)

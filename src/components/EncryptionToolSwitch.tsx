@@ -1,8 +1,10 @@
 import { useEncryptionContext } from '@/contexts';
-import { CeasarEncrypt } from '@/features/ceasar';
-import { SubstitutionEncrypt } from '@/features/substitution';
-import { TableEncrypt } from '@/features/table';
-import { VignereEncrypt } from '@/features/vignere';
+import {
+  CeasarEncrypt,
+  SubstitutionEncrypt,
+  TableEncrypt,
+  VignereEncrypt,
+} from '@/features/ciphers';
 import { EncryptionTools } from '@/types';
 
 interface EncryptionToolSwitchProps {

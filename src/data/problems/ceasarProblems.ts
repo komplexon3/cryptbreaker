@@ -1,4 +1,4 @@
-import { Problem, ProblemLanguages, ProblemTypes } from './types';
+import { Problem, ProblemLanguages, ProblemTypes } from '../types';
 
 export const ceasarProblems: { [id: string]: Problem[] } = {
   en: [
