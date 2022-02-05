@@ -3,6 +3,7 @@ import { AnalysisProps } from '@/types';
 import { HStack, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { KasiskiProvider, useKasiskiContext } from '../contexts';
+import { KasiskiPopover } from './KasiskiPopover';
 import { KasinskiText } from './KasiskiText';
 
 export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
@@ -23,6 +24,7 @@ export const KasiskiAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
               }}
             />
           </HStack>
+          <KasiskiPopover />
           <KasinskiText />
           <Text color={'gray.600'}>Note: Grey characters are part of multiple segments.</Text>
         </VStack>
