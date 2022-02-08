@@ -1,4 +1,4 @@
-import { alphabet } from '@/utils';
+import { alphabet } from '../../../../utils/alphabet.js';
 
 /**
  * Utility function selecting an arbitrary character out of

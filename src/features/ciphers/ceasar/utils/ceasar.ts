@@ -1,4 +1,4 @@
-import { isLetter } from '@/utils';
+import { isLetter } from '../../../../utils/utils.js';
 
 export const ceasarEncrypt = (plainText: string, shiftValue: number) => {
   return plainText
