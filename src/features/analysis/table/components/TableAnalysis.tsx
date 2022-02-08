@@ -1,6 +1,7 @@
 import { Card, TableDimensionInput } from '@/components';
 import { useDecryptionContext } from '@/contexts';
 import { AnalysisProps } from '@/types';
+import { acceptedTableDimensions } from '@/utils';
 import { Table, Tbody, Td, Tr, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 
@@ -36,18 +37,21 @@ const buildTableRow = (textRow: string) => {
 
 export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   const { cipherText } = useDecryptionContext();
+  const { rowsMin, rowsMax, columnsMin, columnsMax } = acceptedTableDimensions(cipherText.length);
 
-  const maxValue = cipherText.length / 2;
-
-  const [rows, setRows] = useState(5);
-  const [columns, setColumns] = useState(5);
+  const [rows, setRows] = useState(rowsMin);
+  const [columns, setColumns] = useState(columnsMin);
 
   return (
     <Card title='Table Analysis' onClose={onClose}>
       <VStack>
         <TableDimensionInput
-          maxRowsValue={maxValue}
-          maxColumnsValue={maxValue}
+          minRowsValue={rowsMin}
+          maxRowsValue={rowsMax}
+          defaultRowsValue={rowsMin}
+          minColumnsValue={columnsMin}
+          maxColumnsValue={columnsMax}
+          defaultColumnsValue={columnsMin}
           onRowsValueChange={(v) => setRows(v)}
           onColumnsValueChange={(v) => setColumns(v)}
         />

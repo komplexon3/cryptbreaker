@@ -24,6 +24,14 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
     inputMode: 'numeric',
     pattern: '[0-9]*',
     onChange: (_, valueAsNumber) => {
+      console.log(valueAsNumber);
+      if (maxValue && valueAsNumber > maxValue) {
+        valueAsNumber = maxValue;
+      } else if (minValue && valueAsNumber < minValue) {
+        valueAsNumber = minValue;
+      } else if (!valueAsNumber) {
+        valueAsNumber = minValue ?? 0;
+      }
       onValueChange && onValueChange(valueAsNumber);
     },
     value: value,
