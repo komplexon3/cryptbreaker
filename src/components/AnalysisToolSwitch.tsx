@@ -1,6 +1,11 @@
-import { FrequencyAnalysis, FriedmannAnalysis, TableAnalysis } from '@/features/analysis';
+import {
+  FrequencyAnalysis,
+  FriedmannAnalysis,
+  KasiskiAnalysis,
+  SubstitutionAnalysis,
+  TableAnalysis,
+} from '@/features/analysis';
 import { AnalysisTools } from '@/types';
-import { KasiskiAnalysis } from '../features/analysis/kasiski/components/KasiskiAnalysis';
 
 interface AnalysisToolSwitchProps {
   tool: AnalysisTools;
@@ -20,6 +25,9 @@ export const AnalysisToolSwitch: React.FC<AnalysisToolSwitchProps> = ({ tool, on
     }
     case AnalysisTools.TABLE: {
       return <TableAnalysis onClose={onClose} />;
+    }
+    case AnalysisTools.SUBSTITUTION: {
+      return <SubstitutionAnalysis onClose={onClose} />;
     }
     default:
       throw Error('Invalid analysis tool selection. Cannot be rendered.');
