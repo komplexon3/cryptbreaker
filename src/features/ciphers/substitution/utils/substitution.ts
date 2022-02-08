@@ -1,5 +1,4 @@
-import { isLetter } from '../../../../utils/utils.js';
-import { alphabet } from '../../../../utils/alphabet.js';
+import { alphabet, isLetter } from '@/utils';
 
 export const substitutionEncrypt = (plainText: string, substitutionKey: string): string => {
   if (!verifySubstitutionKey(substitutionKey)) {
