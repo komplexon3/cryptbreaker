@@ -28,7 +28,7 @@ const buildTableRow = (textRow: string) => {
   return (
     <Tr>
       {textRow.split('').map((c) => (
-        <Td css={{ textAlign: 'center' }}>{c}</Td>
+        <Td css={{ textAlign: 'center', fontFamily: 'monospace' }}>{c}</Td>
       ))}
     </Tr>
   );
