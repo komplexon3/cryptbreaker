@@ -1,27 +1,38 @@
 import { Card, TableDimensionInput } from '@/components';
 import { EncryptProps } from '@/types';
-import { VStack } from '@chakra-ui/react';
+import { VStack, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { tableEncrypt } from '../utils/table';
+import { acceptedTableDimensions, tableEncrypt } from '../utils/table';
 
 export const TableEncrypt: React.FC<EncryptProps> = ({ text, setCipherText, onClose }) => {
-  const [rows, setRows] = useState(5);
-  const [columns, setColumns] = useState(5);
-  const maxValue = text.length / 2;
+  const { rowsMin, rowsMax, columnsMin, columnsMax } = acceptedTableDimensions(text.length);
+  const [rows, setRows] = useState(rowsMin);
+  const [columns, setColumns] = useState(columnsMin);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    setCipherText(tableEncrypt(text, rows, columns));
+    if (rows * columns < text.length) {
+      setError('Dimensions too small to fit the entire text.');
+    } else {
+      setError('');
+      setCipherText(tableEncrypt(text, rows, columns));
+    }
   }, [rows, columns, text, setCipherText]);
 
   return (
     <Card title='Encrypt with table' onClose={onClose}>
       <VStack>
         <TableDimensionInput
-          maxRowsValue={maxValue}
-          maxColumnsValue={maxValue}
+          minRowsValue={rowsMin}
+          maxRowsValue={rowsMax}
+          defaultRowsValue={rowsMin}
+          minColumnsValue={columnsMin}
+          maxColumnsValue={columnsMax}
+          defaultColumnsValue={columnsMin}
           onRowsValueChange={(v) => setRows(v)}
           onColumnsValueChange={(v) => setColumns(v)}
         />
+        {error !== '' && <Text color='red'>{error}</Text>}
       </VStack>
     </Card>
   );
