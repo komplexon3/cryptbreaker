@@ -15,22 +15,22 @@ describe('findAllMatchesOfLength', () => {
   test('basic test', () => {
     expect(findAllMatchesOfLength('abcaaaabc', 3)).toStrictEqual(
       new Map([
-        ['abc', [0, 6]],
-        ['aaa', [3, 4]],
+        ['ABC', [0, 6]],
+        ['AAA', [3, 4]],
       ])
     );
     expect(findAllMatchesOfLength('abcaaaabc', 2)).toStrictEqual(
       new Map([
-        ['aa', [3, 4, 5]],
-        ['ab', [0, 6]],
-        ['bc', [1, 7]],
+        ['AA', [3, 4, 5]],
+        ['AB', [0, 6]],
+        ['BC', [1, 7]],
       ])
     );
     expect(findAllMatchesOfLength('abcaaaabc', 1)).toStrictEqual(
       new Map([
-        ['a', [0, 3, 4, 5, 6]],
-        ['b', [1, 7]],
-        ['c', [2, 8]],
+        ['A', [0, 3, 4, 5, 6]],
+        ['B', [1, 7]],
+        ['C', [2, 8]],
       ])
     );
   });
@@ -47,52 +47,52 @@ describe('kasiski', () => {
         {
           character: 'a',
           index: 0,
-          groups: ['abc'],
+          groups: ['ABC'],
         },
         {
           character: 'b',
           index: 1,
-          groups: ['abc'],
+          groups: ['ABC'],
         },
         {
           character: 'c',
           index: 2,
-          groups: ['abc'],
+          groups: ['ABC'],
         },
         {
           character: 'a',
           index: 3,
-          groups: ['aaa'],
+          groups: ['AAA'],
         },
         {
           character: 'a',
           index: 4,
-          groups: ['aaa'],
+          groups: ['AAA'],
         },
         {
           character: 'a',
           index: 5,
-          groups: ['aaa'],
+          groups: ['AAA'],
         },
         {
           character: 'a',
           index: 6,
-          groups: ['abc', 'aaa'],
+          groups: ['ABC', 'AAA'],
         },
         {
           character: 'b',
           index: 7,
-          groups: ['abc'],
+          groups: ['ABC'],
         },
         {
           character: 'c',
           index: 8,
-          groups: ['abc'],
+          groups: ['ABC'],
         },
       ],
       [
-        { segment: 'abc', positions: [0, 6] },
-        { segment: 'aaa', positions: [3, 4] },
+        { segment: 'ABC', positions: [0, 6] },
+        { segment: 'AAA', positions: [3, 4] },
       ],
     ]);
     expect(kasiski('abcaaaabc', 2)).toEqual([
@@ -100,53 +100,53 @@ describe('kasiski', () => {
         {
           character: 'a',
           index: 0,
-          groups: ['ab'],
+          groups: ['AB'],
         },
         {
           character: 'b',
           index: 1,
-          groups: ['ab', 'bc'],
+          groups: ['AB', 'BC'],
         },
         {
           character: 'c',
           index: 2,
-          groups: ['bc'],
+          groups: ['BC'],
         },
         {
           character: 'a',
           index: 3,
-          groups: ['aa'],
+          groups: ['AA'],
         },
         {
           character: 'a',
           index: 4,
-          groups: ['aa'],
+          groups: ['AA'],
         },
         {
           character: 'a',
           index: 5,
-          groups: ['aa'],
+          groups: ['AA'],
         },
         {
           character: 'a',
           index: 6,
-          groups: ['ab', 'aa'],
+          groups: ['AB', 'AA'],
         },
         {
           character: 'b',
           index: 7,
-          groups: ['ab', 'bc'],
+          groups: ['AB', 'BC'],
         },
         {
           character: 'c',
           index: 8,
-          groups: ['bc'],
+          groups: ['BC'],
         },
       ],
       [
-        { segment: 'ab', positions: [0, 6] },
-        { segment: 'bc', positions: [1, 7] },
-        { segment: 'aa', positions: [3, 4, 5] },
+        { segment: 'AB', positions: [0, 6] },
+        { segment: 'BC', positions: [1, 7] },
+        { segment: 'AA', positions: [3, 4, 5] },
       ],
     ]);
     expect(kasiski('abcaaaabc', 1)).toStrictEqual([
@@ -154,53 +154,53 @@ describe('kasiski', () => {
         {
           character: 'a',
           index: 0,
-          groups: ['a'],
+          groups: ['A'],
         },
         {
           character: 'b',
           index: 1,
-          groups: ['b'],
+          groups: ['B'],
         },
         {
           character: 'c',
           index: 2,
-          groups: ['c'],
+          groups: ['C'],
         },
         {
           character: 'a',
           index: 3,
-          groups: ['a'],
+          groups: ['A'],
         },
         {
           character: 'a',
           index: 4,
-          groups: ['a'],
+          groups: ['A'],
         },
         {
           character: 'a',
           index: 5,
-          groups: ['a'],
+          groups: ['A'],
         },
         {
           character: 'a',
           index: 6,
-          groups: ['a'],
+          groups: ['A'],
         },
         {
           character: 'b',
           index: 7,
-          groups: ['b'],
+          groups: ['B'],
         },
         {
           character: 'c',
           index: 8,
-          groups: ['c'],
+          groups: ['C'],
         },
       ],
       [
-        { segment: 'a', positions: [0, 3, 4, 5, 6] },
-        { segment: 'b', positions: [1, 7] },
-        { segment: 'c', positions: [2, 8] },
+        { segment: 'A', positions: [0, 3, 4, 5, 6] },
+        { segment: 'B', positions: [1, 7] },
+        { segment: 'C', positions: [2, 8] },
       ],
     ]);
   });
