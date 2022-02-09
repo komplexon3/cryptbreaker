@@ -117,10 +117,8 @@ export const acceptedTableDimensions = (textLength: number) => {
 
 /**
  * Computes a reasonable search space for the table dimensions given a text
- * @param textLength
- * @param absoluteMinColumns
- * @param absoluteMaxColumns
- * @param buffer
+ * @param textLength - Expected not to be prime as it shoulw be cols * rows from encryption table
+ * @returns
  */
 export const tableDimensionsSeachSpace = (textLength: number) => {
   const primeFactors = (n: number) => {
@@ -160,13 +158,24 @@ export const tableDimensionsSeachSpace = (textLength: number) => {
     })
     // filter out values violating constraints
     .filter((v) => v.columns <= absoluteMaxColumns && v.columns >= absoluteMinColumns);
-  const rowsMin = candidates.reduce((acc, curr) => (curr.rows < acc ? curr.rows : acc), 1000000);
-  const rowsMax = candidates.reduce((acc, curr) => (curr.rows > acc ? curr.rows : acc), 1);
-  const columnsMin = candidates.reduce(
-    (acc, curr) => (curr.columns < acc ? curr.columns : acc),
-    1000000
-  );
-  const columnsMax = candidates.reduce((acc, curr) => (curr.columns > acc ? curr.columns : acc), 1);
+
+  let rowsMin, rowsMax, columnsMin, columnsMax: number;
+
+  // failsafe in case the text lenght is prime or always out of accepted column range
+  if (candidates.length === 0) {
+    rowsMin = 1;
+    rowsMax = textLength;
+    columnsMin = 1;
+    columnsMax = absoluteMaxColumns;
+  } else {
+    rowsMin = candidates.reduce((acc, curr) => (curr.rows < acc ? curr.rows : acc), textLength);
+    rowsMax = candidates.reduce((acc, curr) => (curr.rows > acc ? curr.rows : acc), 1);
+    columnsMin = candidates.reduce(
+      (acc, curr) => (curr.columns < acc ? curr.columns : acc),
+      absoluteMaxColumns
+    );
+    columnsMax = candidates.reduce((acc, curr) => (curr.columns > acc ? curr.columns : acc), 1);
+  }
 
   return {
     rowsMin,
