@@ -6,7 +6,7 @@ import {
 } from './table';
 
 const getRandomInt = (min: number, max: number) =>
-  Math.floor(min + Math.random() * (max - min) + 1);
+  Math.floor(min + Math.random() * (max - min + 1));
 const getRandomString = (len: number) =>
   [...Array(len).fill('')]
     .map((_) => String.fromCharCode(35 + Math.floor(Math.random() * 638)))
