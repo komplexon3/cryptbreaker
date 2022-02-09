@@ -1,5 +1,5 @@
-import { computeCeasarShift } from '@/features/ciphers/ceasar';
 import { isLetter } from '@/utils';
+import { computeCeasarShift } from '../../ceasar';
 
 export const vignereEncrypt = (plainText: string, vignereKey: string): string => {
   if (!verifyVignereKey(vignereKey)) {

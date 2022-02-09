@@ -1,0 +1,26 @@
+{
+  "name": "problem-generator-cli",
+  "version": "0.1.0",
+  "description": "Tool to generate challenges for this webapp.",
+  "author": "Marc Widmer <mwidmer@protonmail.com>",
+  "main": "./build/cli/index.js",
+  "files": [
+    "/build",
+    "../src/data",
+    "../src/features/ciphers/*/utils",
+    "../src/utils"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "chalk": "^5.0.0",
+    "js-yaml": "^4.1.0",
+    "path": "^0.12.7",
+    "yargs": "^17.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.15",
+    "tsx": "^1.0.0"
+  }
+}

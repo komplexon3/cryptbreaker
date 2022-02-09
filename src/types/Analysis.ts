@@ -8,4 +8,5 @@ export enum AnalysisTools {
   FRIEDMANN,
   KASISKI,
   TABLE,
+  SUBSTITUTION,
 }

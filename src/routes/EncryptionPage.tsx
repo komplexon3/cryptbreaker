@@ -6,11 +6,7 @@ import { ProblemLanguages } from '@/data';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLng } from '@/hooks';
 import { EncryptionProvider, useEncryptionContext } from '@/contexts';
-
-// TODO: write code that cleans text (e.g. ä -> ae)
-const cleanText = (s: string) => {
-  return s;
-};
+import { cleanText } from '@/utils';
 
 export const EncryptionPage: React.FC = () => {
   const EcPage = () => {

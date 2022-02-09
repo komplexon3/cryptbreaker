@@ -92,6 +92,16 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
               >
                 Table
               </Button>
+              <Button
+                bg={buttonBackgroundColor}
+                textColor={buttonTextColor}
+                onClick={() => {
+                  onClose();
+                  addTool(AnalysisTools.SUBSTITUTION);
+                }}
+              >
+                Substitution
+              </Button>
             </SimpleGrid>
           </ModalBody>
         </ModalContent>

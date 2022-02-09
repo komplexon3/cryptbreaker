@@ -15,7 +15,9 @@ export const TextCard: React.FC<TextCardProps> = ({ title, text, skeletonIfEmpty
           <Text>Filler</Text>
         </Skeleton>
       ) : (
-        text
+        <Text fontFamily={'monospace'} fontSize={'1rem'}>
+          {text}
+        </Text>
       )}
     </Card>
   );
