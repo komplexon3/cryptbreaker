@@ -24,26 +24,3 @@ export const decParam = (s: string): string => {
 
 export const problemPath = (cipherText?: string, language?: ProblemLanguages) =>
   cipherText ? '/solve/' + encParam(cipherText) + '?lng=' + language : '/solve';
-
-export const acceptedTableDimensions = (textLength: number) => {
-  const absoluteMaxColumns = 15; // more are no longer displayed nicely
-  const columnsDelta = 3;
-
-  let dimensionBase = ~~(Math.sqrt(textLength) + 1);
-  if (dimensionBase > absoluteMaxColumns - columnsDelta) {
-    dimensionBase = absoluteMaxColumns - columnsDelta;
-  }
-
-  const columnsMin = dimensionBase - columnsDelta;
-  const columnsMax = dimensionBase + columnsDelta;
-
-  const rowsMin = ~~(textLength / columnsMax);
-  const rowsMax = ~~(textLength / columnsMin);
-
-  return {
-    rowsMin,
-    rowsMax,
-    columnsMin,
-    columnsMax,
-  };
-};
