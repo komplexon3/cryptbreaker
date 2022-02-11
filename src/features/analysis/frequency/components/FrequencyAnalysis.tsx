@@ -127,7 +127,12 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   };
 
   return (
-    <Card title='Frequency Analysis' onClose={onClose}>
+    <Card
+      title='Frequency Analysis'
+      onClose={onClose}
+      explanationHeader='hello'
+      explanationText='test text'
+    >
       <VStack>
         <HStack>
           <Text>Stride</Text>

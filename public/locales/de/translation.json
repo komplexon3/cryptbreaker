@@ -1,1 +1,22 @@
-{ "test": "TestDE" }
+{
+  "test": "TestDE",
+  "DecryptionPage": {
+    "AnalysisTools": "Analysewerkzeuge",
+    "DecipherTool": "Entschlüsslungswerkzeug"
+  },
+  "EncryptionPage": {
+    "SetLanguage": "Wähle die Textsprache aus",
+    "EncryptWith": "Verschlüsseln mit",
+    "SelectEncryptionTool": "Wähle die Verschlüsslungsmethode"
+  },
+  "Languages": {
+    "English": "Englisch",
+    "German": "Deutsch"
+  },
+  "Ciphers": {
+    "Ceasar": "Ceasar",
+    "Table": "Tabelle",
+    "Vignere": "Vignere",
+    "Substitution": "Vertauschung"
+  }
+}

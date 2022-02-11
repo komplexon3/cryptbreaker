@@ -1,10 +1,12 @@
 import { ProblemLanguages } from '@/data';
 import { languages } from '@/i18n';
 import { Select } from '@chakra-ui/react';
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 interface LanguageSelectorProbs {
   onChange: (l: ProblemLanguages) => void;
-  defaultValue: ProblemLanguages;
+  defaultValue: 'en' | 'de';
   size?: string;
   maxWidth?: string;
 }
@@ -15,6 +17,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProbs> = ({
   size,
   maxWidth,
 }) => {
+  const { t } = useTranslation();
   return (
     <Select
       defaultValue={defaultValue}
@@ -25,11 +28,8 @@ export const LanguageSelector: React.FC<LanguageSelectorProbs> = ({
       size={size}
       maxWidth={maxWidth}
     >
-      {Object.entries(languages).map(([k, v]) => (
-        <option key={k} value={k}>
-          {v.nativeName}
-        </option>
-      ))}
+      <option value='en'>{t('Languages.English')}</option>
+      <option value='de'>{t('Languages.German')}</option>
     </Select>
   );
 };

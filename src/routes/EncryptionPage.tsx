@@ -7,11 +7,14 @@ import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLng } from '@/hooks';
 import { EncryptionProvider, useEncryptionContext } from '@/contexts';
 import { cleanText } from '@/utils';
+import { useTranslation } from 'react-i18next';
 
 export const EncryptionPage: React.FC = () => {
   const EcPage = () => {
+    const { t } = useTranslation();
     const lng = useLng();
-    const { setPlainText, cipherText, language, setLanguage } = useEncryptionContext();
+    const { setPlainText, cipherText, setCipherText, language, setLanguage } =
+      useEncryptionContext();
     const [tool, setTool] = useState(EncryptionTools.UNSPECIFIED);
 
     useEffect(() => {
@@ -22,7 +25,7 @@ export const EncryptionPage: React.FC = () => {
       <Container maxW={'3xl'} minH='90vh'>
         <Stack spacing={6}>
           <Center>
-            <Text marginRight='1rem'>Set plain text language</Text>
+            <Text marginRight='1rem'>{t('EncryptionPage.SetLanguage')}</Text>
             <LanguageSelector onChange={(l) => setLanguage(l)} defaultValue={language} />
           </Center>
           <TextEntryCard
@@ -35,24 +38,23 @@ export const EncryptionPage: React.FC = () => {
               setPlainText(cleanedText);
             }}
           />
-          <Text>Encrypt with</Text>
+          <Text>{t('EncryptionPage.EncryptWith')}</Text>
           <Select
-            placeholder='Select encryption tool'
+            placeholder={t('EncryptionPage.SelectEncryptionTool')}
             onChange={(e) => {
               e.preventDefault();
-              setTool(e.target.value as EncryptionTools);
+              if (e.target.value as EncryptionTools) {
+                setTool(e.target.value as EncryptionTools);
+              } else {
+                setTool(EncryptionTools.UNSPECIFIED);
+                setCipherText('');
+              }
             }}
           >
-            {Object.values(EncryptionTools).map((v) => {
-              if (v === EncryptionTools.UNSPECIFIED) {
-                return <></>;
-              }
-              return (
-                <option key={v} value={v}>
-                  {v}
-                </option>
-              );
-            })}
+            <option value={EncryptionTools.CEASAR}>{t('Ciphers.Ceasar')}</option>;
+            <option value={EncryptionTools.TABLE}>{t('Ciphers.Table')}</option>;
+            <option value={EncryptionTools.VIGNERE}>{t('Ciphers.Vignere')}</option>;
+            <option value={EncryptionTools.SUBSTITUTION}>{t('Ciphers.Substitution')}</option>;
           </Select>
           {tool !== EncryptionTools.UNSPECIFIED && <EncryptionToolSwitch tool={tool} />}
           <TextCard title='Cipher Text' text={cipherText} skeletonIfEmpty />
