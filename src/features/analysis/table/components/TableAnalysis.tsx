@@ -5,38 +5,8 @@ import {
   tableDimensionsSeachSpace,
 } from '@/features/ciphers/table/utils/table';
 import { AnalysisProps } from '@/types';
-import { Table, Tbody, Td, Tr, VStack } from '@chakra-ui/react';
-import { useState } from 'react';
-
-const buildTable = (text: string, rows: number, columns: number) => {
-  if (columns < 1) {
-    throw new Error('must have at least one column');
-  }
-  const textRows = text.match(new RegExp('.{1,' + columns + '}', 'g'));
-
-  return (
-    <Table variant={'unstyled'} size={'sm'}>
-      <Tbody>
-        {textRows?.map((r, i) => {
-          if (i < rows) {
-            return buildTableRow(r);
-          }
-          return <></>;
-        })}
-      </Tbody>
-    </Table>
-  );
-};
-
-const buildTableRow = (textRow: string) => {
-  return (
-    <Tr>
-      {textRow.split('').map((c) => (
-        <Td css={{ textAlign: 'center', fontFamily: 'monospace' }}>{c}</Td>
-      ))}
-    </Tr>
-  );
-};
+import { Table, Tbody, Td, Tr, VStack, Text } from '@chakra-ui/react';
+import { useMemo, useState } from 'react';
 
 export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   const { cipherText } = useDecryptionContext();
@@ -50,6 +20,19 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
 
   const [rows, setRows] = useState(rowsMin);
   const [columns, setColumns] = useState(columnsMin);
+  const tableRows = useMemo(() => {
+    let stridedText: string[] = new Array(rows).fill('');
+    cipherText.split('').forEach((v, i) => (stridedText[i % rows] += v));
+    return stridedText.map((v) => {
+      if (v.length > columns) {
+        return v.substring(0, columns);
+      }
+      while (v.length < columns) {
+        v += '?'; // ? indicates an empty position
+      }
+      return v;
+    });
+  }, [cipherText, rows, columns]);
 
   return (
     <Card title='Table Analysis' onClose={onClose}>
@@ -64,7 +47,25 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
           onRowsValueChange={(v) => setRows(v)}
           onColumnsValueChange={(v) => setColumns(v)}
         />
-        {buildTable(cipherText, rows, columns)}
+        <Table variant={'unstyled'} size={'sm'}>
+          <Tbody>
+            {tableRows.map((r, i) => {
+              return (
+                <Tr>
+                  {r.split('').map((c) => (
+                    <Td css={{ textAlign: 'center', fontFamily: 'monospace', fontWeight: 'bold' }}>
+                      {c === '?' ? <span style={{ color: '#d53f8c' }}>?</span> : c}
+                    </Td>
+                  ))}
+                </Tr>
+              );
+            })}
+          </Tbody>
+        </Table>
+        <Text>
+          Pink <span style={{ color: '#d53f8c', fontWeight: 'bold' }}>?</span> indicate empty
+          positions in the table.
+        </Text>
       </VStack>
     </Card>
   );

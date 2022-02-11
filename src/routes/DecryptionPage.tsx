@@ -1,18 +1,20 @@
-import { cleanText, decParam } from '@/utils';
-import { Container, Stack } from '@chakra-ui/react';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import {
   AnalysisToolsAndSelect,
   DecryptionToolOrSelect,
-  TextEntryCard,
   TextCard,
+  TextEntryCard,
 } from '@/components';
 import { DecryptionProvider, useDecryptionContext } from '@/contexts';
 import { useLanguageFromQueryParams } from '@/hooks';
+import { cleanText, decParam } from '@/utils';
+import { Container, Divider, Heading, Stack } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 export const DecryptionPage: React.FC = () => {
   const DcPage = () => {
+    const { t } = useTranslation();
     const { encCiphertext: encCipherText } = useParams();
     const problemLanguage = useLanguageFromQueryParams();
     const { cipherText, setCipherText, decipheredText, setDecipheredText, setLanguage } =
@@ -45,8 +47,17 @@ export const DecryptionPage: React.FC = () => {
               placeholderText='Enter cipher text...'
             />
           )}
+          <Divider />
+          <Heading as='h2' size='xl'>
+            {t('DecryptionPage.AnalysisTools')}
+          </Heading>
           <AnalysisToolsAndSelect />
+          <Divider />
+          <Heading as='h2' size='xl'>
+            {t('DecryptionPage.DecipherTool')}
+          </Heading>
           <DecryptionToolOrSelect text={cipherText} setDecipheredText={setDecipheredText} />
+          <Divider />
           <TextCard title='Deciphered Text' text={decipheredText} skeletonIfEmpty />
         </Stack>
       </Container>

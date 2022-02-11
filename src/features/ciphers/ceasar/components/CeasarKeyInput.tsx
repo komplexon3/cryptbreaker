@@ -1,15 +1,31 @@
 import { IntegerInput } from '@/components';
 import { HStack, Text } from '@chakra-ui/react';
+import { NumberLiteralType } from 'typescript';
 
 interface CeasarKeyInputProps {
-  onChange: (v: number) => void;
+  minValue?: number;
+  maxValue?: number;
+  defaultValue?: number;
+  value?: number;
+  onChange?: (v: number) => void;
 }
 
-export const CeasarKeyInput: React.FC<CeasarKeyInputProps> = ({ onChange }) => {
+export const CeasarKeyInput: React.FC<CeasarKeyInputProps> = ({
+  minValue,
+  maxValue,
+  defaultValue,
+  value,
+  onChange,
+}) => {
   return (
     <HStack>
       <Text>Shift Value</Text>
-      <IntegerInput minValue={0} maxValue={25} defaultValue={3} onValueChange={onChange} />
+      <IntegerInput
+        minValue={minValue}
+        maxValue={maxValue}
+        value={value}
+        onValueChange={onChange}
+      />
     </HStack>
   );
 };
