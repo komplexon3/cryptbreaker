@@ -5,7 +5,6 @@ interface IntegerInputProps {
   maxValue?: number;
   defaultValue?: number;
   onValueChange?: (value: number) => void;
-  value?: number;
 }
 
 export const IntegerInput: React.FC<IntegerInputProps> = ({
@@ -13,7 +12,6 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
   maxValue,
   defaultValue,
   onValueChange,
-  value,
 }) => {
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({
     step: 1,
@@ -34,7 +32,6 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
       }
       onValueChange && onValueChange(valueAsNumber);
     },
-    value: value,
   });
 
   const incValue = getIncrementButtonProps();

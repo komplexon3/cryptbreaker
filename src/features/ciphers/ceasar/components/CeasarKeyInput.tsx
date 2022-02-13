@@ -23,7 +23,7 @@ export const CeasarKeyInput: React.FC<CeasarKeyInputProps> = ({
       <IntegerInput
         minValue={minValue}
         maxValue={maxValue}
-        value={value}
+        defaultValue={value}
         onValueChange={onChange}
       />
     </HStack>
