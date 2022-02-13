@@ -17,6 +17,7 @@ import {
 } from 'chart.js';
 import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 import { ComputeStridedRelativeFrequency } from '../utils';
 
 ChartJS.register(
@@ -95,6 +96,7 @@ const useStridedRelaticeFrequency = (text: string, defaultStride?: number) => {
 };
 
 export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+  const { t } = useTranslation();
   // only compute on first render - after that we don't want to mess
   // with dis/enabled languages programatically anymore
   const { cipherText, language } = useDecryptionContext();
@@ -107,19 +109,19 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
     labels,
     datasets: [
       {
-        label: 'Relative Frequency DE',
+        label: t('AnalysisTools.Frequency.RelFreqDe'),
         data: frequencies.de,
         backgroundColor: 'red',
         hidden: !enabledMap.de,
       },
       {
-        label: 'Relative Frequency EN',
+        label: t('AnalysisTools.Frequency.RelFreqEn'),
         data: frequencies.en,
         backgroundColor: 'green',
         hidden: !enabledMap.en,
       },
       {
-        label: 'Relative Frequency Cipher Text',
+        label: t('AnalysisTools.Frequency.RelFreqInText'),
         data: relativeFrequencies[page - 1],
         backgroundColor: 'blue',
       },
@@ -127,15 +129,10 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   };
 
   return (
-    <Card
-      title='Frequency Analysis'
-      onClose={onClose}
-      explanationHeader='hello'
-      explanationText='test text'
-    >
+    <Card title={t('AnalysisTools.Frequency.titleLong')} onClose={onClose}>
       <VStack>
         <HStack>
-          <Text>Stride</Text>
+          <Text>{t('AnalysisTools.Frequency.Stride')}</Text>
           <IntegerInput defaultValue={1} minValue={1} onValueChange={(v) => setStride(v)} />
         </HStack>
         <Bar

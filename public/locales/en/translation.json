@@ -9,14 +9,86 @@
     "EncryptWith": "Encrypt with",
     "SelectEncryptionTool": "Select encryption tool"
   },
+  "Home": {
+    "RandomProblem": {
+      "title": "Random Challenge",
+      "description": "A random cipher text to be deciphered by you."
+    },
+    "ProblemCode": {
+      "title": "Challenge Code",
+      "description": "Enter code for a specific challenge."
+    },
+    "CustomProblem": {
+      "title": "Custom Challenge",
+      "description": "Decipher an arbitrary cipher text."
+    },
+    "CreateProblem": {
+      "title": "Create Challenge",
+      "description": "Create a new challenge."
+    },
+    "CipherProblems": {
+      "description": "Challenges for {{cipher}} cipher."
+    }
+  },
+  "CipherProblemsPage": {
+    "Challenges": "Challenges"
+  },
+  "AnalysisTools": {
+    "Frequency": {
+      "title": "Frequency",
+      "titleLong": "Frequency Analysis",
+      "tooltip": "Investigate the relative frequency of letters in the cipher text.",
+      "Stride": "Stride",
+      "RelFreqInText": "Relative Frequency Cipher Text",
+      "RelFreqEn": "Relative Frequency English",
+      "RelFreqDe": "Relative Frequency German"
+    },
+    "Friedmann": {
+      "title": "Friedmann",
+      "titleLong": "Friedmann Analysis",
+      "tooltip": "Investigate the friedmann characteristic of the cipher text considering different key length.",
+      "KeyLength": "Key Length",
+      "FCforKL": "Friedmann Characteristic for Key Length",
+      "FCde": "Expected for German",
+      "FCen": "Expected for English"
+    },
+    "Kasiski": {
+      "title": "Kasiski",
+      "titleLong": "Kasiski Analysis",
+      "tooltip": "Investigate repeated segements in the cipher text.",
+      "SegmentLength": "Segment Length",
+      "NoteGrey": "Grey characters are part of multiple segments."
+    },
+    "Table": {
+      "title": "Table",
+      "titleLong": "Table Analysis",
+      "tooltip": "Display the cipher text in a table.",
+      "NotePink?": "Pink <0>?</0> indicate empty positions in the table."
+    },
+    "Substitution": {
+      "title": "Substitution",
+      "titleLong": "Substitution Analysis",
+      "tooltip": "Replace different letters of the alphabet and see the changes to the text."
+    }
+  },
+  "TableDimensionInput": {
+    "Rows": "Rows",
+    "Columns": "Columns"
+  },
   "Languages": {
     "English": "English",
     "German": "German"
   },
   "Ciphers": {
-    "Ceasar": "Ceasar",
-    "Table": "Table",
-    "Vignere": "Vignere",
-    "Substitution": "Substitution"
+    "ceasar": "Ceasar",
+    "table": "Table",
+    "vignere": "Vignere",
+    "substitution": "Substitution"
+  },
+  "Ciphers-InText": {
+    "ceasar": "ceasar",
+    "table": "table",
+    "vignere": "vignere",
+    "substitution": "substitution"
   }
 }

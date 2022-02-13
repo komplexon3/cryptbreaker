@@ -10,9 +10,11 @@ import {
   ModalHeader,
   ModalOverlay,
   SimpleGrid,
+  Tooltip,
   useDisclosure,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface AnalysisToolsAndSelectProps {
   buttonBackgroundColor?: string;
@@ -27,6 +29,7 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
   iconBackgroundColor,
   iconColor,
 }) => {
+  const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   // value of AnalysisTools.UNSPECIFIED indicated a removed tool
   const [tools, setTools] = useState([] as AnalysisTools[]);
@@ -52,56 +55,78 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
           <ModalCloseButton />
           <ModalBody padding={6}>
             <SimpleGrid spacingY={3}>
-              <Button
-                bg={buttonBackgroundColor}
-                textColor={buttonTextColor}
-                onClick={() => {
-                  onClose();
-                  addTool(AnalysisTools.FREQUENCY);
-                }}
+              <Tooltip
+                label={t('AnalysisTools.Frequency.tooltip')}
+                openDelay={500}
+                placement='auto'
               >
-                Frequency
-              </Button>
-              <Button
-                bg={buttonBackgroundColor}
-                textColor={buttonTextColor}
-                onClick={() => {
-                  onClose();
-                  addTool(AnalysisTools.FRIEDMANN);
-                }}
+                <Button
+                  bg={buttonBackgroundColor}
+                  textColor={buttonTextColor}
+                  onClick={() => {
+                    onClose();
+                    addTool(AnalysisTools.FREQUENCY);
+                  }}
+                >
+                  {t('AnalysisTools.Frequency.title')}
+                </Button>
+              </Tooltip>
+              <Tooltip
+                label={t('AnalysisTools.Friedmann.tooltip')}
+                openDelay={500}
+                placement='auto'
               >
-                Friedmann
-              </Button>
-              <Button
-                bg={buttonBackgroundColor}
-                textColor={buttonTextColor}
-                onClick={() => {
-                  onClose();
-                  addTool(AnalysisTools.KASISKI);
-                }}
+                <Button
+                  bg={buttonBackgroundColor}
+                  textColor={buttonTextColor}
+                  onClick={() => {
+                    onClose();
+                    addTool(AnalysisTools.FRIEDMANN);
+                  }}
+                >
+                  {t('AnalysisTools.Friedmann.title')}
+                </Button>
+              </Tooltip>
+              <Tooltip label={t('AnalysisTools.Kasiski.tooltip')} openDelay={500} placement='auto'>
+                <Button
+                  bg={buttonBackgroundColor}
+                  textColor={buttonTextColor}
+                  onClick={() => {
+                    onClose();
+                    addTool(AnalysisTools.KASISKI);
+                  }}
+                >
+                  {t('AnalysisTools.Kasiski.title')}
+                </Button>
+              </Tooltip>
+              <Tooltip label={t('AnalysisTools.Table.tooltip')} openDelay={500} placement='auto'>
+                <Button
+                  bg={buttonBackgroundColor}
+                  textColor={buttonTextColor}
+                  onClick={() => {
+                    onClose();
+                    addTool(AnalysisTools.TABLE);
+                  }}
+                >
+                  {t('AnalysisTools.Table.title')}
+                </Button>
+              </Tooltip>
+              <Tooltip
+                label={t('AnalysisTools.Substitution.tooltip')}
+                openDelay={500}
+                placement='auto'
               >
-                Kasiski
-              </Button>
-              <Button
-                bg={buttonBackgroundColor}
-                textColor={buttonTextColor}
-                onClick={() => {
-                  onClose();
-                  addTool(AnalysisTools.TABLE);
-                }}
-              >
-                Table
-              </Button>
-              <Button
-                bg={buttonBackgroundColor}
-                textColor={buttonTextColor}
-                onClick={() => {
-                  onClose();
-                  addTool(AnalysisTools.SUBSTITUTION);
-                }}
-              >
-                Substitution
-              </Button>
+                <Button
+                  bg={buttonBackgroundColor}
+                  textColor={buttonTextColor}
+                  onClick={() => {
+                    onClose();
+                    addTool(AnalysisTools.SUBSTITUTION);
+                  }}
+                >
+                  {t('AnalysisTools.Substitution.title')}
+                </Button>
+              </Tooltip>
             </SimpleGrid>
           </ModalBody>
         </ModalContent>

@@ -3,8 +3,10 @@ import { problemPath } from '../utils';
 import { Center, Container, Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { MenuCard } from '@/components';
+import { useTranslation } from 'react-i18next';
 
 export const CipherProblems: React.FC = () => {
+  const { t } = useTranslation();
   let { cipher } = useParams();
   cipher = cipher ? cipher.toLocaleLowerCase() : '';
   // defaulting to Ceasar but actually rendering 404 if the cast doesn't work - cannot conditionally call hooks...
@@ -19,7 +21,7 @@ export const CipherProblems: React.FC = () => {
       <Stack spacing={6}>
         <Center>
           <Heading as='h2' size='2xl'>
-            {cipher} Problems
+            {t(`Ciphers.${cipher}`)} {t('CipherProblemsPage.Challenges')}
           </Heading>
         </Center>
         <SimpleGrid columns={3} spacing={10}>
