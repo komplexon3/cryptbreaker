@@ -37,7 +37,12 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   }, [cipherText, rows, columns]);
 
   return (
-    <Card title={t('AnalysisTools.Table.titleLong')} onClose={onClose}>
+    <Card
+      title={t('AnalysisTools.Table.titleLong')}
+      explanationHeader={t('AnalysisTools.Table.explanationHeader')}
+      explanationBody={t('AnalysisTools.Table.explanationBody')}
+      onClose={onClose}
+    >
       <VStack>
         <TableDimensionInput
           minRowsValue={rowsMin}

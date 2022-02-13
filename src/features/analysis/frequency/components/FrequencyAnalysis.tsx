@@ -17,7 +17,7 @@ import {
 } from 'chart.js';
 import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { ComputeStridedRelativeFrequency } from '../utils';
 
 ChartJS.register(
@@ -129,7 +129,14 @@ export const FrequencyAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   };
 
   return (
-    <Card title={t('AnalysisTools.Frequency.titleLong')} onClose={onClose}>
+    <Card
+      title={t('AnalysisTools.Frequency.titleLong')}
+      explanationHeader={t('AnalysisTools.Frequency.explanationHeader')}
+      explanationBody={
+        <Trans i18nKey='AnalysisTools.Frequency.explanationBody' components={[<br />, <i />]} />
+      }
+      onClose={onClose}
+    >
       <VStack>
         <HStack>
           <Text>{t('AnalysisTools.Frequency.Stride')}</Text>

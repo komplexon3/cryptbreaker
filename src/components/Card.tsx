@@ -8,7 +8,7 @@ interface CardProps {
   titleColor?: string;
   backgroundColor?: string;
   explanationHeader?: string;
-  explanationText?: string;
+  explanationBody?: ReactNode;
   onClose?: () => void;
   children?: ReactNode;
 }
@@ -19,7 +19,7 @@ export const Card: React.FC<CardProps> = ({
   titleColor,
   backgroundColor,
   explanationHeader,
-  explanationText,
+  explanationBody,
   onClose,
   children,
 }) => {
@@ -30,10 +30,10 @@ export const Card: React.FC<CardProps> = ({
   } = useDisclosure();
   return (
     <>
-      {explanationHeader && explanationText && (
+      {explanationHeader && explanationBody && (
         <ExplanationModal
           header={explanationHeader}
-          text={explanationText}
+          children={explanationBody}
           isOpen={isOpenExplanation}
           onClose={onCloseExplanation}
         />
@@ -51,7 +51,7 @@ export const Card: React.FC<CardProps> = ({
           >
             {title}
             {onClose && <CloseButton float='right' onClick={onClose} />}
-            {explanationHeader && explanationText && (
+            {explanationHeader && explanationBody && (
               <HelpButton float='right' marginX='0.5rem' onClick={onOpenExplanation} />
             )}
           </Box>

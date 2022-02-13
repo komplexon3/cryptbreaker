@@ -41,7 +41,9 @@
       "Stride": "Stride",
       "RelFreqInText": "Relative Frequency Cipher Text",
       "RelFreqEn": "Relative Frequency English",
-      "RelFreqDe": "Relative Frequency German"
+      "RelFreqDe": "Relative Frequency German",
+      "explanationHeader": "Explanation - Frequency Analysis Tool",
+      "explanationBody": "The frequency analysis tool displays the relative frequency of all characters in the cipher text. When comparing with the expected relative frequency, this might give some clues how the characters are changed.<0/>Changing the <1>stride</1> gives you the relative frequencies with the text strided by the given value. Use the buttons at the bottom to navigate through different positions in the stride."
     },
     "Friedmann": {
       "title": "Friedmann",
@@ -50,25 +52,33 @@
       "KeyLength": "Key Length",
       "FCforKL": "Friedmann Characteristic for Key Length",
       "FCde": "Expected for German",
-      "FCen": "Expected for English"
+      "FCen": "Expected for English",
+      "explanationHeader": "Explanation - Friedmann Analysis Tool",
+      "explanationBody": "The friedmann analysis tool displays the friedmann characteristic in the text considering different possible key lengths. Comparing it with the expected characteristic might let you deduce the the key length if it is encrypted with vignere.<0/>Change the <1>key length</1> to change the max key length considered."
     },
     "Kasiski": {
       "title": "Kasiski",
       "titleLong": "Kasiski Analysis",
       "tooltip": "Investigate repeated segements in the cipher text.",
       "SegmentLength": "Segment Length",
-      "NoteGrey": "Grey characters are part of multiple segments."
+      "NoteGrey": "Grey characters are part of multiple segments.",
+      "explanationHeader": "Explanation - Kasiski Analysis Tool",
+      "explanationBody": "The kasiski analysis searches for all repeates text segments of a specific length and marks them. Click on them to find out more information about these repeated segments. Their position might reveal some information about the key."
     },
     "Table": {
       "title": "Table",
       "titleLong": "Table Analysis",
       "tooltip": "Display the cipher text in a table.",
-      "NotePink?": "Pink <0>?</0> indicate empty positions in the table."
+      "NotePink?": "Pink <0>?</0> indicate empty positions in the table.",
+      "explanationHeader": "Explanation - Table Analysis Tool",
+      "explanationBody": "The table analysis shows you the cipher text in a table. In that table, the text is filled in column by column. Maybe you can start reading the text if you get the dimensions correct."
     },
     "Substitution": {
       "title": "Substitution",
       "titleLong": "Substitution Analysis",
-      "tooltip": "Replace different letters of the alphabet and see the changes to the text."
+      "tooltip": "Replace different letters of the alphabet and see the changes in the text.",
+      "explanationHeader": "Explanation - Table Substitution Tool",
+      "explanationBody": "The substitution analysis lets you replace letters in the alphabet and see the changes in the text. Maybe this helps you revert a substitution cipher.<0/>Note that the key you work out here is the inverse of the actual substitution key."
     }
   },
   "TableDimensionInput": {
