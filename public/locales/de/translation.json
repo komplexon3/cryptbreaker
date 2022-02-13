@@ -30,6 +30,9 @@
       "description": "Knobelaufgaben mit {{cipher}}."
     }
   },
+  "CipherProblemsPage": {
+    "Challenges": "Knobelaufgaben"
+  },
   "Languages": {
     "English": "Englisch",
     "German": "Deutsch"

@@ -30,6 +30,9 @@
       "description": "Challenges for {{cipher}} cipher."
     }
   },
+  "CipherProblemsPage": {
+    "Challenges": "Challenges"
+  },
   "Languages": {
     "English": "English",
     "German": "German"
