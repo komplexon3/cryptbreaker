@@ -7,8 +7,10 @@ import {
 import { AnalysisProps } from '@/types';
 import { Table, Tbody, Td, Tr, VStack, Text } from '@chakra-ui/react';
 import { useMemo, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 
 export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+  const { t } = useTranslation();
   const { cipherText } = useDecryptionContext();
   let { rowsMin, rowsMax, columnsMin, columnsMax } = tableDimensionsSeachSpace(cipherText.length);
   // widen the search space as the correct value is most certainly one of the original "corners"
@@ -35,7 +37,7 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   }, [cipherText, rows, columns]);
 
   return (
-    <Card title='Table Analysis' onClose={onClose}>
+    <Card title={t('AnalysisTools.Table.titleLong')} onClose={onClose}>
       <VStack>
         <TableDimensionInput
           minRowsValue={rowsMin}
@@ -63,8 +65,11 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
           </Tbody>
         </Table>
         <Text>
-          Pink <span style={{ color: '#d53f8c', fontWeight: 'bold' }}>?</span> indicate empty
-          positions in the table.
+          <Trans
+            i18nKey={'AnalysisTools.Table.NotePink?'}
+            t={t}
+            components={[<span style={{ color: '#d53f8c', fontWeight: 'bold' }}></span>]}
+          />
         </Text>
       </VStack>
     </Card>

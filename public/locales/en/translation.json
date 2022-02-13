@@ -33,6 +33,48 @@
   "CipherProblemsPage": {
     "Challenges": "Challenges"
   },
+  "AnalysisTools": {
+    "Frequency": {
+      "title": "Frequency",
+      "titleLong": "Frequency Analysis",
+      "tooltip": "Investigate the relative frequency of letters in the cipher text.",
+      "Stride": "Stride",
+      "RelFreqInText": "Relative Frequency Cipher Text",
+      "RelFreqEn": "Relative Frequency English",
+      "RelFreqDe": "Relative Frequency German"
+    },
+    "Friedmann": {
+      "title": "Friedmann",
+      "titleLong": "Friedmann Analysis",
+      "tooltip": "Investigate the friedmann characteristic of the cipher text considering different key length.",
+      "KeyLength": "Key Length",
+      "FCforKL": "Friedmann Characteristic for Key Length",
+      "FCde": "Expected for German",
+      "FCen": "Expected for English"
+    },
+    "Kasiski": {
+      "title": "Kasiski",
+      "titleLong": "Kasiski Analysis",
+      "tooltip": "Investigate repeated segements in the cipher text.",
+      "SegmentLength": "Segment Length",
+      "NoteGrey": "Grey characters are part of multiple segments."
+    },
+    "Table": {
+      "title": "Table",
+      "titleLong": "Table Analysis",
+      "tooltip": "Display the cipher text in a table.",
+      "NotePink?": "Pink <0>?</0> indicate empty positions in the table."
+    },
+    "Substitution": {
+      "title": "Substitution",
+      "titleLong": "Substitution Analysis",
+      "tooltip": "Replace different letters of the alphabet and see the changes to the text."
+    }
+  },
+  "TableDimensionInput": {
+    "Rows": "Rows",
+    "Columns": "Columns"
+  },
   "Languages": {
     "English": "English",
     "German": "German"

@@ -33,6 +33,49 @@
   "CipherProblemsPage": {
     "Challenges": "Knobelaufgaben"
   },
+  "AnalysisTools": {
+    "Frequency": {
+      "titel": "Häufigkeit",
+      "titleLong": "Häufigkeitsanalyse",
+      "tooltip": "Untersuche die relative Häufigkeit von Buchstaben im Chiffretext.",
+      "Stride": "Stride",
+      "RelFreqInText": "Relative Häufigkeit Chiffretext",
+      "RelFreqEn": "Relative Frequenz Englisch",
+      "RelFreqDe": "Relative Häufigkeit Deutsch"
+    },
+    "Friedmann": {
+      "title": "Friedmann",
+      "titleLong": "Friedmann-Analyse",
+      "tooltip": "Untersuche die Friedmann-Charakteristik des Chiffriertextes unter Berücksichtigung verschiedener Schlüssellängen.",
+      "KeyLength": "Schlüssellänge",
+      "FCforKL": "Friedmann-Charakteristik für Schlüssellänge",
+      "FCde": "Erwartet für Deutsch",
+      "FCen": "Erwartet für Englisch"
+    },
+    "Kasiski": {
+      "title": "Kasiski",
+      "titleLong": "Kasiski-Analyse",
+      "tooltip": "Untersuche wiederholte Segmente im Geheimtext.",
+      "SegmentLength": "Segmentlänge",
+      "NoteGrey": "Graue Zeichen sind Teil von mehreren Segmenten."
+    },
+    "Table": {
+      "title": "Tabelle",
+      "titleLong": "Tabellenanalyse",
+      "tooltip": "Zeigt den verschlüsselten Text in einer Tabelle an.",
+      "NotePink?": "Rosa <0>?</0> zeigen leere Stellen in der Tabelle an."
+    },
+    "Substitution": {
+      "title": "Substitution",
+      "titleLong": "Substitutionsanalyse",
+      "tooltip": "Ersetze verschiedene Buchstaben des Alphabets und sieh dir die Aenderungen im Text an."
+    }
+  },
+  "TableDimensionInput": {
+    "Rows": "Zeilen",
+    "Columns": "Spalten"
+  },
+
   "Languages": {
     "English": "Englisch",
     "German": "Deutsch"
@@ -41,12 +84,12 @@
     "ceasar": "Ceasar",
     "table": "Tabelle",
     "vignere": "Vignere",
-    "substitution": "Vertauschung"
+    "substitution": "Substitution"
   },
   "Ciphers-InText": {
     "ceasar": "Ceasar",
     "table": "Tabelle",
     "vignere": "Vignere",
-    "substitution": "Vertauschung"
+    "substitution": "Substitution"
   }
 }

@@ -14,6 +14,7 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 import { ComputeFriedmannCharacteristic } from '../utils';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -25,6 +26,7 @@ const friedmannCharicteristic = {
 };
 
 export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+  const { t } = useTranslation();
   const { cipherText: text, language: problemLang } = useDecryptionContext();
 
   const enableMap = problemLanguagesEnableMap(problemLang);
@@ -62,20 +64,20 @@ export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
     labels,
     datasets: [
       {
-        label: 'Friedmann Characteristic for Key Length',
+        label: t('AnalysisTools.Friedmann.FCforKL'),
         data: labels.map((v) => ComputeFriedmannCharacteristic(text, v)),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
-        label: 'Expected for German',
+        label: t('AnalysisTools.Friedmann.FCde'),
         data: Array(labels.length).fill(friedmannCharicteristic.de),
         borderColor: 'rgb(0, 255, 0)',
         backgroundColor: 'rgba(0, 255, 0, 0.5)',
         hidden: !enableMap.de,
       },
       {
-        label: 'Expected for English',
+        label: t('AnalysisTools.Friedmann.FCde'),
         data: Array(labels.length).fill(friedmannCharicteristic.en),
         borderColor: 'rgb(0, 0, 255)',
         backgroundColor: 'rgba(0, 0, 255, 0.5)',
@@ -85,10 +87,10 @@ export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   };
 
   return (
-    <Card title='Friedmann Analysis' onClose={onClose}>
+    <Card title={t('AnalysisTools.Friedmann.titleLong')} onClose={onClose}>
       <VStack>
         <HStack>
-          <Text>Key Length</Text>
+          <Text>{t('AnalysisTools.Friedmann.KeyLength')}</Text>
           <Input {...maxKeySize} />
           <Button {...decMaxKeySize}>-</Button>
           <Button {...incMaxKeySize}>+</Button>
