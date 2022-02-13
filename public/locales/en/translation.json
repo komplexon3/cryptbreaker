@@ -9,14 +9,41 @@
     "EncryptWith": "Encrypt with",
     "SelectEncryptionTool": "Select encryption tool"
   },
+  "Home": {
+    "RandomProblem": {
+      "title": "Random Challenge",
+      "description": "A random cipher text to be deciphered by you."
+    },
+    "ProblemCode": {
+      "title": "Challenge Code",
+      "description": "Enter code for a specific challenge."
+    },
+    "CustomProblem": {
+      "title": "Custom Challenge",
+      "description": "Decipher an arbitrary cipher text."
+    },
+    "CreateProblem": {
+      "title": "Create Challenge",
+      "description": "Create a new challenge."
+    },
+    "CipherProblems": {
+      "description": "Challenges for {{cipher}} cipher."
+    }
+  },
   "Languages": {
     "English": "English",
     "German": "German"
   },
   "Ciphers": {
-    "Ceasar": "Ceasar",
-    "Table": "Table",
-    "Vignere": "Vignere",
-    "Substitution": "Substitution"
+    "ceasar": "Ceasar",
+    "table": "Table",
+    "vignere": "Vignere",
+    "substitution": "Substitution"
+  },
+  "Ciphers-InText": {
+    "ceasar": "ceasar",
+    "table": "table",
+    "vignere": "vignere",
+    "substitution": "substitution"
   }
 }

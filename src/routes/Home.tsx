@@ -18,21 +18,25 @@ export const Home: React.FC = () => {
       <Stack spacing={6}>
         <SimpleGrid columns={2} spacing={10}>
           <MenuCard
-            title='Random Problem'
-            description='A random ciphertext to be deciphered by you'
+            title={t('Home.RandomProblem.title')}
+            description={t('Home.RandomProblem.description')}
             link={problemPath(randomProblem.cipherText, randomProblem.language)}
           />
           <MenuCard
-            title='Problem Code'
-            description='Enter code for a specific problem'
+            title={t('Home.ProblemCode.title')}
+            description={t('Home.ProblemCode.description')}
             onClick={onOpen}
           />
           <MenuCard
-            title='Custom Problem'
-            description='Decipher an arbitrary cipher text'
+            title={t('Home.CustomProblem.title')}
+            description={t('Home.CustomProblem.description')}
             link={problemPath()}
           />
-          <MenuCard title='Create Problem' description='Create a new problem' link='/create' />
+          <MenuCard
+            title={t('Home.CreateProblem.title')}
+            description={t('Home.CreateProblem.description')}
+            link='/create'
+          />
         </SimpleGrid>
         <Center>
           <Heading as='h2' size='2xl'>
@@ -43,8 +47,10 @@ export const Home: React.FC = () => {
           {Object.values(ProblemTypes).map((v) => (
             <MenuCard
               key={v}
-              title={v.toUpperCase()}
-              description={'Problems for ' + v + 'ciphers.'}
+              title={t(`Ciphers.${v}`)}
+              description={t('Home.CipherProblems.description', {
+                cipher: t(`Ciphers-InText.${v}`),
+              })}
               link={'/problems/' + v}
             />
           ))}

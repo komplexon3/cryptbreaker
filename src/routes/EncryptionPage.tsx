@@ -51,10 +51,10 @@ export const EncryptionPage: React.FC = () => {
               }
             }}
           >
-            <option value={EncryptionTools.CEASAR}>{t('Ciphers.Ceasar')}</option>;
-            <option value={EncryptionTools.TABLE}>{t('Ciphers.Table')}</option>;
+            <option value={EncryptionTools.CEASAR}>{t('Ciphers.ceasar')}</option>;
+            <option value={EncryptionTools.TABLE}>{t('Ciphers.table')}</option>;
             <option value={EncryptionTools.VIGNERE}>{t('Ciphers.Vignere')}</option>;
-            <option value={EncryptionTools.SUBSTITUTION}>{t('Ciphers.Substitution')}</option>;
+            <option value={EncryptionTools.SUBSTITUTION}>{t('Ciphers.substitution')}</option>;
           </Select>
           {tool !== EncryptionTools.UNSPECIFIED && <EncryptionToolSwitch tool={tool} />}
           <TextCard title='Cipher Text' text={cipherText} skeletonIfEmpty />

@@ -9,14 +9,41 @@
     "EncryptWith": "Verschlüsseln mit",
     "SelectEncryptionTool": "Wähle die Verschlüsslungsmethode"
   },
+  "Home": {
+    "RandomProblem": {
+      "title": "Beliebiges Problem",
+      "description": "Entschlüssle einen zufällig ausgewählten Geheimtext."
+    },
+    "ProblemCode": {
+      "title": "Knobelaufgabe Code",
+      "description": "Code für eine spezifische Knobelaufgabe eingeben."
+    },
+    "CustomProblem": {
+      "title": "Offene Knobelaufgabe",
+      "description": "Entschlüssle einen frei gewählten Geheimtext."
+    },
+    "CreateProblem": {
+      "title": "Random Problem",
+      "description": "Erstelle eine neue Knobelaufgabe."
+    },
+    "CipherProblems": {
+      "description": "Knobelaufgaben mit {{cipher}}."
+    }
+  },
   "Languages": {
     "English": "Englisch",
     "German": "Deutsch"
   },
   "Ciphers": {
-    "Ceasar": "Ceasar",
-    "Table": "Tabelle",
-    "Vignere": "Vignere",
-    "Substitution": "Vertauschung"
+    "ceasar": "Ceasar",
+    "table": "Tabelle",
+    "vignere": "Vignere",
+    "substitution": "Vertauschung"
+  },
+  "Ciphers-InText": {
+    "ceasar": "Ceasar",
+    "table": "Tabelle",
+    "vignere": "Vignere",
+    "substitution": "Vertauschung"
   }
 }
