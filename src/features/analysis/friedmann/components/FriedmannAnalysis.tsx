@@ -14,7 +14,7 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { ComputeFriedmannCharacteristic } from '../utils';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -87,7 +87,14 @@ export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   };
 
   return (
-    <Card title={t('AnalysisTools.Friedmann.titleLong')} onClose={onClose}>
+    <Card
+      title={t('AnalysisTools.Friedmann.titleLong')}
+      explanationHeader={t('AnalysisTools.Friedmann.explanationHeader')}
+      explanationBody={
+        <Trans i18nKey='AnalysisTools.Friedmann.explanationBody' components={[<br />, <i />]} />
+      }
+      onClose={onClose}
+    >
       <VStack>
         <HStack>
           <Text>{t('AnalysisTools.Friedmann.KeyLength')}</Text>

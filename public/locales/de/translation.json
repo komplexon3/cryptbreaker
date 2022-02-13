@@ -41,7 +41,9 @@
       "Stride": "Stride",
       "RelFreqInText": "Relative Häufigkeit Chiffretext",
       "RelFreqEn": "Relative Frequenz Englisch",
-      "RelFreqDe": "Relative Häufigkeit Deutsch"
+      "RelFreqDe": "Relative Häufigkeit Deutsch",
+      "explanationHeader": "Erklärung - Häufigkeitsanalysewerkzeug",
+      "explanationBody": "Das  Häufigkeitsanalysewerkzeug zeigt die relative Häufigkeit aller Zeichen im Geheimtext Text an. Der Vergleich mit der erwarteten relativen Häufigkeit kann Aufschluss darüber geben, wie sich die Zeichen verändert haben.<0/>Wenn Sie den <1>Schritt</1> ändern, erhalten Sie die relativen Häufigkeiten, wenn der Text in dieser Schrittlänge ausgelesen wird. Verwenden Sie die Schaltflächen am unteren Rand, um durch die verschiedenen Positionen im Schritt zu navigieren."
     },
     "Friedmann": {
       "title": "Friedmann",
@@ -50,14 +52,18 @@
       "KeyLength": "Schlüssellänge",
       "FCforKL": "Friedmann-Charakteristik für Schlüssellänge",
       "FCde": "Erwartet für Deutsch",
-      "FCen": "Erwartet für Englisch"
+      "FCen": "Erwartet für Englisch",
+      "explanationHeader": "Erklärung - Friedmannanalysewerkzeug",
+      "explanationBody": "Das Friedmannscheanalysewerkzeug zeigt die Friedmann'sche-Charakteristik im Text unter Berücksichtigung verschiedener möglicher Schlüssellängen an. Ein Vergleich mit der erwarteten Charakteristik kann auf die Schlüssellänge schliessen lassen, wenn der Text mit Vignere verschlüsselt ist. <0/>Ändern Sie die <1>Schlüssellänge</1>, um die maximal berücksichtigte Schlüssellänge zu ändern."
     },
     "Kasiski": {
       "title": "Kasiski",
       "titleLong": "Kasiski-Analyse",
       "tooltip": "Untersuche wiederholte Segmente im Geheimtext.",
       "SegmentLength": "Segmentlänge",
-      "NoteGrey": "Graue Zeichen sind Teil von mehreren Segmenten."
+      "NoteGrey": "Graue Zeichen sind Teil von mehreren Segmenten.",
+      "explanationHeader": "Erklärung - Tabellenanalysewerkzeug",
+      "explanationBody": "Die Tabellenanalyse zeigt Ihnen den verschlüsselten Text in einer Tabelle an. In dieser Tabelle wird der Text Spalte für Spalte ausgefüllt. Vielleicht können Sie den Text lesen, wenn Sie die richtigen Dimensionen finden."
     },
     "Table": {
       "title": "Tabelle",
@@ -68,7 +74,9 @@
     "Substitution": {
       "title": "Substitution",
       "titleLong": "Substitutionsanalyse",
-      "tooltip": "Ersetze verschiedene Buchstaben des Alphabets und sieh dir die Aenderungen im Text an."
+      "tooltip": "Ersetze verschiedene Buchstaben des Alphabets und sieh dir die Aenderungen im Text an.",
+      "explanationHeader": "Erklärung - Substitutionsanalysewerkzeug",
+      "explanationBody": "Mit der Substitutionsanalyse können Sie Buchstaben im Alphabet ersetzen und die Änderungen im Text sehen. Vielleicht hilft Ihnen das bei der Umkehrung einer Substitutions-Chiffrierung.<0/> Beachten Sie, dass der Schlüssel, den Sie hier berechnen, die Umkehrung des eigentlichen Substitutionsschlüssels ist."
     }
   },
   "TableDimensionInput": {

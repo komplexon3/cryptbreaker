@@ -10,12 +10,17 @@ import { FC } from 'react';
 
 interface ExplanationModalProps {
   header: string;
-  text: string;
   isOpen: boolean;
   onClose: () => void;
+  children?: React.ReactNode;
 }
 
-export const ExplanationModal: FC<ExplanationModalProps> = ({ header, text, isOpen, onClose }) => {
+export const ExplanationModal: FC<ExplanationModalProps> = ({
+  header,
+  isOpen,
+  onClose,
+  children,
+}) => {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -24,7 +29,7 @@ export const ExplanationModal: FC<ExplanationModalProps> = ({ header, text, isOp
           <ModalHeader>{header}</ModalHeader>
           <ModalCloseButton />
           <ModalBody paddingX={6} paddingTop='0' paddingBottom='6'>
-            {text}
+            {children}
           </ModalBody>
         </ModalContent>
       </Modal>
