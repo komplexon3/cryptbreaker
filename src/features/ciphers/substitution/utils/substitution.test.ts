@@ -1,21 +1,16 @@
-import { alphabet } from '@/utils';
-import { substitutionDecrypt, substitutionEncrypt, verifySubstitutionKey } from './substitution';
+import { alphabet, getRandomInt } from '@/utils';
+import {
+  getPermutation,
+  getRandomSubstitutionKey,
+  substitutionDecrypt,
+  substitutionEncrypt,
+  verifySubstitutionKey,
+} from './substitution';
 
-const getRandomInt = (min: number, max: number) => Math.floor(min + Math.random() * (max + 1));
 const getRandomString = (len: number) =>
   [...Array(len).fill('')]
     .map((_) => String.fromCharCode(35 + Math.floor(Math.random() * 638)))
     .join('');
-const getPermutation = (s: string): string => {
-  const length = s.length;
-  if (length <= 1) {
-    return s;
-  }
-  const divider = Math.floor(Math.random() * (s.length + 1));
-  return Math.random() > 0.5
-    ? getPermutation(s.substring(divider, length)) + getPermutation(s.substring(0, divider))
-    : getPermutation(s.substring(0, divider)) + getPermutation(s.substring(divider, length));
-};
 
 describe('verifySubstitutionKey', () => {
   test('basic - plain alphabet', () => {
@@ -28,7 +23,7 @@ describe('verifySubstitutionKey', () => {
     expect(verifySubstitutionKey('aaaaaaaaaaaaaaaaaaaaaaaaaa')).toBeFalsy();
   });
   test('arbitrary permutation', () => {
-    expect(verifySubstitutionKey(getPermutation(alphabet))).toBeTruthy();
+    expect(verifySubstitutionKey(getRandomSubstitutionKey())).toBeTruthy();
   });
   test('arbitrary permutation of a messed up alphabet', () => {
     for (let reps = 0; reps < 100; reps++) {

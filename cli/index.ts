@@ -1,23 +1,30 @@
 #!/usr/bin/env node
 
-import { ceasarEncrypt } from '../src/features/ciphers/ceasar/utils/ceasar.js';
-import { substitutionEncrypt } from '../src/features/ciphers/substitution/utils/substitution.js';
-import { tableEncrypt } from '../src/features/ciphers/table/utils/table.js';
-import { vignereEncrypt } from '../src/features/ciphers/vignere/utils/vignere.js';
-import { cleanText } from '../src/utils/cleanText.js';
-import { appendFile, readFileSync, writeFile, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { load } from 'js-yaml';
 import { resolve } from 'path';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { ProblemLanguages, ProblemTypes } from '../src/data/types/index.js';
+import { ceasarEncrypt } from '../src/features/ciphers/ceasar/utils/ceasar.js';
+import {
+  getRandomSubstitutionKey,
+  substitutionEncrypt,
+} from '../src/features/ciphers/substitution/utils/substitution.js';
+import { getRandomTableKey, tableEncrypt } from '../src/features/ciphers/table/utils/table.js';
+import {
+  getRandomVignereKey,
+  vignereEncrypt,
+} from '../src/features/ciphers/vignere/utils/vignere.js';
+import { alphabet } from '../src/utils/alphabet.js';
+import { cleanText } from '../src/utils/cleanText.js';
+import { getRandomInt } from '../src/utils/utils.js';
 
 interface Schema {
   challenges: {
     name: string;
     text: string;
     cipher: string;
-    key: string;
   }[];
 }
 
@@ -26,11 +33,11 @@ const languageToProblemLanguage = (l: string) => {
     case 'en':
     case 'english':
     case 'englisch':
-      return ProblemLanguages.EN;
+      return 'ProblemLanguages.EN';
     case 'de':
     case 'german':
     case 'deutsch':
-      return ProblemLanguages.DE;
+      return 'ProblemLanguages.DE';
     default:
       console.log(`Language ${l} is not supportet`);
       process.exit(1);
@@ -40,13 +47,13 @@ const languageToProblemLanguage = (l: string) => {
 const cipherToProblemTypes = (c: string) => {
   switch (c.toLowerCase()) {
     case 'ceasar':
-      return ProblemTypes.CEASAR;
+      return 'ProblemTypes.CEASAR';
     case 'substitution':
-      return ProblemTypes.SUBSTITUTION;
+      return 'ProblemTypes.SUBSTITUTION';
     case 'table':
-      return ProblemTypes.TABLE;
+      return 'ProblemTypes.TABLE';
     case 'vignere':
-      return ProblemTypes.VIGNERE;
+      return 'ProblemTypes.VIGNERE';
     default:
       console.log(`Cipher ${c} is not supportet`);
       process.exit(1);
@@ -106,23 +113,32 @@ yargs(hideBin(process.argv))
       for (let i = 0; i < challenges.length; i++) {
         const challenge = challenges[i];
         const problemType = cipherToProblemTypes(challenge.cipher);
-        const clearedPlainText = cleanText(challenge.text);
+        const clearedPlainText = cleanText(challenge.text.toUpperCase());
         let cipherText: string;
+        let keyValue;
+        let keyString = '';
 
         try {
           switch (problemType) {
-            case ProblemTypes.CEASAR:
-              cipherText = ceasarEncrypt(clearedPlainText, ~~challenge.key);
+            case 'ProblemTypes.CEASAR':
+              keyValue = getRandomInt(0, 23);
+              keyString = keyValue.toString();
+              cipherText = ceasarEncrypt(clearedPlainText, keyValue);
               break;
-            case ProblemTypes.SUBSTITUTION:
-              cipherText = substitutionEncrypt(clearedPlainText, challenge.key);
+            case 'ProblemTypes.SUBSTITUTION':
+              keyValue = getRandomSubstitutionKey();
+              keyString = keyValue;
+              cipherText = substitutionEncrypt(clearedPlainText, keyValue);
               break;
-            case ProblemTypes.TABLE:
-              const keyValues = challenge.key.split(' ');
-              cipherText = tableEncrypt(clearedPlainText, ~~keyValues[0], ~~keyValues[1]);
+            case 'ProblemTypes.TABLE':
+              keyValue = getRandomTableKey(clearedPlainText.length);
+              keyString = `rows: ${keyValue.rows}, columns: ${keyValue.columns}`;
+              cipherText = tableEncrypt(clearedPlainText, keyValue.rows, keyValue.columns);
               break;
-            case ProblemTypes.VIGNERE:
-              cipherText = vignereEncrypt(clearedPlainText, challenge.key);
+            case 'ProblemTypes.VIGNERE':
+              keyValue = getRandomVignereKey(getRandomInt(2, 4), alphabet.toUpperCase());
+              keyString = keyValue;
+              cipherText = vignereEncrypt(clearedPlainText, keyValue);
               break;
           }
         } catch (e) {
@@ -136,7 +152,7 @@ yargs(hideBin(process.argv))
         language: '${_language}',\n
         plainText: '${clearedPlainText}',\n
         cipherText: '${cipherText}'\n
-        // key: ${challenge.key}
+        // key: ${keyString}
       }`;
       }
 

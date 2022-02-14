@@ -43,3 +43,16 @@ export const verifySubstitutionKey = (key: string) => {
   }
   return !alphabet.split('').reduce((acc, val) => acc || key.indexOf(val) < 0, false);
 };
+
+export const getPermutation = (s: string): string => {
+  const length = s.length;
+  if (length <= 1) {
+    return s;
+  }
+  const divider = Math.floor(Math.random() * (s.length + 1));
+  return Math.random() > 0.5
+    ? getPermutation(s.substring(divider, length)) + getPermutation(s.substring(0, divider))
+    : getPermutation(s.substring(0, divider)) + getPermutation(s.substring(divider, length));
+};
+
+export const getRandomSubstitutionKey = (): string => getPermutation(alphabet);

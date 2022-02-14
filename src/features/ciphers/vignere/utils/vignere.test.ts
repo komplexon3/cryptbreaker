@@ -1,24 +1,11 @@
 import { alphabet } from '@/utils';
-import { verifyVignereKey, vignereDecrypt, vignereEncrypt } from './vignere';
+import { getRandomVignereKey, verifyVignereKey, vignereDecrypt, vignereEncrypt } from './vignere';
 
 const getRandomInt = (min: number, max: number) => Math.floor(min + Math.random() * (max + 1));
 const getRandomString = (len: number) =>
   [...Array(len).fill('')]
     .map((_) => String.fromCharCode(35 + Math.floor(Math.random() * 638)))
     .join('');
-const getPermutation = (s: string): string => {
-  const length = s.length;
-  if (length <= 1) {
-    return s;
-  }
-  const divider = Math.floor(Math.random() * (s.length + 1));
-  return Math.random() > 0.5
-    ? getPermutation(s.substring(divider, length)) + getPermutation(s.substring(0, divider))
-    : getPermutation(s.substring(0, divider)) + getPermutation(s.substring(divider, length));
-};
-
-const getRandomVignereKey = (len: number, alphabet: string) =>
-  [...Array(len).fill('')].map((_) => alphabet[getRandomInt(0, alphabet.length - 1)]).join('');
 
 const standardPlainText =
   'hello, my name is marc widmer and I am testing the funtionality of this component.';

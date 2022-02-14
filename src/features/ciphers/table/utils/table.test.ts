@@ -1,12 +1,12 @@
+import { getRandomInt } from '@/utils';
 import {
   acceptedTableDimensions,
+  getRandomTableKey,
   tableDecrypt,
   tableDimensionsSeachSpace,
   tableEncrypt,
 } from './table';
 
-const getRandomInt = (min: number, max: number) =>
-  Math.floor(min + Math.random() * (max - min + 1));
 const getRandomString = (len: number) =>
   [...Array(len).fill('')]
     .map((_) => String.fromCharCode(35 + Math.floor(Math.random() * 638)))
@@ -25,20 +25,8 @@ describe('TableEncrypt, TableDecrypt', () => {
       const textLength = getRandomInt(20, 200);
       const testPlainText = getRandomString(textLength);
       // set dimensions randomly but in the valid range and big enough for the text
-      const { rowsMin, rowsMax, columnsMin, columnsMax } = acceptedTableDimensions(textLength);
-      let rows = getRandomInt(rowsMin, rowsMax),
-        cols = getRandomInt(columnsMin, columnsMax);
-      while (cols * rows < textLength) {
-        if (cols < rows && cols < columnsMax) {
-          cols++;
-        } else if (rows < rowsMax) {
-          rows++;
-        } else {
-          rows = getRandomInt(rowsMin, rowsMax);
-          cols = getRandomInt(columnsMin, columnsMax);
-        }
-      }
-      expect(tableDecrypt(tableEncrypt(testPlainText, rows, cols), rows, cols)).toMatch(
+      const { rows, columns } = getRandomTableKey(textLength);
+      expect(tableDecrypt(tableEncrypt(testPlainText, rows, columns), rows, columns)).toMatch(
         testPlainText
       );
     }
