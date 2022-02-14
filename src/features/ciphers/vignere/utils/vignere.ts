@@ -1,4 +1,4 @@
-import { isLetter } from '@/utils';
+import { getRandomInt, isLetter } from '@/utils';
 import { computeCeasarShift } from '../../ceasar';
 
 export const vignereEncrypt = (plainText: string, vignereKey: string): string => {
@@ -30,3 +30,6 @@ const applyOffsets = (s: string, offsets: number[]) => {
 const offsetsFromCharString = (s: string) => s.split('').map((c) => c.charCodeAt(0) - 97);
 
 export const verifyVignereKey = (key: string) => /^[a-z]+$/i.test(key);
+
+export const getRandomVignereKey = (len: number, alphabet: string) =>
+  [...Array(len).fill('')].map((_) => alphabet[getRandomInt(0, alphabet.length - 1)]).join('');

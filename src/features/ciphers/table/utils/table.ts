@@ -1,4 +1,4 @@
-import { alphabet } from '@/utils';
+import { alphabet, getRandomInt } from '@/utils';
 
 // confif values used accross table elements
 export const absoluteMaxColumns = 15;
@@ -10,7 +10,7 @@ export const absoluteMinColumns = 8;
  * @returns Character choosen
  */
 const selectRandomCharacter = () => {
-  const randomSelectionAlphabet = (alphabet + alphabet.toUpperCase() + ' .,:;').split('');
+  const randomSelectionAlphabet = alphabet.toUpperCase().split('');
   return randomSelectionAlphabet[Math.floor(Math.random() * randomSelectionAlphabet.length)];
 };
 
@@ -183,4 +183,27 @@ export const tableDimensionsSeachSpace = (textLength: number) => {
     columnsMin,
     columnsMax,
   };
+};
+
+/**
+ * Generate random but valid table dimensions to encrypt a text with table encryption
+ * @param textLength
+ * @returns
+ */
+export const getRandomTableKey = (textLength: number): { rows: number; columns: number } => {
+  const { rowsMin, rowsMax, columnsMin, columnsMax } = acceptedTableDimensions(textLength);
+  let rows = getRandomInt(rowsMin, rowsMax),
+    columns = getRandomInt(columnsMin, columnsMax);
+  while (columns * rows < textLength) {
+    if (columns < rows && columns < columnsMax) {
+      columns++;
+    } else if (rows < rowsMax) {
+      rows++;
+    } else {
+      rows = getRandomInt(rowsMin, rowsMax);
+      columns = getRandomInt(columnsMin, columnsMax);
+    }
+  }
+
+  return { rows, columns };
 };

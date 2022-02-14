@@ -8,6 +8,9 @@ export const isLetter = (c: string) => {
   return c.match(/[a-zA-Z]/i);
 };
 
+export const getRandomInt = (min: number, max: number) =>
+  Math.floor(min + Math.random() * (max - min + 1));
+
 /**
  * Note: Doesn't support full UTF-8/Unicode but this is okay as we only expect ASCII characters here.
  * Will throw InvalidCharacterError DOMException if the string contains unsupported characters.

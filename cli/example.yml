@@ -1,9 +1,0 @@
-challenges:
-  - name: test 1
-    text: hello this is a quick test
-    cipher: ceasar
-    key: 5
-  - name: test 2
-    text: hello this is a quick test 2
-    cipher: table
-    key: 3 4
