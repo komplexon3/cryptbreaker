@@ -1,0 +1,25 @@
+challenges:
+  - name: Im tropischen Busch
+    text: UndurchdringlicherDschungelbedecktdieweitenEbenenderFlussgebietedesPanucounddesTamesiZweiBahnliniennurdurchziehendiesenneunzigtausendQuadratkilometergrossenTeilderTierraCalienteWosichAnsiedelungenbefindenhabensiesichdichtundängstlichandiewenigenEisenbahnstationengedraengtEuropaeerwohnenhiernurganzvereinzeltundwieverlorenDieermuedendeGleichfoermigkeitdesDschungelswirdvoneinigensichlanghinstreckendenHoehenzuegenunterbrochendiemittropischemUrbuschbewachsensindderebensoundurchdringlichistwiederDschungelundindessenTiefenwoimmerDaemmerungherrschtalleMysterienundGrauenderWeltzulauernscheinen
+    cipher: table
+  - name: Menschenrechte 1
+    text: AlleMenschensindfreiundgleichanWuerdeundRechtengeborenSiesindmitVernunftundGewissenbegabtundsolleneinanderimGeistderBruederlichkeitbegegnen
+    cipher: table
+  - name: Menschenrechte 2
+    text: JederhatAnspruchaufdieindieserErklaerungverkuendetenRechteundFreiheitenohneirgendeinenUnterschiedetwanachRasseHautfarbeGeschlechtSpracheReligionpolitischerodersonstigerUeberzeugungnationalerodersozialerHerkunftVermoegenGeburtodersonstigemStandDesweiterendarfkeinUnterschiedgemachtwerdenaufGrundderpolitischenrechtlichenoderinternationalenStellungdesLandesoderGebietsdemeinePersonangehoertgleichgueltigobdiesesunabhaengigistunterTreuhandschaftstehtkeineSelbstregierungbesitztodersonstinseinerSouveraenitaeteingeschraenktist
+    cipher: table
+  - name: Menschenrechte 3
+    text: Jeder hat Anspruch auf einen wirksamen Rechtsbehelf bei den zuständigen innerstaatlichen Gerichten gegen Handlungen, durch die seine ihm nach der Verfassung oder nach dem Gesetz zustehenden Grundrechte verletzt werden.
+    cipher: table
+  - name: Menschenrechte 4
+    text: Jeder hat das Recht auf Meinungsfreiheit und freie Meinungsäusserung; dieses Recht schliesst die Freiheit ein, Meinungen ungehindert anzuhängen sowie über Medien jeder Art und ohne Rücksicht auf Grenzen Informationen und Gedankengut zu suchen, zu empfangen und zu verbreiten.
+    cipher: table
+  - name: Alan Turing
+    text: Alan Turing hat ein umfangreiches Vermächtnis mit Statuen von ihm und vielen Dingen, die nach ihm benannt sind, einschliesslich einer jährlichen Auszeichnung für Innovationen in der Informatik.
+    cipher: table
+  - name: Martin Luther King Jr.
+    text: Ich sage Ihnen heute, meine Freunde, auch wenn wir mit den Schwierigkeiten von heute und morgen konfrontiert sind, so habe ich doch einen Traum. Es ist ein Traum, der tief mit dem amerikanischen Traum verwurzelt ist.
+    cipher: table
+  - name: Computer Science
+    text: Bei der Informatik handelt es sich um die Wissenschaft von der systematischen Darstellung, Speicherung, Verarbeitung und Übertragung von Informationen, wobei besonders die automatische Verarbeitung mit Digitalrechnern betrachtet wird.
+    cipher: table

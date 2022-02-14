@@ -1,0 +1,25 @@
+challenges:
+  - name: Daddy Long Legs
+    text: ThefirstWednesdayineverymonthwasaPerfectlyAwfulDayadaytobeawaitedwithdreadenduredwithcourageandforgottenwithhasteEveryfloormustbespotlesseverychairdustlessandeverybedwithoutawrinkleNinetysevensquirminglittleorphansmustbescrubbedandcombedandbuttonedintofreshlystarchedginghamsandallninetysevenremindedoftheirmannersandtoldtosayYessirNosirwheneveraTrusteespoke
+    cipher: table
+  - name: Human Rights 1
+    text: AllhumanbeingsarebornfreeandequalindignityandrightsTheyareendowedwithreasonandconscienceandshouldacttowardsoneanotherinaspiritofbrotherhood
+    cipher: table
+  - name: Human Rights 2
+    text: EveryoneisentitledtoalltherightsandfreedomssetforthinthisDeclarationwithoutdistinctionofanykindsuchasracecoloursexlanguagereligionpoliticalorotheropinionnationalorsocialoriginpropertybirthorotherstatusFurthermorenodistinctionshallbemadeonthebasisofthepoliticaljurisdictionalorinternationalstatusofthecountryorterritorytowhichapersonbelongswhetheritbeindependenttrustnonselfgoverningorunderanyotherlimitationofsovereignty
+    cipher: table
+  - name: Human Rights 3
+    text: Everyone is entitled in full equality to a fair and public hearing by an independent and impartial tribunal, in the determination of his rights and obligations and of any criminal charge against him.
+    cipher: table
+  - name: Human Rights 4
+    text: Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference and to seek, receive and impart information and ideas through any media and regardless of frontiers.
+    cipher: table
+  - name: Alan Turing
+    text: Alan Turing has an extensive legacy with statues of him and many things named after him, including an annual award for computer science innovations.
+    cipher: table
+  - name: Martin Luther King Jr.
+    text: I say to you today, my friends, so even though we face the difficulties of today and tomorrow, I still have a dream. It is a dream deeply rooted in the American dream.
+    cipher: table
+  - name: Computer Science
+    text: Computer science involves the study of or the practice of computation, automation, and information. Computer science spans from theoretical to practical disciplines.
+    cipher: table
