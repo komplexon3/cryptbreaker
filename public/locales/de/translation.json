@@ -1,5 +1,6 @@
 {
-  "test": "TestDE",
+  "Header": "Werkzeugkiste zur Kryptoanalyse",
+  "toggleLanguage": "Change to English",
   "DecryptionPage": {
     "AnalysisTools": "Analysewerkzeuge",
     "DecipherTool": "Entschlüsslungswerkzeug"
@@ -23,12 +24,13 @@
       "description": "Entschlüssle einen frei gewählten Geheimtext."
     },
     "CreateProblem": {
-      "title": "Random Problem",
+      "title": "Knobelaufgabe Erstellen",
       "description": "Erstelle eine neue Knobelaufgabe."
     },
     "CipherProblems": {
       "description": "Knobelaufgaben mit {{cipher}}."
-    }
+    },
+    "cipherSpecificProblems": "Kryptosystemspezifische Knobelaufgaben"
   },
   "CipherProblemsPage": {
     "Challenges": "Knobelaufgaben"
@@ -61,15 +63,15 @@
       "titleLong": "Kasiski-Analyse",
       "tooltip": "Untersuche wiederholte Segmente im Geheimtext.",
       "SegmentLength": "Segmentlänge",
-      "NoteGrey": "Graue Zeichen sind Teil von mehreren Segmenten.",
-      "explanationHeader": "Erklärung - Tabellenanalysewerkzeug",
-      "explanationBody": "Die Tabellenanalyse zeigt Ihnen den verschlüsselten Text in einer Tabelle an. In dieser Tabelle wird der Text Spalte für Spalte ausgefüllt. Vielleicht können Sie den Text lesen, wenn Sie die richtigen Dimensionen finden."
+      "NoteGrey": "Graue Zeichen sind Teil von mehreren Segmenten."
     },
     "Table": {
       "title": "Tabelle",
       "titleLong": "Tabellenanalyse",
       "tooltip": "Zeigt den verschlüsselten Text in einer Tabelle an.",
-      "NotePink?": "Rosa <0>?</0> zeigen leere Stellen in der Tabelle an."
+      "NotePink?": "Rosa <0>?</0> zeigen leere Stellen in der Tabelle an.",
+      "explanationHeader": "Erklärung - Tabellenanalysewerkzeug",
+      "explanationBody": "Die Tabellenanalyse zeigt Ihnen den verschlüsselten Text in einer Tabelle an. In dieser Tabelle wird der Text Spalte für Spalte ausgefüllt. Vielleicht können Sie den Text lesen, wenn Sie die richtigen Dimensionen finden."
     },
     "Substitution": {
       "title": "Substitution",

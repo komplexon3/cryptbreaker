@@ -1,5 +1,6 @@
 {
-  "test": "TestEN",
+  "Header": "Crypto Analysis Toolbox",
+  "toggleLanguage": "Zu Deutsch wechseln",
   "DecryptionPage": {
     "AnalysisTools": "Analysis Tools",
     "DecipherTool": "Decipher Tool"
@@ -28,7 +29,8 @@
     },
     "CipherProblems": {
       "description": "Challenges for {{cipher}} cipher."
-    }
+    },
+    "cipherSpecificProblems": "Cipher-specific Problems"
   },
   "CipherProblemsPage": {
     "Challenges": "Challenges"
@@ -59,11 +61,11 @@
     "Kasiski": {
       "title": "Kasiski",
       "titleLong": "Kasiski Analysis",
-      "tooltip": "Investigate repeated segements in the cipher text.",
+      "tooltip": "Investigate repeated segments in the ciphertext.",
       "SegmentLength": "Segment Length",
       "NoteGrey": "Grey characters are part of multiple segments.",
       "explanationHeader": "Explanation - Kasiski Analysis Tool",
-      "explanationBody": "The kasiski analysis searches for all repeates text segments of a specific length and marks them. Click on them to find out more information about these repeated segments. Their position might reveal some information about the key."
+      "explanationBody": "The kasiski analysis searches for all repeated text segments of a specific length and marks them. Click on them to find out more information about these repeated segments. Their position might reveal some information about the key."
     },
     "Table": {
       "title": "Table",

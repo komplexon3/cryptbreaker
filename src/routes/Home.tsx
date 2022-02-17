@@ -14,7 +14,6 @@ export const Home: React.FC = () => {
   return (
     <>
       <ProblemCodeModal isOpen={isOpen} onClose={onClose} onEnter={(pcURL) => navigate(pcURL)} />
-      {t('test')}
       <Stack spacing={6}>
         <SimpleGrid columns={2} spacing={10}>
           <MenuCard
@@ -39,8 +38,8 @@ export const Home: React.FC = () => {
           />
         </SimpleGrid>
         <Center>
-          <Heading as='h2' size='2xl'>
-            Problems for Ciphers
+          <Heading as='h2' size='2xl' textAlign='center'>
+            {t('Home.cipherSpecificProblems')}
           </Heading>
         </Center>
         <SimpleGrid columns={2} spacing={10}>
