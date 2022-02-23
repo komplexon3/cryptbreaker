@@ -33,7 +33,7 @@ export const EncryptionPage: React.FC = () => {
             placeholderText='Enter plain text to be encrypted.'
             onChange={(e) => {
               e.preventDefault();
-              const cleanedText = cleanText(e.target.value);
+              const cleanedText = cleanText(e.target.value).toUpperCase();
               e.target.value = cleanedText;
               setPlainText(cleanedText);
             }}
