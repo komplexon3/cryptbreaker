@@ -2,15 +2,15 @@ import { Problem, ProblemLanguages, ProblemTypes } from '../types';
 import { ceasarProblems } from './ceasarProblems';
 import { substitutionProblems } from './substitutionProblems';
 import { tableProblems } from './tableProblems';
-import { vignereProblems } from './vignereProblems';
+import { vigenereProblems } from './vigenereProblems';
 
-export { ceasarProblems, substitutionProblems, tableProblems, vignereProblems };
+export { ceasarProblems, substitutionProblems, tableProblems, vigenereProblems };
 
 export const allProblems = (language: ProblemLanguages) => [
   ...ceasarProblems[language],
   ...substitutionProblems[language],
   ...tableProblems[language],
-  ...vignereProblems[language],
+  ...vigenereProblems[language],
 ];
 
 export const problemsOfCipher = (cipher: ProblemTypes, language: ProblemLanguages): Problem[] => {
@@ -24,8 +24,8 @@ export const problemsOfCipher = (cipher: ProblemTypes, language: ProblemLanguage
     case ProblemTypes.TABLE: {
       return tableProblems[language];
     }
-    case ProblemTypes.VIGNERE: {
-      return vignereProblems[language];
+    case ProblemTypes.VIGENERE: {
+      return vigenereProblems[language];
     }
   }
 };

@@ -15,5 +15,5 @@ export enum ProblemTypes {
   CEASAR = 'ceasar',
   SUBSTITUTION = 'substitution',
   TABLE = 'table',
-  VIGNERE = 'vignere',
+  VIGENERE = 'vigenere',
 }

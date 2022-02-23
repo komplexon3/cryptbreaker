@@ -9,5 +9,5 @@ export enum EncryptionTools {
   CEASAR = 'Ceasar',
   SUBSTITUTION = 'Substitution',
   TABLE = 'Table',
-  VIGNERE = 'Vignere',
+  VIGENERE = 'Vigenere',
 }

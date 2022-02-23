@@ -1,9 +1,9 @@
 import { Problem, ProblemLanguages, ProblemTypes } from '../types';
 
-export const vignereProblems: { [id: string]: Problem[] } = {
+export const vigenereProblems: { [id: string]: Problem[] } = {
   de: [
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Im tropischen Busch',
 
@@ -18,7 +18,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: RN
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Menschenrechte 1',
 
@@ -33,7 +33,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: SMBF
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Menschenrechte 2',
 
@@ -48,7 +48,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: BS
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Menschenrechte 3',
 
@@ -63,7 +63,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: YGF
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Moby Dick',
 
@@ -78,7 +78,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: NOTV
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Der kleine Prinz',
 
@@ -93,7 +93,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: MLM
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Sherlock Holmes',
 
@@ -110,7 +110,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
   ],
   en: [
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Daddy Long Legs',
 
@@ -125,7 +125,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: KY
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Human Rights 1',
 
@@ -140,7 +140,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: KGTH
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Human Rights 2',
 
@@ -155,7 +155,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: DQ
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Human Rights 3',
 
@@ -170,7 +170,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: PC
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Moby Dick',
 
@@ -185,7 +185,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: MUG
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'The Little Prince',
 
@@ -200,7 +200,7 @@ export const vignereProblems: { [id: string]: Problem[] } = {
       // key: CQ
     },
     {
-      type: ProblemTypes.VIGNERE,
+      type: ProblemTypes.VIGENERE,
 
       title: 'Sherlock Holmes',
 

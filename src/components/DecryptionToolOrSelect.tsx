@@ -85,10 +85,10 @@ export const DecryptionToolOrSelect: React.FC<DecryptionToolOrSelectProps> = ({
                   bg={buttonBackgroundColor}
                   onClick={() => {
                     onClose();
-                    setTool(DecryptionTools.VIGNERE);
+                    setTool(DecryptionTools.VIGENERE);
                   }}
                 >
-                  Vignere
+                  Vigenere
                 </Button>
               </SimpleGrid>
             </ModalBody>

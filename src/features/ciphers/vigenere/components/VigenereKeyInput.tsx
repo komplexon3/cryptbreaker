@@ -1,13 +1,13 @@
 import { FormControl, FormErrorMessage, HStack, Input, Text, VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { verifyVignereKey } from '../utils/vignere';
+import { verifyVigenereKey } from '../utils/vigenere';
 
-interface VignereKeyInputProps {
+interface VigenereKeyInputProps {
   onChange: (v: string) => void;
 }
 
 // Note: onChange only called if current input is valid
-export const VignereKeyInput: React.FC<VignereKeyInputProps> = ({ onChange }) => {
+export const VigenereKeyInput: React.FC<VigenereKeyInputProps> = ({ onChange }) => {
   const [inputValue, setInputValue] = useState('ABC');
   const [isInvalid, setIsInvalid] = useState(false);
 
@@ -19,13 +19,13 @@ export const VignereKeyInput: React.FC<VignereKeyInputProps> = ({ onChange }) =>
 
   const handleChange = (v: string) => {
     setInputValue(v.toUpperCase());
-    setIsInvalid(!verifyVignereKey(v));
+    setIsInvalid(!verifyVigenereKey(v));
   };
 
   return (
     <VStack>
       <HStack>
-        <Text>Vignere Key</Text>
+        <Text>Vigenere Key</Text>
         <FormControl isInvalid={isInvalid}>
           <Input
             value={inputValue}

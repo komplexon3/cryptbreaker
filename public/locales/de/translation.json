@@ -56,7 +56,7 @@
       "FCde": "Erwartet für Deutsch",
       "FCen": "Erwartet für Englisch",
       "explanationHeader": "Erklärung - Friedmananalysewerkzeug",
-      "explanationBody": "Das Friedmanscheanalysewerkzeug zeigt die Friedman'sche-Charakteristik im Text unter Berücksichtigung verschiedener möglicher Schlüssellängen an. Ein Vergleich mit der erwarteten Charakteristik kann auf die Schlüssellänge schliessen lassen, wenn der Text mit Vignere verschlüsselt ist. <0/>Ändern Sie die <1>Schlüssellänge</1>, um die maximal berücksichtigte Schlüssellänge zu ändern."
+      "explanationBody": "Das Friedmanscheanalysewerkzeug zeigt die Friedman'sche-Charakteristik im Text unter Berücksichtigung verschiedener möglicher Schlüssellängen an. Ein Vergleich mit der erwarteten Charakteristik kann auf die Schlüssellänge schliessen lassen, wenn der Text mit Vigenere verschlüsselt ist. <0/>Ändern Sie die <1>Schlüssellänge</1>, um die maximal berücksichtigte Schlüssellänge zu ändern."
     },
     "Kasiski": {
       "title": "Kasiski",
@@ -93,13 +93,13 @@
   "Ciphers": {
     "ceasar": "Ceasar",
     "table": "Tabelle",
-    "vignere": "Vignere",
+    "vigenere": "Vigenere",
     "substitution": "Substitution"
   },
   "Ciphers-InText": {
     "ceasar": "Ceasar",
     "table": "Tabelle",
-    "vignere": "Vignere",
+    "vigenere": "Vigenere",
     "substitution": "Substitution"
   }
 }

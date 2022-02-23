@@ -13,9 +13,9 @@ import {
 } from '../src/features/ciphers/substitution/utils/substitution.js';
 import { getRandomTableKey, tableEncrypt } from '../src/features/ciphers/table/utils/table.js';
 import {
-  getRandomVignereKey,
-  vignereEncrypt,
-} from '../src/features/ciphers/vignere/utils/vignere.js';
+  getRandomVigenereKey,
+  vigenereEncrypt,
+} from '../src/features/ciphers/vigenere/utils/vigenere.js';
 import { alphabet } from '../src/utils/alphabet.js';
 import { cleanText } from '../src/utils/cleanText.js';
 import { getRandomInt } from '../src/utils/utils.js';
@@ -52,8 +52,8 @@ const cipherToProblemTypes = (c: string) => {
       return 'ProblemTypes.SUBSTITUTION';
     case 'table':
       return 'ProblemTypes.TABLE';
-    case 'vignere':
-      return 'ProblemTypes.VIGNERE';
+    case 'vigenere':
+      return 'ProblemTypes.VIGENERE';
     default:
       console.log(`Cipher ${c} is not supportet`);
       process.exit(1);
@@ -135,10 +135,10 @@ yargs(hideBin(process.argv))
               keyString = `rows: ${keyValue.rows}, columns: ${keyValue.columns}`;
               cipherText = tableEncrypt(clearedPlainText, keyValue.rows, keyValue.columns);
               break;
-            case 'ProblemTypes.VIGNERE':
-              keyValue = getRandomVignereKey(getRandomInt(2, 4), alphabet.toUpperCase());
+            case 'ProblemTypes.VIGENERE':
+              keyValue = getRandomVigenereKey(getRandomInt(2, 4), alphabet.toUpperCase());
               keyString = keyValue;
-              cipherText = vignereEncrypt(clearedPlainText, keyValue);
+              cipherText = vigenereEncrypt(clearedPlainText, keyValue);
               break;
           }
         } catch (e) {

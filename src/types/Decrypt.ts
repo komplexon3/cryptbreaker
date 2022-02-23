@@ -9,5 +9,5 @@ export enum DecryptionTools {
   CEASAR,
   SUBSTITUTION,
   TABLE,
-  VIGNERE,
+  VIGENERE,
 }

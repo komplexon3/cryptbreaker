@@ -56,7 +56,7 @@
       "FCde": "Expected for German",
       "FCen": "Expected for English",
       "explanationHeader": "Explanation - Friedman Analysis Tool",
-      "explanationBody": "The friedman analysis tool displays the friedman characteristic in the text considering different possible key lengths. Comparing it with the expected characteristic might let you deduce the the key length if it is encrypted with vignere.<0/>Change the <1>key length</1> to change the max key length considered."
+      "explanationBody": "The friedman analysis tool displays the friedman characteristic in the text considering different possible key lengths. Comparing it with the expected characteristic might let you deduce the the key length if it is encrypted with vigenere.<0/>Change the <1>key length</1> to change the max key length considered."
     },
     "Kasiski": {
       "title": "Kasiski",
@@ -94,13 +94,13 @@
   "Ciphers": {
     "ceasar": "Ceasar",
     "table": "Table",
-    "vignere": "Vignere",
+    "vigenere": "Vigenere",
     "substitution": "Substitution"
   },
   "Ciphers-InText": {
     "ceasar": "ceasar",
     "table": "table",
-    "vignere": "vignere",
+    "vigenere": "vigenere",
     "substitution": "substitution"
   }
 }

@@ -2,7 +2,7 @@ import {
   CeasarDecrypt,
   SubstitutionDecrypt,
   TableDecrypt,
-  VignereDecrypt,
+  VigenereDecrypt,
 } from '@/features/ciphers';
 import { DecryptionTools } from '@/types';
 
@@ -31,8 +31,10 @@ export const DecryptionToolSwitch: React.FC<DecryptionToolSwitchProps> = ({
     case DecryptionTools.TABLE: {
       return <TableDecrypt text={text} setDecipheredText={setDecipheredText} onClose={onClose} />;
     }
-    case DecryptionTools.VIGNERE: {
-      return <VignereDecrypt text={text} setDecipheredText={setDecipheredText} onClose={onClose} />;
+    case DecryptionTools.VIGENERE: {
+      return (
+        <VigenereDecrypt text={text} setDecipheredText={setDecipheredText} onClose={onClose} />
+      );
     }
     default:
       throw Error('Invalid decipher tool selection. Cannot be rendered.');

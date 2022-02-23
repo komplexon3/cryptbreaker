@@ -3,7 +3,7 @@ import {
   CeasarEncrypt,
   SubstitutionEncrypt,
   TableEncrypt,
-  VignereEncrypt,
+  VigenereEncrypt,
 } from '@/features/ciphers';
 import { EncryptionTools } from '@/types';
 
@@ -24,8 +24,8 @@ export const EncryptionToolSwitch: React.FC<EncryptionToolSwitchProps> = ({ tool
     case EncryptionTools.TABLE: {
       return <TableEncrypt text={plainText} setCipherText={setCipherText} />;
     }
-    case EncryptionTools.VIGNERE: {
-      return <VignereEncrypt text={plainText} setCipherText={setCipherText} />;
+    case EncryptionTools.VIGENERE: {
+      return <VigenereEncrypt text={plainText} setCipherText={setCipherText} />;
     }
     default:
       throw Error('Invalid encryption tool selection. Cannot be rendered.');
