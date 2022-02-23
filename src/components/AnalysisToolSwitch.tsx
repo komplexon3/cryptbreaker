@@ -1,6 +1,6 @@
 import {
   FrequencyAnalysis,
-  FriedmannAnalysis,
+  FriedmanAnalysis,
   KasiskiAnalysis,
   SubstitutionAnalysis,
   TableAnalysis,
@@ -17,8 +17,8 @@ export const AnalysisToolSwitch: React.FC<AnalysisToolSwitchProps> = ({ tool, on
     case AnalysisTools.FREQUENCY: {
       return <FrequencyAnalysis onClose={onClose} />;
     }
-    case AnalysisTools.FRIEDMANN: {
-      return <FriedmannAnalysis onClose={onClose} />;
+    case AnalysisTools.FRIEDMAN: {
+      return <FriedmanAnalysis onClose={onClose} />;
     }
     case AnalysisTools.KASISKI: {
       return <KasiskiAnalysis onClose={onClose} />;

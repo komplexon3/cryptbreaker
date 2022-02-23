@@ -71,20 +71,16 @@ export const AnalysisToolsAndSelect: React.FC<AnalysisToolsAndSelectProps> = ({
                   {t('AnalysisTools.Frequency.title')}
                 </Button>
               </Tooltip>
-              <Tooltip
-                label={t('AnalysisTools.Friedmann.tooltip')}
-                openDelay={500}
-                placement='auto'
-              >
+              <Tooltip label={t('AnalysisTools.Friedman.tooltip')} openDelay={500} placement='auto'>
                 <Button
                   bg={buttonBackgroundColor}
                   textColor={buttonTextColor}
                   onClick={() => {
                     onClose();
-                    addTool(AnalysisTools.FRIEDMANN);
+                    addTool(AnalysisTools.FRIEDMAN);
                   }}
                 >
-                  {t('AnalysisTools.Friedmann.title')}
+                  {t('AnalysisTools.Friedman.title')}
                 </Button>
               </Tooltip>
               <Tooltip label={t('AnalysisTools.Kasiski.tooltip')} openDelay={500} placement='auto'>

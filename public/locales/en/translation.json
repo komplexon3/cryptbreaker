@@ -47,16 +47,16 @@
       "explanationHeader": "Explanation - Frequency Analysis Tool",
       "explanationBody": "The frequency analysis tool displays the relative frequency of all characters in the cipher text. When comparing with the expected relative frequency, this might give some clues how the characters are changed.<0/>Changing the <1>stride</1> gives you the relative frequencies with the text strided by the given value. Use the buttons at the bottom to navigate through different positions in the stride."
     },
-    "Friedmann": {
-      "title": "Friedmann",
-      "titleLong": "Friedmann Analysis",
-      "tooltip": "Investigate the friedmann characteristic of the cipher text considering different key length.",
+    "Friedman": {
+      "title": "Friedman",
+      "titleLong": "Friedman Analysis",
+      "tooltip": "Investigate the friedman characteristic of the cipher text considering different key length.",
       "KeyLength": "Key Length",
-      "FCforKL": "Friedmann Characteristic for Key Length",
+      "FCforKL": "Friedman Characteristic for Key Length",
       "FCde": "Expected for German",
       "FCen": "Expected for English",
-      "explanationHeader": "Explanation - Friedmann Analysis Tool",
-      "explanationBody": "The friedmann analysis tool displays the friedmann characteristic in the text considering different possible key lengths. Comparing it with the expected characteristic might let you deduce the the key length if it is encrypted with vignere.<0/>Change the <1>key length</1> to change the max key length considered."
+      "explanationHeader": "Explanation - Friedman Analysis Tool",
+      "explanationBody": "The friedman analysis tool displays the friedman characteristic in the text considering different possible key lengths. Comparing it with the expected characteristic might let you deduce the the key length if it is encrypted with vignere.<0/>Change the <1>key length</1> to change the max key length considered."
     },
     "Kasiski": {
       "title": "Kasiski",

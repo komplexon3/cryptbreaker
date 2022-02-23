@@ -5,7 +5,7 @@ export interface AnalysisProps {
 export enum AnalysisTools {
   UNSPECIFIED,
   FREQUENCY,
-  FRIEDMANN,
+  FRIEDMAN,
   KASISKI,
   TABLE,
   SUBSTITUTION,

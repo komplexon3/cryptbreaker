@@ -15,17 +15,17 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Trans, useTranslation } from 'react-i18next';
-import { ComputeFriedmannCharacteristic } from '../utils';
+import { ComputeFriedmanCharacteristic } from '../utils';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // TODO: Replace with properly sourced values (and add source)
-const friedmannCharicteristic = {
+const friedmanCharicteristic = {
   en: 0.0655,
   de: 0.0762,
 };
 
-export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
+export const FriedmanAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   const { t } = useTranslation();
   const { cipherText: text, language: problemLang } = useDecryptionContext();
 
@@ -64,21 +64,21 @@ export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
     labels,
     datasets: [
       {
-        label: t('AnalysisTools.Friedmann.FCforKL'),
-        data: labels.map((v) => ComputeFriedmannCharacteristic(text, v)),
+        label: t('AnalysisTools.Friedman.FCforKL'),
+        data: labels.map((v) => ComputeFriedmanCharacteristic(text, v)),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
-        label: t('AnalysisTools.Friedmann.FCde'),
-        data: Array(labels.length).fill(friedmannCharicteristic.de),
+        label: t('AnalysisTools.Friedman.FCde'),
+        data: Array(labels.length).fill(friedmanCharicteristic.de),
         borderColor: 'rgb(0, 255, 0)',
         backgroundColor: 'rgba(0, 255, 0, 0.5)',
         hidden: !enableMap.de,
       },
       {
-        label: t('AnalysisTools.Friedmann.FCde'),
-        data: Array(labels.length).fill(friedmannCharicteristic.en),
+        label: t('AnalysisTools.Friedman.FCde'),
+        data: Array(labels.length).fill(friedmanCharicteristic.en),
         borderColor: 'rgb(0, 0, 255)',
         backgroundColor: 'rgba(0, 0, 255, 0.5)',
         hidden: !enableMap.en,
@@ -88,16 +88,16 @@ export const FriedmannAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
 
   return (
     <Card
-      title={t('AnalysisTools.Friedmann.titleLong')}
-      explanationHeader={t('AnalysisTools.Friedmann.explanationHeader')}
+      title={t('AnalysisTools.Friedman.titleLong')}
+      explanationHeader={t('AnalysisTools.Friedman.explanationHeader')}
       explanationBody={
-        <Trans i18nKey='AnalysisTools.Friedmann.explanationBody' components={[<br />, <i />]} />
+        <Trans i18nKey='AnalysisTools.Friedman.explanationBody' components={[<br />, <i />]} />
       }
       onClose={onClose}
     >
       <VStack>
         <HStack>
-          <Text>{t('AnalysisTools.Friedmann.KeyLength')}</Text>
+          <Text>{t('AnalysisTools.Friedman.KeyLength')}</Text>
           <Input {...maxKeySize} />
           <Button {...decMaxKeySize}>-</Button>
           <Button {...incMaxKeySize}>+</Button>

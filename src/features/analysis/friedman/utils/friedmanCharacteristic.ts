@@ -1,6 +1,6 @@
 import { ComputeRelativeFrequency } from '@/features/analysis/frequency';
 
-export const ComputeFriedmannCharacteristic = (text: string, stride: number): number => {
+export const ComputeFriedmanCharacteristic = (text: string, stride: number): number => {
   if (stride < 1) {
     throw new Error('stride too small - must be >= 1');
   }
@@ -10,7 +10,7 @@ export const ComputeFriedmannCharacteristic = (text: string, stride: number): nu
 
   return (
     splitIntoStrides(text, stride)
-      .map(friedmannCharacteristic)
+      .map(friedmanCharacteristic)
       .reduce((a, b) => a + b, 0.0) / stride
   );
 };
@@ -30,7 +30,7 @@ const splitIntoStrides = (text: string, stride: number): string[] => {
   return slices;
 };
 
-const friedmannCharacteristic = (text: string): number => {
+const friedmanCharacteristic = (text: string): number => {
   if (text.length < 1) {
     return 0.0;
   }

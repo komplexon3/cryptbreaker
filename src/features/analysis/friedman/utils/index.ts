@@ -1,0 +1,1 @@
+export { ComputeFriedmanCharacteristic } from './friedmanCharacteristic';
