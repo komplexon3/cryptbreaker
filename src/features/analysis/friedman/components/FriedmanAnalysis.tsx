@@ -20,9 +20,11 @@ import { ComputeFriedmanCharacteristic } from '../utils';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // TODO: Replace with properly sourced values (and add source)
+// Source german: "Daten verwalten, schützen und auswerten", Klett und Balmer - IBSN: 978-3-264-84597-6
+// English computed from the relative frequencies in @/features/analysis/frequency/utils/frequencyAnalysis.ts
 const friedmanCharicteristic = {
-  en: 0.0655,
-  de: 0.0762,
+  en: 0.027,
+  de: 0.0385,
 };
 
 export const FriedmanAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
@@ -77,7 +79,7 @@ export const FriedmanAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
         hidden: !enableMap.de,
       },
       {
-        label: t('AnalysisTools.Friedman.FCde'),
+        label: t('AnalysisTools.Friedman.FCen'),
         data: Array(labels.length).fill(friedmanCharicteristic.en),
         borderColor: 'rgb(0, 0, 255)',
         backgroundColor: 'rgba(0, 0, 255, 0.5)',
