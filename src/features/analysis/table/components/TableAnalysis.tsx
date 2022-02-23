@@ -1,9 +1,6 @@
 import { Card, TableDimensionInput } from '@/components';
 import { useDecryptionContext } from '@/contexts';
-import {
-  absoluteMaxColumns,
-  tableDimensionsSeachSpace,
-} from '@/features/ciphers/table/utils/table';
+import { maxColumns, maxRows, minColumns, minRows } from '@/features/ciphers';
 import { AnalysisProps } from '@/types';
 import { Table, Tbody, Td, Tr, VStack, Text } from '@chakra-ui/react';
 import { useMemo, useState } from 'react';
@@ -12,16 +9,9 @@ import { Trans, useTranslation } from 'react-i18next';
 export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
   const { t } = useTranslation();
   const { cipherText } = useDecryptionContext();
-  let { rowsMin, rowsMax, columnsMin, columnsMax } = tableDimensionsSeachSpace(cipherText.length);
-  // widen the search space as the correct value is most certainly one of the original "corners"
-  const delta = 2;
-  rowsMin = rowsMin - delta >= 1 ? rowsMin - delta : 1;
-  rowsMax = rowsMax + 2;
-  columnsMin = columnsMin - delta >= 1 ? columnsMin - delta : 1;
-  columnsMax = columnsMax + delta <= absoluteMaxColumns ? columnsMax + delta : absoluteMaxColumns;
+  const [rows, setRows] = useState(minRows);
+  const [columns, setColumns] = useState(minColumns);
 
-  const [rows, setRows] = useState(rowsMin);
-  const [columns, setColumns] = useState(columnsMin);
   const tableRows = useMemo(() => {
     let stridedText: string[] = new Array(rows).fill('');
     cipherText.split('').forEach((v, i) => (stridedText[i % rows] += v));
@@ -45,12 +35,12 @@ export const TableAnalysis: React.FC<AnalysisProps> = ({ onClose }) => {
     >
       <VStack>
         <TableDimensionInput
-          minRowsValue={rowsMin}
-          maxRowsValue={rowsMax}
-          defaultRowsValue={rowsMin}
-          minColumnsValue={columnsMin}
-          maxColumnsValue={columnsMax}
-          defaultColumnsValue={columnsMin}
+          minRowsValue={minRows}
+          maxRowsValue={maxRows}
+          defaultRowsValue={minRows}
+          minColumnsValue={minColumns}
+          maxColumnsValue={maxColumns}
+          defaultColumnsValue={minColumns}
           onRowsValueChange={(v) => setRows(v)}
           onColumnsValueChange={(v) => setColumns(v)}
         />
