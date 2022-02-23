@@ -1,6 +1,6 @@
 import {
   Button,
-  HStack,
+  Flex,
   Popover,
   PopoverAnchor,
   PopoverBody,
@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverHeader,
 } from '@chakra-ui/react';
-import { FC, useDebugValue, useState } from 'react';
+import { FC, useState } from 'react';
 import { useKasiskiContext } from '../contexts';
 import { kasiskiItem } from '../types';
 
@@ -111,9 +111,12 @@ const KasiskiPopoverMultipleGroupsContent: FC<KasiskiPopoverContentProps> = ({
         </PopoverHeader>
         <PopoverBody>
           The selected part belongs to multiple segments. Select the segment you want to consider:
-          <HStack>
+          <Flex flexWrap='wrap'>
             {item.groups.map((g) => (
               <Button
+                w='fit-content'
+                marginRight='0.4rem'
+                marginTop='0.4rem'
                 onClick={(e) => {
                   e.preventDefault();
                   onSelectGroup(g);
@@ -122,7 +125,7 @@ const KasiskiPopoverMultipleGroupsContent: FC<KasiskiPopoverContentProps> = ({
                 {g}
               </Button>
             ))}
-          </HStack>
+          </Flex>
         </PopoverBody>
       </>
     );
