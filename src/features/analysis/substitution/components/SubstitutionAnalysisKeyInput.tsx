@@ -1,6 +1,6 @@
 import { alphabet } from '@/utils';
 import { Center, Input, InputGroup, InputLeftAddon, SimpleGrid } from '@chakra-ui/react';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useSubstitutionAnlaysisElementReference } from '../hooks';
 
 export const SubstitutionAnalysisKeyInput: FC = () => {
@@ -18,22 +18,8 @@ export const SubstitutionAnalysisKeyInput: FC = () => {
 };
 
 const InputSubstitutionValue: FC<{ character: string }> = ({ character }) => {
-  const {
-    cipherTextCharacter,
-    plainTextCharacter,
-    isMapped,
-    enabled,
-    onFocusEnter,
-    onSetSubstitutionValue,
-  } = useSubstitutionAnlaysisElementReference(character);
-
-  useEffect(() => {
-    if (enabled) {
-      console.log(cipherTextCharacter);
-      console.log(isMapped);
-      console.log(plainTextCharacter);
-    }
-  }, [cipherTextCharacter, plainTextCharacter, isMapped, enabled]);
+  const { cipherTextCharacter, enabled, onFocusEnter, onSetSubstitutionValue } =
+    useSubstitutionAnlaysisElementReference(character);
 
   return (
     <InputGroup>
@@ -53,8 +39,6 @@ const InputSubstitutionValue: FC<{ character: string }> = ({ character }) => {
           e.preventDefault();
           // make it all upper case, only use last character
           const val = e.target.value.toUpperCase()[e.target.value.length - 1] ?? '';
-          console.log(val);
-          console.log(val.length);
           e.target.value = val;
           onSetSubstitutionValue(val);
         }}

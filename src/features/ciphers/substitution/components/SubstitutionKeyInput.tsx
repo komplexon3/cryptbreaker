@@ -65,7 +65,7 @@ export const SubstitutionKeyInput: React.FC<SubstitutionKeyInputProps> = ({ onCh
                   onChange={(e) => {
                     e.preventDefault();
                     // make it all upper case
-                    const val = e.target.value.toUpperCase();
+                    const val = e.target.value.toUpperCase()[e.target.value.length - 1] ?? '';
                     e.target.value = val;
                     handleChange(val, i);
                   }}
