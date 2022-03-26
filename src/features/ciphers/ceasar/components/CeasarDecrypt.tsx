@@ -1,5 +1,6 @@
 import { Card } from '@/components';
 import { DecryptionProps } from '@/types';
+import { VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { ceasarDecrypt } from '../utils/ceasar';
 import { CeasarKeyInput } from './CeasarKeyInput';
@@ -13,7 +14,9 @@ export const CeasarDecrypt: React.FC<DecryptionProps> = ({ text, setDecipheredTe
 
   return (
     <Card title='Ceasar Key Entry' onClose={onClose}>
-      <CeasarKeyInput minValue={0} maxValue={25} value={key} onChange={(v) => setKey(v)} />
+      <VStack>
+        <CeasarKeyInput minValue={0} maxValue={25} value={key} onChange={(v) => setKey(v)} />
+      </VStack>
     </Card>
   );
 };
