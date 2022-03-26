@@ -102,5 +102,12 @@
     "table": "table",
     "vigenere": "vigenere",
     "substitution": "substitution"
+  },
+  "ShareProblem": {
+    "title": "Share Challenge",
+    "copyProblemCode": "Copy problem code",
+    "problemCodeCopied": "Problem Code Copied",
+    "copyProblemURL": "Copy link to problem",
+    "problemURLCopied": "Link to problem copied"
   }
 }

@@ -101,5 +101,12 @@
     "table": "Tabelle",
     "vigenere": "Vigenere",
     "substitution": "Substitution"
+  },
+  "ShareProblem": {
+    "title": "Knobelaufgabe teilen",
+    "copyProblemCode": "Knobelaufgabecode kopieren",
+    "problemCodeCopied": "Knobelaufgabecode kopiert",
+    "copyProblemURL": "Link zur Knobelaufgabe kopieren",
+    "problemURLCopied": "Link zur Knobelaufgabe kopiert"
   }
 }
