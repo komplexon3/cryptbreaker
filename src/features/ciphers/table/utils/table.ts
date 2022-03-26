@@ -35,9 +35,6 @@ export const tableEncrypt = (plainText: string, rows: number, columns: number): 
   const tablesRequired = Math.ceil(length / (rows * columns));
   const cipherTextArr = new Array(tablesRequired * rows * columns);
 
-  console.log('encrypt');
-  console.log(tablesRequired);
-
   let k = 0;
 
   for (let t = 0; t < tablesRequired; t++) {
@@ -73,15 +70,12 @@ export const tableDecrypt = (cipherText: string, rows: number, columns: number):
   const tablesRequired = Math.ceil(length / (rows * columns));
   const plainTextArr = new Array(length);
 
-  console.log('decrypt');
-  console.log(tablesRequired);
-
   let k = 0;
   for (let t = 0; t < tablesRequired; t++) {
     for (let c = 0; c < columns; c++) {
       for (let r = 0; r < rows; r++) {
         if (t * rows * columns + r * columns + c >= length) {
-          continue;
+          break;
         }
         plainTextArr[t * rows * columns + r * columns + c] = cipherText[k++];
       }
