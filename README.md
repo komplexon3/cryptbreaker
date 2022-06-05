@@ -1,6 +1,6 @@
 # Note on Deployment Branches
 
-The main repository for this project the [GitHub Repo](github.com:komplexon3/cryptbreaker.git).
+The main repository for this project the [GitHub Repo](https://github.com/komplexon3/cryptbreaker).
 All other repositories like the ones on ETH's and D-INFK's GitLab exist for deployment only.
 Changes, features, issues, etc. should be made in the main repo.
 
