@@ -1,3 +1,13 @@
+# Note on Deployment Branches
+
+The main repository for this project the [GitHub Repo](github.com:komplexon3/cryptbreaker.git).
+All other repositories like the ones on ETH's and D-INFK's GitLab exist for deployment only.
+Changes, features, issues, etc. should be made in the main repo.
+
+Deployment branches can be kept up-to-date with
+
+`git pull upstream master`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
